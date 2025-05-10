@@ -123,7 +123,7 @@ export default function Portfolio() {
             >
               {[
                 { icon: Github, href: "https://github.com/IyanuOluwaJesuloba", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/iyanuoluwa-owoseni/", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:jesulobaowoseni1@gmail.com", label: "Email" }
               ].map((item, index) => (
                 <motion.div
