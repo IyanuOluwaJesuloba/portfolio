@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Github, Linkedin, Mail, ArrowRight, Code, Palette, Globe } from "lucide-react"
+import { Github, Linkedin, Mail, ArrowRight, Code, Palette, Globe, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { ProjectCard } from "@/components/project-card"
@@ -61,6 +61,63 @@ const cardVariants = {
 };
 
 export default function Portfolio() {
+  const [currentProject, setCurrentProject] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+  
+  const projects = [
+    {
+      title: "Brain-Wave (Work in Progress)",
+      description: "An AI that helps with video editing, picture creation and editing, etc.",
+      tags: ["React", "Tailwind CSS"],
+      imageUrl: "/Brainwave.png",
+      githubUrl: "https://github.com/IyanuOluwaJesuloba/brain_wave",
+      liveUrl: "https://brain-wave-zeta-six.vercel.app/"
+    },
+    {
+      title: "Smart-SEQ",
+      description: "A productivity application for managing tasks, with drag-and-drop functionality and team collaboration features.",
+      tags: ["TypeScript", "React", "Tailwind CSS"],
+      imageUrl: "/smart.png",
+      githubUrl: "https://github.com/IyanuOluwaJesuloba/Smart-SEQ",
+      liveUrl: "https://smart-seq-eight.vercel.app/"
+    },
+    {
+      title: "Saving-app",
+      description: "This app helps a group of people collectively invest in a Play-to-Earn blockchain game that yields a 20% return on the total invested amount per gameplay",
+      tags: ["TypeScript", "React","Next.Js", "Tailwind CSS"],
+      imageUrl: "/Saving-app.jpg",
+      githubUrl: "https://github.com/IyanuOluwaJesuloba/saving_app",
+      liveUrl: "https://saving-app-jet.vercel.app/"
+    },
+    {
+      title: "Synergy-app",
+      description: "Synergy brings the age-old wisdom of community buying into the digital age. By connecting families who buy together with producers who grow with care.",
+      tags: ["TypeScript", "React","Next.Js", "Tailwind CSS"],
+      imageUrl: "/Synergy-app.jpg",
+      githubUrl: "https://github.com/IyanuOluwaJesuloba/synergy-real",
+      liveUrl: "https://synergy-app-livid.vercel.app/"
+    },
+  ];
+
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  // Add auto-scroll functionality
+  React.useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      nextProject();
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-purple-300">
       {/* Header */}
@@ -147,7 +204,7 @@ export default function Portfolio() {
         </div>
       </motion.header>
 
-      <main className="pt-16">
+      <main className="pt-16 justify-center px-48">
         {/* Hero Section */}
         <motion.section 
           className="relative min-h-[90vh] flex items-center"
@@ -161,7 +218,7 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 justify-center">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div 
                 className="space-y-8"
@@ -169,7 +226,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               >
-                <div className="space-y-4">
+                <div className="space-y-4 ">
                   <motion.h1 
                     className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900"
                     initial={{ opacity: 0, y: 20 }}
@@ -423,40 +480,53 @@ export default function Portfolio() {
                 </motion.span>
                 Featured Projects
               </motion.h2>
-              <motion.div 
-                className="grid md:grid-cols-2 gap-8"
-                variants={staggerContainer}
+              
+              <div 
+                className="relative bg-purple-50/50 rounded-2xl p-8 shadow-lg border border-purple-100"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
               >
-                {[
-                  {
-                    title: "Brain-Wave (Work in Progress)",
-                    description: "An AI that helps with video editing, picture creation and editing, etc.",
-                    tags: ["React", "Tailwind CSS"],
-                    imageUrl: "/Brainwave.png",
-                    githubUrl: "https://github.com/IyanuOluwaJesuloba/brain_wave",
-                    liveUrl: "https://brain-wave-zeta-six.vercel.app/"
-                  },
-                  {
-                    title: "Smart-SEQ",
-                    description: "A productivity application for managing tasks, with drag-and-drop functionality and team collaboration features.",
-                    tags: ["TypeScript", "React", "Tailwind CSS"],
-                    imageUrl: "/smart.png",
-                    githubUrl: "https://github.com/IyanuOluwaJesuloba/Smart-SEQ",
-                    liveUrl: "https://smart-seq-eight.vercel.app/"
-                  }
-                ].map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    variants={cardVariants}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    viewport={{ once: true }}
+                <motion.div 
+                  key={currentProject}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  className="max-w-3xl mx-auto"
+                >
+                  <ProjectCard {...projects[currentProject]} />
+                </motion.div>
+
+                <div className="flex justify-center items-center gap-4 mt-8">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={prevProject}
+                    className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
                   >
-                    <ProjectCard {...project} />
-                  </motion.div>
-                ))}
-              </motion.div>
+                    <ChevronLeft className="h-6 w-6" />
+                  </Button>
+                  <div className="flex gap-2">
+                    {projects.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentProject(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          currentProject === index ? 'bg-purple-600 w-4' : 'bg-purple-200'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={nextProject}
+                    className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </Button>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.section>

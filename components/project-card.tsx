@@ -38,9 +38,9 @@ export function ProjectCard({ title, description, tags, imageUrl, githubUrl, liv
         </div>
       </CardContent>
       <CardFooter className="border-t p-6 flex gap-4 bg-gray-50">
-        <Button variant="outline" size="sm" asChild className="flex-1 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-200">
+        <Button variant="outline" size="sm" asChild className="flex-1 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-200 text-gray-600">
           <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-            <Github className="mr-2 h-4 w-4" />
+            <Github className="mr-2 h-4 w-4 text-black" />
             Code
           </Link>
         </Button>
