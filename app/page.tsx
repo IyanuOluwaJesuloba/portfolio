@@ -93,7 +93,7 @@ export default function Portfolio() {
       title: "Synergy-app",
       description: "Synergy brings the age-old wisdom of community buying into the digital age. By connecting families who buy together with producers who grow with care.",
       tags: ["TypeScript", "React","Next.Js", "Tailwind CSS"],
-      imageUrl: "/Synergy-app.jpg",
+      imageUrl: "/Saving-app.jpg",
       githubUrl: "https://github.com/IyanuOluwaJesuloba/synergy-real",
       liveUrl: "https://synergy-app-livid.vercel.app/"
     },
@@ -119,13 +119,13 @@ export default function Portfolio() {
   }, [isPaused]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-purple-300">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-purple-200">
       {/* Header */}
       <motion.header 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-        className="fixed top-0 z-40 w-full border-b bg-white/80 backdrop-blur-sm"
+        className="fixed top-0 z-40 w-full border-b bg-white/80 backdrop-blur-sm border-purple-200/50"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -204,7 +204,7 @@ export default function Portfolio() {
         </div>
       </motion.header>
 
-      <main className="pt-16 justify-center px-48">
+      <main className="pt-16">
         {/* Hero Section */}
         <motion.section 
           className="relative min-h-[90vh] flex items-center"
@@ -218,8 +218,8 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 justify-center">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div 
                 className="space-y-8"
                 initial={{ opacity: 0, x: -50 }}
@@ -302,7 +302,7 @@ export default function Portfolio() {
         {/* About Section */}
         <motion.section 
           id="about" 
-          className="py-20 scroll-mt-20"
+          className="py-12 md:py-20 scroll-mt-20"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -379,7 +379,7 @@ export default function Portfolio() {
         {/* Skills Section */}
         <motion.section 
           id="skills" 
-          className="py-20 bg-gray-50"
+          className="py-12 md:py-20 bg-gray-50"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -456,7 +456,7 @@ export default function Portfolio() {
         {/* Projects Section */}
         <motion.section 
           id="projects" 
-          className="py-20"
+          className="py-12 md:py-20"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -468,7 +468,7 @@ export default function Portfolio() {
               variants={sectionVariants}
             >
               <motion.h2 
-                className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-900"
+                className="text-3xl font-bold mb-8 md:mb-12 flex items-center gap-3 text-gray-900"
                 variants={headingVariants}
               >
                 <motion.span 
@@ -482,7 +482,7 @@ export default function Portfolio() {
               </motion.h2>
               
               <div 
-                className="relative bg-purple-50/50 rounded-2xl p-8 shadow-lg border border-purple-100"
+                className="relative bg-purple-50/50 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-purple-100"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >
@@ -497,14 +497,14 @@ export default function Portfolio() {
                   <ProjectCard {...projects[currentProject]} />
                 </motion.div>
 
-                <div className="flex justify-center items-center gap-4 mt-8">
+                <div className="flex justify-center items-center gap-4 mt-6 md:mt-8">
                   <Button
                     variant="outline"
                     size="icon"
                     onClick={prevProject}
                     className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
                   >
-                    <ChevronLeft className="h-6 w-6" />
+                    <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                   </Button>
                   <div className="flex gap-2">
                     {projects.map((_, index) => (
@@ -523,7 +523,7 @@ export default function Portfolio() {
                     onClick={nextProject}
                     className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
                   >
-                    <ChevronRight className="h-6 w-6" />
+                    <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                   </Button>
                 </div>
               </div>
@@ -534,7 +534,7 @@ export default function Portfolio() {
         {/* Contact Section */}
         <motion.section 
           id="contact" 
-          className="py-20 bg-gray-50"
+          className="py-12 md:py-20 bg-gray-50"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -632,7 +632,7 @@ export default function Portfolio() {
       </main>
 
       <motion.footer 
-        className="border-t bg-white py-8"
+        className="border-t bg-white py-6 md:py-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
