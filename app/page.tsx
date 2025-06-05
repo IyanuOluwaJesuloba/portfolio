@@ -119,13 +119,13 @@ export default function Portfolio() {
   }, [isPaused]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-purple-200">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-purple-300">
       {/* Header */}
       <motion.header 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-        className="fixed top-0 z-40 w-full border-b bg-white/80 backdrop-blur-sm border-purple-200/50"
+        className="fixed top-0 z-40 w-full border-b bg-white/80 backdrop-blur-sm"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -213,13 +213,13 @@ export default function Portfolio() {
           transition={{ duration: 1 }}
         >
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white -z-10"
+            className="absolute inset-0 bg-gradient-to-br from-purple-300 via-purple-100 to-white -z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 justify-center">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div 
                 className="space-y-8"
                 initial={{ opacity: 0, x: -50 }}
@@ -228,14 +228,14 @@ export default function Portfolio() {
               >
                 <div className="space-y-4 ">
                   <motion.h1 
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-700 to-purple-500 bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
                     Hi, I'm IyanuOluwa
                     <motion.span 
-                      className="block text-purple-600 mt-2"
+                      className="block text-purple-500 mt-2"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
@@ -244,7 +244,7 @@ export default function Portfolio() {
                     </motion.span>
                   </motion.h1>
                   <motion.p 
-                    className="text-xl text-gray-600 leading-relaxed"
+                    className="text-xl text-gray-700 leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
@@ -258,13 +258,13 @@ export default function Portfolio() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                 >
-                  <Button asChild className="bg-purple-600 hover:bg-purple-700 group">
+                  <Button asChild className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 group shadow-lg hover:shadow-purple-300/50">
                     <Link href="#contact" className="flex items-center gap-2">
                       Get in touch
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                  <Button variant="outline" asChild className="border-purple-200 text-purple-600 hover:bg-purple-50">
+                  <Button variant="outline" asChild className="border-purple-300 text-purple-600 hover:bg-purple-100 hover:border-purple-400 shadow-sm hover:shadow-md transition-all duration-300">
                     <Link href="#projects">View my work</Link>
                   </Button>
                 </motion.div>
@@ -276,10 +276,10 @@ export default function Portfolio() {
                 transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 100 }}
               >
                 <motion.div 
-                  className="absolute inset-0 bg-purple-100 rounded-full blur-2xl opacity-50"
+                  className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-200 rounded-full blur-2xl opacity-60"
                   animate={{ 
                     scale: [1, 1.1, 1],
-                    opacity: [0.5, 0.7, 0.5]
+                    opacity: [0.6, 0.8, 0.6]
                   }}
                   transition={{ 
                     duration: 4,
@@ -288,7 +288,7 @@ export default function Portfolio() {
                   }}
                 />
                 <motion.div 
-                  className="relative w-full h-full rounded-full overflow-hidden border-4 border-purple-100 shadow-xl"
+                  className="relative w-full h-full rounded-full overflow-hidden border-4 border-purple-300 shadow-xl hover:shadow-2xl hover:shadow-purple-300/50 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -379,7 +379,7 @@ export default function Portfolio() {
         {/* Skills Section */}
         <motion.section 
           id="skills" 
-          className="py-12 md:py-20 bg-gray-50"
+          className="py-12 md:py-20 bg-gradient-to-br from-purple-100 via-white to-purple-100"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -391,11 +391,11 @@ export default function Portfolio() {
               variants={sectionVariants}
             >
               <motion.h2 
-                className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-900"
+                className="text-3xl font-bold mb-8 md:mb-12 flex items-center gap-3 text-gray-900"
                 variants={headingVariants}
               >
                 <motion.span 
-                  className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -419,19 +419,20 @@ export default function Portfolio() {
                   <motion.div 
                     key={category.title}
                     variants={cardVariants}
-                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-purple-200 hover:border-purple-300"
                   >
                     <div className="flex items-center gap-3 mb-6">
                       <motion.div
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
+                        className="p-2 rounded-lg bg-gradient-to-br from-purple-100 to-purple-50"
                       >
                         <category.icon className="h-6 w-6 text-purple-600" />
                       </motion.div>
-                      <h3 className="text-2xl font-semibold text-purple-600">{category.title}</h3>
+                      <h3 className="text-2xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">{category.title}</h3>
                     </div>
                     <motion.div 
-                      className="flex flex-wrap gap-3 text-purple-400"
+                      className="flex flex-wrap gap-3"
                       variants={staggerContainer}
                     >
                       {category.skills.map((skill, skillIndex) => (
@@ -497,14 +498,14 @@ export default function Portfolio() {
                   <ProjectCard {...projects[currentProject]} />
                 </motion.div>
 
-                <div className="flex justify-center items-center gap-4 mt-6 md:mt-8">
+                <div className="flex justify-center items-center gap-4 mt-8">
                   <Button
                     variant="outline"
                     size="icon"
                     onClick={prevProject}
                     className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
                   >
-                    <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+                    <ChevronLeft className="h-6 w-6" />
                   </Button>
                   <div className="flex gap-2">
                     {projects.map((_, index) => (
@@ -523,7 +524,7 @@ export default function Portfolio() {
                     onClick={nextProject}
                     className="rounded-full hover:bg-purple-100 border-purple-200 text-purple-600"
                   >
-                    <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+                    <ChevronRight className="h-6 w-6" />
                   </Button>
                 </div>
               </div>
@@ -534,7 +535,7 @@ export default function Portfolio() {
         {/* Contact Section */}
         <motion.section 
           id="contact" 
-          className="py-12 md:py-20 bg-gray-50"
+          className="py-12 md:py-20 bg-gradient-to-br from-purple-100 via-white to-purple-50"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -546,11 +547,11 @@ export default function Portfolio() {
               variants={sectionVariants}
             >
               <motion.h2 
-                className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-900"
+                className="text-3xl font-bold mb-8 md:mb-12 flex items-center gap-3 text-gray-900"
                 variants={headingVariants}
               >
                 <motion.span 
-                  className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -565,7 +566,7 @@ export default function Portfolio() {
                 >
                   <div className="space-y-4">
                     <motion.h3 
-                      className="text-2xl font-semibold text-gray-900"
+                      className="text-2xl font-semibold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -594,7 +595,7 @@ export default function Portfolio() {
                     ].map((item, index) => (
                       <motion.div
                         key={item.text}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-3 group"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.2 }}
@@ -603,6 +604,7 @@ export default function Portfolio() {
                         <motion.div
                           whileHover={{ scale: 1.2, rotate: 360 }}
                           transition={{ duration: 0.3 }}
+                          className="p-2 rounded-lg bg-gradient-to-br from-purple-100 to-purple-50"
                         >
                           <item.icon className="h-5 w-5 text-purple-600" />
                         </motion.div>
@@ -610,7 +612,7 @@ export default function Portfolio() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-purple-600 transition-colors"
+                          className="text-gray-600 hover:text-purple-600 transition-colors group-hover:translate-x-1 transition-transform"
                         >
                           {item.text}
                         </a>
@@ -619,7 +621,7 @@ export default function Portfolio() {
                   </motion.div>
                 </motion.div>
                 <motion.div variants={cardVariants}>
-                  <Card className="border-2 border-purple-100 shadow-lg">
+                  <Card className="border-2 border-purple-200 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:border-purple-300">
                     <CardContent className="p-8">
                       <ContactForm />
                     </CardContent>
