@@ -107,13 +107,12 @@ export default function Portfolio() {
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
-  // Add auto-scroll functionality
   React.useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
       nextProject();
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -207,13 +206,14 @@ export default function Portfolio() {
       <main className="pt-16">
         {/* Hero Section */}
         <motion.section 
+          id="hero"
           className="relative min-h-[90vh] flex items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-purple-300 via-purple-100 to-white -z-10"
+            className="absolute inset-0 bg-gradient-to-br from-purple-300 via-purple-100 to-gray-100 -z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
@@ -226,7 +226,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               >
-                <div className="space-y-4 ">
+                <div className="space-y-4">
                   <motion.h1 
                     className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-700 to-purple-500 bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 20 }}
