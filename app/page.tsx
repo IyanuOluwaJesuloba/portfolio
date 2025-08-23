@@ -460,7 +460,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.6, delay: 1.5 }}
                 >
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">10+</div>
+                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">5+</div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
                   </div>
                   <div className="w-px h-12 bg-gray-300 dark:bg-gray-700"></div>
@@ -874,14 +874,14 @@ export default function Portfolio() {
 
               {/* Stats Section */}
               <motion.div
-                className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                className="grid grid-cols-2 md:grid-cols-3 gap-8"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
               >
                 {[
-                  { number: "10+", label: "Projects Completed", icon: Code },
+                  { number: "5+", label: "Projects Completed", icon: Code },
                   { number: "2+", label: "Years Experience", icon: Calendar },
                   { number: "95%", label: "Satisfaction Rate", icon: TrendingUp }
                 ].map((stat) => (

@@ -23,7 +23,7 @@ const experiences = [
     type: "Freelance",
     description: "Developing modern web applications for various clients, focusing on React ecosystem and user experience optimization.",
     achievements: [
-      "Built 10+ responsive web applications using React and Next.js",
+      "Built 5+ responsive web applications using React and Next.js",
       "Improved client website performance by 40% through optimization techniques",
       "Implemented modern UI/UX designs with 95% client satisfaction rate",
       "Collaborated with diverse teams"
@@ -38,7 +38,7 @@ const experiences = [
     location: "Ibadan, Nigeria",
     period: "August, 2024 - December, 2024",
     type: "Internship",
-    description: "Gained hands-on experience in full-stack development while contributing to real-world projects.",
+    description: "Gained hands-on experience in software development while contributing to real-world projects.",
     achievements: [
       "Developed responsive components for the company's main product",
       "Participated in code reviews and learned industry best practices",
@@ -53,7 +53,7 @@ const experiences = [
 ]
 
 const stats = [
-  { icon: Code, label: "Projects Completed", value: "10+", color: "text-blue-600" },
+  { icon: Code, label: "Projects Completed", value: "5+", color: "text-blue-600" },
   { icon: Award, label: "Years Experience", value: "2+", color: "text-purple-600" },
   { icon: TrendingUp, label: "Success Rate", value: "95%", color: "text-orange-600" }
 ]
@@ -114,13 +114,13 @@ export function ExperienceTimeline() {
               <span className="gradient-text">Timeline</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              My professional journey in frontend development, from learning the fundamentals to building complex applications.
+              My professional journey in software development, from learning the fundamentals to building complex applications.
             </p>
           </motion.div>
 
           {/* Stats */}
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+            className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16"
             variants={containerVariants}
           >
             {stats.map((stat, index) => (

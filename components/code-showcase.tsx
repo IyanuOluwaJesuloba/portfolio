@@ -229,79 +229,6 @@ export function   TechStackShowcase() {
             </motion.div>
           </motion.div>
 
-          {/* Technology Stack Categories */}
-          <motion.div
-            className="space-y-12"
-            variants={containerVariants}
-          >
-            {techStack.map((category, categoryIndex) => (
-              <motion.div
-                key={category.category}
-                variants={cardVariants}
-                className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700"
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-4 mb-8">
-                  <motion.div
-                    className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center shadow-lg`}
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <category.icon className="h-8 w-8 text-white" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                      {category.category}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {category.technologies.length} technologies
-                    </p>
-                  </div>
-                </div>
-
-                {/* Technologies Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {category.technologies.map((tech, techIndex) => (
-                    <motion.div
-                      key={tech.name}
-                      className="group"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: categoryIndex * 0.1 + techIndex * 0.05 }}
-                      viewport={{ once: true }}
-                      whileHover={{ y: -5 }}
-                    >
-                      <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 h-full border border-gray-200 dark:border-gray-600 group-hover:border-purple-300 dark:group-hover:border-purple-600 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-3">
-                          <h4 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                            {tech.name}
-                          </h4>
-                          <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                            {tech.level}%
-                          </span>
-                        </div>
-
-                        {/* Progress Bar */}
-                        <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 mb-4">
-                          <motion.div
-                            className={`h-2 bg-gradient-to-r ${category.color} rounded-full`}
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${tech.level}%` }}
-                            transition={{ duration: 1, delay: categoryIndex * 0.1 + techIndex * 0.05 }}
-                            viewport={{ once: true }}
-                          />
-                        </div>
-
-                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {tech.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
           {/* Enhanced Bottom CTA */}
           <motion.div
@@ -348,50 +275,7 @@ export function   TechStackShowcase() {
                 </motion.a>
               </div>
 
-              {/* Dual Expertise Skills Summary */}
-              <div className="mt-8 pt-8 border-t border-purple-200 dark:border-purple-800">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {/* Frontend Skills */}
-                  <div className="text-center">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Frontend Development</h4>
-                    <div className="flex flex-wrap justify-center gap-2">
-                      {["React", "Next.js", "TypeScript", "Tailwind CSS"].map((skill, index) => (
-                        <motion.span
-                          key={skill}
-                          className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium shadow-sm border border-blue-200 dark:border-blue-800"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Smart Contract Skills */}
-                  <div className="text-center">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Smart Contract Development</h4>
-                    <div className="flex flex-wrap justify-center gap-2">
-                      {["Solidity", "Web3.js", "Ethers.js", "Hardhat"].map((skill, index) => (
-                        <motion.span
-                          key={skill}
-                          className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium shadow-sm border border-green-200 dark:border-green-800"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + 0.4 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </motion.div>
         </motion.div>
