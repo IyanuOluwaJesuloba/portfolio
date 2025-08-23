@@ -155,9 +155,9 @@ export function ContactForm() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <motion.div variants={fieldVariants} className="grid grid-cols-2 gap-6">
+              <motion.div variants={fieldVariants} className="grid grid-cols-2 gap-6 ">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                  <label htmlFor="name" className="text-sm font-medium text-gray-400">
                     Name
                   </label>
                   <Input 
@@ -165,11 +165,11 @@ export function ContactForm() {
                     name="name"
                     placeholder="Your name" 
                     required 
-                    className="border-gray-200 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
+                    className="border-purple-500 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="text-sm font-medium text-gray-400">
                     Email
                   </label>
                   <Input 
@@ -178,12 +178,12 @@ export function ContactForm() {
                     type="email" 
                     placeholder="Your email" 
                     required 
-                    className="border-gray-200 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
+                    className="border-purple-500 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
                   />
                 </div>
               </motion.div>
               <motion.div variants={fieldVariants} className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-gray-700">
+                <label htmlFor="subject" className="text-sm font-medium text-gray-400">
                   Subject
                 </label>
                 <Input 
@@ -191,11 +191,11 @@ export function ContactForm() {
                   name="subject"
                   placeholder="Subject of your message" 
                   required 
-                  className="border-gray-200 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
+                  className="border-purple-500 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
                 />
               </motion.div>
               <motion.div variants={fieldVariants} className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-gray-700">
+                <label htmlFor="message" className="text-sm font-medium text-gray-400">
                   Message
                 </label>
                 <Textarea 
@@ -204,7 +204,7 @@ export function ContactForm() {
                   placeholder="Your message" 
                   rows={5} 
                   required 
-                  className="border-gray-200 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
+                  className="border-purple-500 focus:border-purple-500 focus:ring-purple-500 text-gray-500 transition-all duration-200"
                 />
               </motion.div>
               <motion.div variants={fieldVariants}>
