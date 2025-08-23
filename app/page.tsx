@@ -352,7 +352,7 @@ export default function Portfolio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 }}
                   >
-                    <div className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl font-light">
+                    <div className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl font-light mx-auto lg:mx-0">
                       I create{" "}
                       <motion.span
                         className="text-purple-600 dark:text-purple-400 font-semibold relative"
@@ -368,12 +368,12 @@ export default function Portfolio() {
                       </motion.span>
                       {" "}and{" "}
                       <motion.span
-                        className="text--600 dark:text--400 font-semibold relative"
+                        className="text-blue-600 dark:text-blue-400 font-semibold relative"
                         whileHover={{ scale: 1.05 }}
                       >
                         secure smart contracts
                         <motion.div
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg--600 dark:bg--400"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
                           initial={{ scaleX: 0 }}
                           whileHover={{ scaleX: 1 }}
                           transition={{ duration: 0.3 }}
@@ -647,8 +647,8 @@ export default function Portfolio() {
                       transition={{ duration: 0.8 }}
                       viewport={{ once: true}}
                     >
-                      <div className="lg:text-right lg:pr-8">
-                        <div className="inline-flex items-center gap-3 mb-6">
+                      <div className="text-center lg:text-right lg:pr-8">
+                        <div className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                           <motion.div
                             className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg"
                             whileHover={{ scale: 1.1, rotate: 360 }}
@@ -673,9 +673,9 @@ export default function Portfolio() {
                       <div className="absolute left-1/2 top-8 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
 
                       <div className="lg:pl-8 mt-8 lg:mt-0">
-                        <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500">
+                        <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500 text-center lg:text-left">
                           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Technical Expertise</h4>
-                          <div className="flex flex-wrap gap-3">
+                          <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                             {["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"].map((tech, index) => (
                               <motion.span
                                 key={tech}
@@ -702,8 +702,8 @@ export default function Portfolio() {
                       transition={{ duration: 0.8 }}
                       viewport={{ once: true }}
                     >
-                      <div className="lg:order-2 lg:pl-8">
-                        <div className="inline-flex items-center gap-3 mb-6 lg:flex-row-reverse">
+                      <div className="lg:order-2 lg:pl-8 text-center lg:text-left">
+                        <div className="inline-flex items-center gap-3 mb-6 justify-center lg:flex-row-reverse lg:justify-start">
                           <motion.div
                             className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg"
                             whileHover={{ scale: 1.1, rotate: 360 }}
@@ -713,10 +713,10 @@ export default function Portfolio() {
                           </motion.div>
                           <div className="h-px flex-1 bg-gradient-to-l from-blue-500 to-transparent lg:hidden"></div>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 lg:text-left">
+                        <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                           What Drives Me
                         </h3>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed lg:text-left">
+                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                           I believe in the power of technology to solve real-world problems and improve people's lives.
                           Every line of code I write is driven by the desire to create meaningful, user-centered experiences
                           that not only look great but also perform exceptionally well.
@@ -727,13 +727,13 @@ export default function Portfolio() {
                       <div className="absolute left-1/2 top-8 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
 
                       <div className="lg:order-1 lg:pr-8 mt-8 lg:mt-0">
-                        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border-r-4 border-blue-500">
+                        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border-r-4 border-blue-500 text-center lg:text-left">
                           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Core Values</h4>
                           <ul className="space-y-2">
                             {["User-Centered Design", "Performance Optimization", "Accessibility First", "Clean Code Practices"].map((value, index) => (
                               <motion.li
                                 key={value}
-                                className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
+                                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 justify-center lg:justify-start"
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
@@ -756,8 +756,8 @@ export default function Portfolio() {
                       transition={{ duration: 0.8 }}
                       viewport={{ once: true }}
                     >
-                      <div className="lg:text-right lg:pr-8">
-                        <div className="inline-flex items-center gap-3 mb-6">
+                      <div className="text-center lg:text-right lg:pr-8">
+                        <div className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                           <motion.div
                             className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg"
                             whileHover={{ scale: 1.1, rotate: 360 }}
@@ -780,10 +780,10 @@ export default function Portfolio() {
                       <div className="absolute left-1/2 top-8 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
 
                       <div className="lg:pl-8 mt-8 lg:mt-0">
-                        <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500">
+                        <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500 text-center lg:text-left">
                           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Community Involvement</h4>
-                          <div className="grid grid-cols-2 gap-4 text-sm">
-                            
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+
                             <div>
                               <div className="font-medium text-gray-900 dark:text-gray-100">Writing</div>
                               <div className="text-gray-600 dark:text-gray-400">Technical articles</div>

@@ -187,7 +187,7 @@ export function ContactForm() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <motion.div variants={fieldVariants} className="grid grid-cols-2 gap-6 ">
+              <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-400">
                     Name

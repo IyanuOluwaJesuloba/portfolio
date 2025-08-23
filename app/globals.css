@@ -98,6 +98,24 @@
     background-size: 200% 200%;
     animation: gradient 3s ease infinite;
   }
+
+  /* Mobile-first centering utilities */
+  .mobile-center {
+    @apply text-center items-center justify-center;
+  }
+
+  .mobile-center-flex {
+    @apply flex flex-col items-center justify-center text-center;
+  }
+
+  /* Responsive text alignment */
+  .responsive-text-center {
+    @apply text-center lg:text-left;
+  }
+
+  .responsive-flex-center {
+    @apply flex flex-col items-center justify-center lg:flex-row lg:justify-start;
+  }
 }
 
 @keyframes float {
