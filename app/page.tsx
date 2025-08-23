@@ -368,18 +368,17 @@ export default function Portfolio() {
                       </motion.span>
                       {" "}and{" "}
                       <motion.span
-                        className="text-green-600 dark:text-green-400 font-semibold relative"
+                        className="text--600 dark:text--400 font-semibold relative"
                         whileHover={{ scale: 1.05 }}
                       >
                         secure smart contracts
                         <motion.div
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-600 dark:bg-green-400"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg--600 dark:bg--400"
                           initial={{ scaleX: 0 }}
                           whileHover={{ scaleX: 1 }}
                           transition={{ duration: 0.3 }}
                         />
                       </motion.span>
-                      {" "}that power the future of web and blockchain.
                     </div>
 
                     {/* Key Skills Preview */}
@@ -389,9 +388,9 @@ export default function Portfolio() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 1.1 }}
                     >
-                      {["React", "Next.js", "Solidity", "Foundry", "TypeScript", "Hardhat"].map((skill, index) => (
+                      {/* {["React", "Next.js", "Solidity", "Foundry", "TypeScript", "Hardhat"].map((skill, index) => (
                         <motion.span
-                          key={skill}
+                          key={}
                           className="px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-700 shadow-sm"
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -400,7 +399,7 @@ export default function Portfolio() {
                         >
                           {skill}
                         </motion.span>
-                      ))}
+                      ))} */}
                     </motion.div>
                   </motion.div>
                 </div>
