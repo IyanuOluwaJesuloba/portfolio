@@ -112,8 +112,8 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="border-2 border-purple-100 shadow-lg overflow-hidden">
-      <CardContent className="p-8">
+    <Card className="border-2 border-purple-100 shadow-lg overflow-hidden w-full max-w-2xl mx-auto">
+      <CardContent className="p-4 sm:p-6 md:p-8">
         <AnimatePresence mode="wait">
           {isSubmitted ? (
             <motion.div
@@ -122,7 +122,7 @@ export function ContactForm() {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="flex flex-col items-center justify-center min-h-[300px] text-center"
+              className="flex flex-col items-center justify-center min-h-[250px] sm:min-h-[300px] text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -167,7 +167,7 @@ export function ContactForm() {
               initial="hidden"
               animate="visible"
               onSubmit={handleSubmit}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               <AnimatePresence>
                 {error && (
@@ -187,7 +187,7 @@ export function ContactForm() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <motion.div variants={fieldVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-400">
                     Name

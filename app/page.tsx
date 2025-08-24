@@ -284,8 +284,8 @@ export default function Portfolio() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/20 via-transparent to-transparent dark:from-purple-900/20"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent dark:from-blue-900/20"></div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Enhanced Text Content */}
               <motion.div
                 className="space-y-10 text-center lg:text-left"
@@ -304,7 +304,7 @@ export default function Portfolio() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
                     <motion.h1
-                      className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight"
+                      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight"
                     >
                       <motion.span
                         className="block text-gray-900 dark:text-gray-100 mb-2"
@@ -335,7 +335,7 @@ export default function Portfolio() {
                         />
                       </motion.span>
                       <motion.span
-                        className="block text-purple-600 dark:text-purple-400 mt-4 text-3xl md:text-4xl lg:text-5xl"
+                        className="block text-purple-600 dark:text-purple-400 mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.7 }}
@@ -352,7 +352,7 @@ export default function Portfolio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 }}
                   >
-                    <div className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl font-light mx-auto lg:mx-0">
+                    <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl font-light mx-auto lg:mx-0">
                       I create{" "}
                       <motion.span
                         className="text-purple-600 dark:text-purple-400 font-semibold relative"
@@ -477,13 +477,13 @@ export default function Portfolio() {
 
               {/* Enhanced Visual Section */}
               <motion.div
-                className="relative flex items-center justify-center"
+                className="relative flex items-center justify-center mt-12 lg:mt-0"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 100 }}
               >
                 {/* Main Visual Container */}
-                <div className="relative w-96 h-96 md:w-[500px] md:h-[500px]">
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
                   {/* Animated Rings */}
                   <motion.div
                     className="absolute inset-0 border-2 border-purple-300/30 dark:border-purple-600/30 rounded-full"
@@ -813,7 +813,7 @@ export default function Portfolio() {
                 >
                   <div className="max-w-4xl mx-auto">
                     <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 rounded-3xl p-8 border border-purple-200/50 dark:border-purple-800/50">
-                      <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+                      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
                         With over 2 years of experience in frontend development, I specialize in creating responsive,
                         user-friendly web applications that combine technical excellence with exceptional design.
                         My approach focuses on writing clean, maintainable code while ensuring optimal performance
@@ -821,18 +821,18 @@ export default function Portfolio() {
                       </p>
 
                       {/* Quick Info */}
-                      <div className="flex flex-wrap justify-center gap-8 text-center">
+                      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-center">
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                          <span className="text-gray-600 dark:text-gray-400">📍 Ibadan, Nigeria</span>
+                          <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">📍 Ibadan, Nigeria</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                          <span className="text-gray-600 dark:text-gray-400">🎯 Web Accessibility & Performance</span>
+                          <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">🎯 Web Accessibility & Performance</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                          <span className="text-gray-600 dark:text-gray-400">✨ Open to opportunities</span>
+                          <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">✨ Open to opportunities</span>
                         </div>
                       </div>
                     </div>

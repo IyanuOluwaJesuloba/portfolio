@@ -14,6 +14,42 @@ import {
   ExternalLink
 } from "lucide-react"
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+}
+
 const experiences = [
   {
     title: "Frontend Developer",
@@ -58,28 +94,6 @@ const stats = [
   { icon: TrendingUp, label: "Success Rate", value: "95%", color: "text-orange-600" }
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-}
-
 export function ExperienceTimeline() {
   return (
     <motion.section 
@@ -98,13 +112,12 @@ export function ExperienceTimeline() {
           {/* Header */}
           <motion.div 
             className="text-center mb-16"
-            variants={itemVariants}
+            variants={cardVariants}
           >
             <motion.div
               className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
             >
               <Briefcase className="h-4 w-4" />
               Professional Journey
@@ -163,7 +176,7 @@ export function ExperienceTimeline() {
               <motion.div
                 key={experience.title}
                 variants={itemVariants}
-                className={`relative flex items-center mb-12 ${
+                className={`relative flex flex-col md:flex-row items-center mb-8 md:mb-12 ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
@@ -174,20 +187,20 @@ export function ExperienceTimeline() {
                   transition={{ duration: 0.2 }}
                 />
 
-                {/* Content Card */}
                 <motion.div
-                  className={`w-full md:w-5/12 ml-16 md:ml-0 ${
+                  key={experience.title}
+                  className={`flex-1 w-full md:w-1/2 ${
                     index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                   }`}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
-                    <CardContent className="p-6">
+                  <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500 max-w-lg mx-auto md:max-w-none">
+                    <CardContent className="p-4 md:p-6">
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                          <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                             {experience.title}
                           </h3>
                           <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium mb-2">
@@ -217,7 +230,7 @@ export function ExperienceTimeline() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                         {experience.description}
                       </p>
 
@@ -248,7 +261,7 @@ export function ExperienceTimeline() {
                         <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                           Technologies Used
                         </h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5 md:gap-2">
                           {experience.technologies.map((tech) => (
                             <Badge
                               key={tech}

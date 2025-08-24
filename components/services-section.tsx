@@ -148,7 +148,7 @@ export function ServicesSection() {
 
           {/* Services Grid */}
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             variants={containerVariants}
           >
             {services.map((service, index) => (
@@ -158,8 +158,8 @@ export function ServicesSection() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <Card className="h-full border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 group">
-                  <CardContent className="p-8">
+                <Card className="h-full border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 group max-w-sm mx-auto md:max-w-none">
+                  <CardContent className="p-6 md:p-8">
                     {/* Icon */}
                     <motion.div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 mb-6 group-hover:scale-110 transition-transform duration-200`}
@@ -170,10 +170,10 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Title & Description */}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
@@ -199,7 +199,7 @@ export function ServicesSection() {
                       <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                         Technologies
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
                         {service.technologies.map((tech) => (
                           <Badge
                             key={tech}

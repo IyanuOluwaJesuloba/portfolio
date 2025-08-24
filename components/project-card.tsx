@@ -65,8 +65,8 @@ export function ProjectCard({
       {/* Glow Effect */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
 
-      <Card className="relative overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-gray-900 shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl">
-        <div className="relative h-64 w-full overflow-hidden">
+      <Card className="relative overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-gray-900 shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl mx-auto max-w-sm sm:max-w-none">
+        <div className="relative h-48 sm:h-56 md:h-64 w-full overflow-hidden">
           <Image
             src={imageUrl || "/placeholder.svg"}
             alt={title}
@@ -224,7 +224,7 @@ export function ProjectCard({
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <div className="flex items-center gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Key Features</h4>
                 <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent dark:from-green-800"></div>
               </div>
@@ -252,8 +252,8 @@ export function ProjectCard({
           )}
         </CardContent>
 
-        <CardFooter className="border-t border-gray-100 dark:border-gray-800 p-6 bg-gradient-to-r from-gray-50/50 to-purple-50/30 dark:from-gray-800/50 dark:to-purple-900/20">
-          <div className="flex gap-3 w-full">
+        <CardFooter className="border-t border-gray-100 dark:border-gray-800 p-4 sm:p-6 bg-gradient-to-r from-gray-50/50 to-purple-50/30 dark:from-gray-800/50 dark:to-purple-900/20">
+          <div className="flex flex-col sm:flex-row gap-3 w-full">
             <motion.div className="flex-1" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button
                 variant="outline"
