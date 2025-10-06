@@ -96,7 +96,7 @@ export function   TechStackShowcase() {
   return (
     <motion.section
       id="tech-stack"
-      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10"
+      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 overflow-hidden w-full relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -104,7 +104,7 @@ export function   TechStackShowcase() {
     >
       {/* Subtle Background Elements */}
       <motion.div
-        className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
+        className="absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
         animate={{
           x: [0, 50, 0],
           y: [0, -30, 0],
@@ -117,7 +117,7 @@ export function   TechStackShowcase() {
         }}
       />
       <motion.div
-        className="absolute bottom-10 right-10 w-48 h-48 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
+        className="absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
         animate={{
           x: [0, -40, 0],
           y: [0, 40, 0],
@@ -150,20 +150,20 @@ export function   TechStackShowcase() {
               <Terminal className="h-4 w-4" />
               Technical Expertise
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               Technology{" "}
               <span className="gradient-text bg-gradient-to-r from-purple-600 via-blue-600 to-purple-800 bg-clip-text text-transparent">
                 Stack
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Specialized in frontend development and smart contract programming, combining modern web technologies with blockchain innovation to create exceptional digital experiences.
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Specialized in frontend development, combining modern web technologies with creative ideas to create exceptional digital experiences.
             </p>
           </motion.div>
 
           {/* Dual Expertise Overview */}
           <motion.div
-            className="grid md:grid-cols-2 gap-8 mb-16"
+            className=" max-w-xl mx-auto mb-16"
             variants={containerVariants}
           >
             {/* Frontend Development */}
@@ -181,7 +181,7 @@ export function   TechStackShowcase() {
                 >
                   <Code2 className="h-8 w-8 text-white" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   Frontend Developer
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
@@ -197,7 +197,7 @@ export function   TechStackShowcase() {
               </div>
             </motion.div>
 
-            {/* Smart Contract Development */}
+            {/* Smart Contract Development
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.02 }}
@@ -226,7 +226,7 @@ export function   TechStackShowcase() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
 
@@ -244,11 +244,11 @@ export function   TechStackShowcase() {
                 <Code2 className="h-8 w-8 text-white" />
               </motion.div>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                Frontend & Smart Contract Development
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Frontend Development
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-                Combining modern frontend technologies with blockchain development to create innovative web applications and decentralized solutions. Let's build something amazing together.
+                Combining modern frontend technologies to create innovative web applications. Let's build something amazing together.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

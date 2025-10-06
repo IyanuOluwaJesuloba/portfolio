@@ -46,12 +46,12 @@ export function SkillChart() {
     : skills
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       {/* Category Filter */}
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 justify-center">
         <motion.button
           onClick={() => setSelectedCategory(null)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+          className={`px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 ${
             selectedCategory === null
               ? 'bg-purple-600 text-white shadow-lg'
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -65,7 +65,7 @@ export function SkillChart() {
           <motion.button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               selectedCategory === category
                 ? 'bg-purple-600 text-white shadow-lg'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -80,7 +80,7 @@ export function SkillChart() {
 
       {/* Skills Grid */}
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6"
         layout
       >
         {filteredSkills.map((skill, index) => (
@@ -95,28 +95,28 @@ export function SkillChart() {
             onHoverStart={() => setHoveredSkill(skill.name)}
             onHoverEnd={() => setHoveredSkill(null)}
           >
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <motion.div
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 group-hover:scale-110 transition-transform duration-200"
+                  className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-800 group-hover:scale-110 transition-transform duration-200"
                   style={{ backgroundColor: `${skill.color}20` }}
                 >
                   <skill.icon 
-                    className="h-5 w-5" 
+                    className="h-4 w-4 sm:h-5 sm:w-5" 
                     style={{ color: skill.color }}
                   />
                 </motion.div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100">
                     {skill.name}
                   </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     {skill.category}
                   </p>
                 </div>
               </div>
               <motion.span 
-                className="text-lg font-bold text-purple-600 dark:text-purple-400"
+                className="text-base sm:text-lg font-bold text-purple-600 dark:text-purple-400"
                 animate={{ 
                   scale: hoveredSkill === skill.name ? 1.1 : 1,
                   color: hoveredSkill === skill.name ? skill.color : undefined
@@ -127,7 +127,7 @@ export function SkillChart() {
             </div>
             
             {/* Progress Bar */}
-            <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div className="relative h-2 sm:h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full"
                 style={{ 
@@ -162,41 +162,41 @@ export function SkillChart() {
 
       {/* Skill Summary */}
       <motion.div 
-        className="mt-8 p-6 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl border border-purple-200 dark:border-purple-800"
+        className="mt-4 sm:mt-6 md:mt-8 p-3 sm:p-4 md:p-6 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg sm:rounded-xl border border-purple-200 dark:border-purple-800"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
           <div>
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
               {skills.length}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Technologies
             </div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
               {Math.round(skills.reduce((acc, skill) => acc + skill.level, 0) / skills.length)}%
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Avg. Proficiency
             </div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
               {categories.length}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Categories
             </div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
               2+
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Years Experience
             </div>
           </div>

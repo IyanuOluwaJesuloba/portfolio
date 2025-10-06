@@ -76,7 +76,7 @@ export function MobileMenu() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 z-50 h-full w-80 bg-white dark:bg-gray-900 shadow-xl md:hidden"
+              className="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white dark:bg-gray-900 shadow-xl md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}

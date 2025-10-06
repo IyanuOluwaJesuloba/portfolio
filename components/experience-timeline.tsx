@@ -98,7 +98,7 @@ export function ExperienceTimeline() {
   return (
     <motion.section 
       id="experience" 
-      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10"
+      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 overflow-hidden w-full"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -122,11 +122,11 @@ export function ExperienceTimeline() {
               <Briefcase className="h-4 w-4" />
               Professional Journey
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Experience &{" "}
               <span className="gradient-text">Timeline</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               My professional journey in software development, from learning the fundamentals to building complex applications.
             </p>
           </motion.div>
@@ -152,7 +152,7 @@ export function ExperienceTimeline() {
                     >
                       <stat.icon className={`h-6 w-6 ${stat.color}`} />
                     </motion.div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                    <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
                       {stat.value}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -200,7 +200,7 @@ export function ExperienceTimeline() {
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                             {experience.title}
                           </h3>
                           <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium mb-2">
