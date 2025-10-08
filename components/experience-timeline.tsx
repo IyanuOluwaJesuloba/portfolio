@@ -57,7 +57,7 @@ const experiences = [
     location: "Ibadan, Nigeria",
     period: "November, 2024 - May, 2025",
     type: "Freelance",
-    description: "Developing modern web applications for various clients, focusing on React ecosystem and user experience optimization.",
+    description: "Developed modern web applications for various clients, focusing on React ecosystem and user experience optimization.",
     achievements: [
       "Built 5+ responsive web applications using React and Next.js",
       "Improved client website performance by 40% through optimization techniques",
