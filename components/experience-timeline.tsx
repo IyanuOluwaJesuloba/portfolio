@@ -66,7 +66,7 @@ const experiences = [
     ],
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     color: "from-purple-500 to-blue-500",
-    current: true
+    current: false
   },
   {
     title: "Web Development Intern",
