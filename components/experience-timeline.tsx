@@ -76,7 +76,7 @@ const experiences = [
     type: "Internship",
     description: "Gained hands-on experience in software development while contributing to real-world projects.",
     achievements: [
-      "Developed responsive components for the company's main product",
+      "Developed responsive components for the company's product",
       "Participated in code reviews and learned industry best practices",
       "Contributed to improving the development workflow and documentation",
       "Mentored students and helped onboard new team members"
