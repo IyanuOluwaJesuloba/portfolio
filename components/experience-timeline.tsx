@@ -53,9 +53,9 @@ const cardVariants = {
 const experiences = [
   {
     title: "Frontend Developer",
-    company: "Freelance",
-    location: "Remote",
-    period: "2025 - Present",
+    company: "Orglobal Tech Network",
+    location: "Ibadan, Nigeria",
+    period: "November, 2024 - May, 2025",
     type: "Freelance",
     description: "Developing modern web applications for various clients, focusing on React ecosystem and user experience optimization.",
     achievements: [
@@ -72,7 +72,7 @@ const experiences = [
     title: "Web Development Intern",
     company: "Orglobal Tech Network",
     location: "Ibadan, Nigeria",
-    period: "August, 2024 - December, 2024",
+    period: "June, 2024 - August, 2024",
     type: "Internship",
     description: "Gained hands-on experience in software development while contributing to real-world projects.",
     achievements: [
