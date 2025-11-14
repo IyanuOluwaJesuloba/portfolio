@@ -101,7 +101,7 @@ export function ContactSection() {
                         <item.icon className="h-6 w-6 text-[#1a0f0a] dark:text-gray-100" />
                       </motion.div>
                       <div className="flex-1">
-                        <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors">
+                        <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white group-hover:text-[#1a0f0a] transition-colors">
                           {item.label}
                         </h4>
                         <p className="text-xs sm:text-sm text-[#f5f1ed]0 dark:text-[#d4c4b0] mb-1">
