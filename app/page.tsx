@@ -14,7 +14,7 @@ import { Footer } from "@/components/footer";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen w-screen bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900/20 transition-colors duration-500 overflow-hidden">
+    <div className="min-h-screen w-screen bg-gradient-to-br from-[#faf9f7] via-[#f0e8e0] to-[#e8e3db] dark:from-[#3d251e] dark:via-[#3d251e] dark:to-[#3d3530] transition-colors duration-500 overflow-hidden">
       <Header />
       
       <main className="pt-16 overflow-hidden">
@@ -32,3 +32,7 @@ export default function Portfolio() {
     </div>
   );
 }
+
+
+
+

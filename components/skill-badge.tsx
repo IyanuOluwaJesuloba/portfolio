@@ -63,7 +63,7 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
       >
         <Badge
           variant="secondary"
-          className="px-4 py-2 text-sm flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-200 cursor-pointer group"
+          className="px-4 py-2 text-sm flex items-center gap-2 bg-white dark:bg-[#3d3530] border border-[#b8b0a8] dark:border-[#4a4238] hover:border-[#c4a878] dark:hover:border-[#6b4423] hover:shadow-lg hover:shadow-[#5c3d2e]/10 transition-all duration-200 cursor-pointer group"
         >
           {Icon && (
             <motion.div
@@ -76,7 +76,7 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
               />
             </motion.div>
           )}
-          <span className="text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200">
+          <span className="text-[#4a4238] dark:text-[#e8e6e3] group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors duration-200">
             {name}
           </span>
         </Badge>
@@ -87,10 +87,32 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
   return (
     <Badge
       variant="secondary"
-      className="px-3 py-1 text-sm flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors duration-200"
+      className="px-3 py-1 text-sm flex items-center gap-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-[#1a0f0a] hover:bg-[#d4c4b0] dark:hover:bg-[#7a7270]/50 transition-colors duration-200"
     >
       {Icon && <Icon className="h-4 w-4" style={{ color: color }} />}
       <span>{name}</span>
     </Badge>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

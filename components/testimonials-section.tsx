@@ -127,7 +127,7 @@ export function TestimonialsSection() {
   return (
     <motion.section 
       id="testimonials" 
-      className="py-12 md:py-20 bg-white dark:bg-gray-900"
+      className="py-12 md:py-20 bg-white dark:bg-[#7a7270]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -144,7 +144,7 @@ export function TestimonialsSection() {
             variants={cardVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -152,11 +152,11 @@ export function TestimonialsSection() {
               <Star className="h-4 w-4" />
               Client Testimonials
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4">
               What Clients{" "}
               <span className="gradient-text">Say</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-black dark:text-white max-w-2xl mx-auto">
               Feedback from clients and colleagues I've had the pleasure of working with on various projects.
             </p>
           </motion.div>
@@ -173,11 +173,11 @@ export function TestimonialsSection() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <Card className="h-full border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <Card className="h-full border-0 bg-gradient-to-br from-white to-[#f9f8f7] dark:from-[#4a4a4a] dark:to-[#7a7270] shadow-lg hover:shadow-xl transition-all duration-300 group">
                   <CardContent className="p-6">
                     {/* Quote Icon */}
                     <motion.div
-                      className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200"
+                      className="w-10 h-10 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
@@ -192,13 +192,13 @@ export function TestimonialsSection() {
                     </div>
 
                     {/* Content */}
-                    <blockquote className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    <blockquote className="text-[#4a4238] dark:text-[#e8e6e3] mb-6 leading-relaxed">
                       "{testimonial.content}"
                     </blockquote>
 
                     {/* Project Info */}
                     <div className="mb-4">
-                      <div className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-2">
+                      <div className="text-sm font-medium text-[#1a0f0a] dark:text-gray-100 mb-2">
                         Project: {testimonial.project}
                       </div>
                       <div className="flex flex-wrap gap-1">
@@ -206,7 +206,7 @@ export function TestimonialsSection() {
                           <Badge
                             key={tech}
                             variant="secondary"
-                            className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                            className="text-xs bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100"
                           >
                             {tech}
                           </Badge>
@@ -215,19 +215,19 @@ export function TestimonialsSection() {
                     </div>
 
                     {/* Author */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between pt-4 border-t border-[#b8b0a8] dark:border-[#4a4238]">
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10">
                           <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                          <AvatarFallback className="bg-gradient-to-r from-purple-500 to-blue-500 text-white">
+                          <AvatarFallback className="bg-gradient-to-r from-[#7a7268] to-[#9a9290] text-white">
                             {testimonial.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <div className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
+                          <div className="font-semibold text-black dark:text-white text-sm">
                             {testimonial.name}
                           </div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400">
+                          <div className="text-xs text-black dark:text-white">
                             {testimonial.role} at {testimonial.company}
                           </div>
                         </div>
@@ -240,7 +240,7 @@ export function TestimonialsSection() {
                             href={testimonial.social.linkedin} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-600 transition-colors"
+                            className="text-black hover:text-black transition-colors"
                           >
                             <Linkedin className="h-4 w-4" />
                           </Link>
@@ -250,7 +250,7 @@ export function TestimonialsSection() {
                             href={testimonial.social.twitter} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-400 transition-colors"
+                            className="text-black hover:text-gray-700 transition-colors"
                           >
                             <Twitter className="h-4 w-4" />
                           </Link>
@@ -260,7 +260,7 @@ export function TestimonialsSection() {
                             href={testimonial.social.github} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                            className="text-black hover:text-black dark:hover:text-black transition-colors"
                           >
                             <SiGithub className="h-4 w-4" />
                           </Link>
@@ -280,26 +280,26 @@ export function TestimonialsSection() {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               <div>
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                <div className="text-3xl font-bold text-[#1a0f0a] dark:text-gray-100 mb-2">
                   100%
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-black dark:text-white">
                   Client Satisfaction
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                <div className="text-3xl font-bold text-[#1a0f0a] dark:text-gray-100 mb-2">
                   15+
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-black dark:text-white">
                   Projects Delivered
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
+                <div className="text-3xl font-bold text-[#1a0f0a] dark:text-gray-100 mb-2">
                   8+
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-black dark:text-white">
                   Happy Clients
                 </div>
               </div>
@@ -310,3 +310,27 @@ export function TestimonialsSection() {
     </motion.section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

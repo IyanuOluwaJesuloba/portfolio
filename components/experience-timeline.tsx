@@ -53,10 +53,26 @@ const cardVariants = {
 const experiences = [
   {
     title: "Frontend Developer",
+    company: "Bethel Labs",
+    location: "Remote",
+    period: "June, 2025 - September, 2025",
+    type: "Full-Time",
+    description: "Built scalable frontend solutions with focus on performance, accessibility, and modern web standards.",
+    achievements: [
+      "Engineered interactive component libraries and reusable UI systems",
+      "Collaborated with designers to translate Figma mockups into pixel-perfect implementations",
+      "Integrated third-party APIs with seamless user experiences"
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    color: "from-[#faf9f7]0 to-[#f9f8f7]0",
+    current: false
+  },
+  {
+    title: "Frontend Developer",
     company: "Orglobal Tech Network",
     location: "Ibadan, Nigeria",
     period: "November, 2024 - May, 2025",
-    type: "Freelance",
+    type: "Full-time",
     description: "Developed modern web applications for various clients, focusing on React ecosystem and user experience optimization.",
     achievements: [
       "Built 5+ responsive web applications using React and Next.js",
@@ -65,7 +81,7 @@ const experiences = [
       "Collaborated with diverse teams"
     ],
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    color: "from-purple-500 to-blue-500",
+    color: "from-[#faf9f7]0 to-[#f9f8f7]0",
     current: false
   },
   {
@@ -89,8 +105,8 @@ const experiences = [
 ]
 
 const stats = [
-  { icon: Code, label: "Projects Completed", value: "5+", color: "text-blue-600" },
-  { icon: Award, label: "Years Experience", value: "2+", color: "text-purple-600" },
+  { icon: Code, label: "Projects Completed", value: "10+", color: "text-gray-700" },
+  { icon: Award, label: "Years Experience", value: "3+", color: "text-gray-700" },
   { icon: TrendingUp, label: "Success Rate", value: "95%", color: "text-orange-600" }
 ]
 
@@ -98,7 +114,7 @@ export function ExperienceTimeline() {
   return (
     <motion.section 
       id="experience" 
-      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 overflow-hidden w-full"
+      className="py-12 md:py-20 bg-gradient-to-br from-[#d4c4b0] via-[#c4bfb8] to-[#e0d8d0] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] overflow-hidden w-full"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -115,18 +131,18 @@ export function ExperienceTimeline() {
             variants={cardVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
               <Briefcase className="h-4 w-4" />
               Professional Journey
             </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4">
               Experience &{" "}
               <span className="gradient-text">Timeline</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-black dark:text-white max-w-2xl mx-auto">
               My professional journey in software development, from learning the fundamentals to building complex applications.
             </p>
           </motion.div>
@@ -143,19 +159,19 @@ export function ExperienceTimeline() {
                 whileHover={{ scale: 1.05 }}
                 className="text-center"
               >
-                <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="border-0 bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-6">
                     <motion.div
-                      className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 flex items-center justify-center`}
+                      className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#f0ede9] to-[#e8e3db] dark:from-[#f5f1ed]/30 dark:to-[#f5f1ed] flex items-center justify-center`}
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
                       <stat.icon className={`h-6 w-6 ${stat.color}`} />
                     </motion.div>
-                    <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                    <div className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="text-sm text-black dark:text-white">
                       {stat.label}
                     </div>
                   </CardContent>
@@ -170,11 +186,11 @@ export function ExperienceTimeline() {
             variants={containerVariants}
           >
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-blue-500 transform md:-translate-x-0.5" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#7a7268] to-[#9a9290] transform md:-translate-x-0.5" />
 
             {experiences.map((experience, index) => (
               <motion.div
-                key={experience.title}
+                key={`${experience.company}-${index}`}
                 variants={itemVariants}
                 className={`relative flex flex-col md:flex-row items-center mb-8 md:mb-12 ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
@@ -182,7 +198,7 @@ export function ExperienceTimeline() {
               >
                 {/* Timeline Dot */}
                 <motion.div
-                  className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r ${experience.color} transform md:-translate-x-2 z-10 border-4 border-white dark:border-gray-900`}
+                  className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r ${experience.color} transform md:-translate-x-2 z-10 border-4 border-white dark:border-[#2a1810]`}
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.2 }}
                 />
@@ -195,15 +211,15 @@ export function ExperienceTimeline() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500 max-w-lg mx-auto md:max-w-none">
+                  <Card className="border-0 bg-white dark:bg-[#3d3530] shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#7a7268] max-w-lg mx-auto md:max-w-none">
                     <CardContent className="p-4 md:p-6">
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-black dark:text-white mb-2">
                             {experience.title}
                           </h3>
-                          <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium mb-2">
+                          <div className="flex items-center gap-2 text-[#1a0f0a] dark:text-gray-100 font-medium mb-2">
                             <span>{experience.company}</span>
                             {experience.current && (
                               <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
@@ -218,7 +234,7 @@ export function ExperienceTimeline() {
                       </div>
 
                       {/* Meta Info */}
-                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
+                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-black dark:text-white">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
                           {experience.period}
@@ -230,26 +246,26 @@ export function ExperienceTimeline() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                      <p className="text-sm md:text-base text-black dark:text-white mb-4 leading-relaxed">
                         {experience.description}
                       </p>
 
                       {/* Achievements */}
                       <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                        <h4 className="text-sm font-semibold text-[#4a4238] dark:text-[#e8e6e3] mb-2">
                           Key Achievements
                         </h4>
                         <ul className="space-y-1">
                           {experience.achievements.map((achievement, achievementIndex) => (
                             <motion.li
                               key={achievementIndex}
-                              className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2"
+                              className="text-sm text-black dark:text-white flex items-start gap-2"
                               initial={{ opacity: 0, x: -10 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ delay: achievementIndex * 0.1 }}
                               viewport={{ once: true }}
                             >
-                              <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
+                              <div className="w-1.5 h-1.5 bg-[#7a7268] rounded-full mt-2 flex-shrink-0" />
                               {achievement}
                             </motion.li>
                           ))}
@@ -258,7 +274,7 @@ export function ExperienceTimeline() {
 
                       {/* Technologies */}
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                        <h4 className="text-sm font-semibold text-[#4a4238] dark:text-[#e8e6e3] mb-2">
                           Technologies Used
                         </h4>
                         <div className="flex flex-wrap gap-1.5 md:gap-2">
@@ -266,7 +282,7 @@ export function ExperienceTimeline() {
                             <Badge
                               key={tech}
                               variant="secondary"
-                              className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                              className="text-xs bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100"
                             >
                               {tech}
                             </Badge>
@@ -284,3 +300,27 @@ export function ExperienceTimeline() {
     </motion.section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

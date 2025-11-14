@@ -33,7 +33,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         {projects.map((_, idx) => (
           <button
             key={idx}
-            className={`w-3 h-3 rounded-full ${idx === current ? "bg-purple-600" : "bg-gray-300"}`}
+            className={`w-3 h-3 rounded-full ${idx === current ? "bg-[#7a7268]" : "bg-[#b4aea6]"}`}
             onClick={() => setCurrent(idx)}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -42,3 +42,25 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

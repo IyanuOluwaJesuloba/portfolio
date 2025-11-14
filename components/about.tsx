@@ -11,7 +11,7 @@ export function AboutSection() {
   return (
     <motion.section
       id="about"
-      className="py-12 md:py-20 bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 relative overflow-hidden scroll-mt-20 w-full"
+      className="py-12 md:py-20 bg-gradient-to-br from-[#e8e3db] via-[#d4c4b0] to-[#c4bfb8] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] relative overflow-hidden scroll-mt-20 w-full"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -19,7 +19,7 @@ export function AboutSection() {
     >
       {/* Background Elements */}
       <motion.div
-        className="absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
+        className="absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-[#8a6239]/10 to-[#7a7268]/10 rounded-full blur-3xl"
         animate={{
           x: [0, 50, 0],
           y: [0, -30, 0],
@@ -32,7 +32,7 @@ export function AboutSection() {
         }}
       />
       <motion.div
-        className="absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
+        className="absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-[#7a7268]/10 to-[#8a6239]/10 rounded-full blur-3xl"
         animate={{
           x: [0, -40, 0],
           y: [0, 40, 0],
@@ -56,7 +56,7 @@ export function AboutSection() {
             variants={headingVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-6 shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#f0ede9] to-[#e8e3db] dark:from-[#1a0f0a]/30 dark:to-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -65,13 +65,13 @@ export function AboutSection() {
               <Users className="h-4 w-4" />
               Get to Know Me
             </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
               About{" "}
-              <span className="gradient-text bg-gradient-to-r from-purple-600 via-blue-600 to-purple-800 bg-clip-text text-transparent">
+              <span className="gradient-text bg-gradient-to-r from-[#7a7268] via-[#9a9290] to-[#7a7270] bg-clip-text text-transparent">
                 Me
               </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
               Passionate developer crafting digital experiences that make a difference
             </p>
           </motion.div>
@@ -81,7 +81,7 @@ export function AboutSection() {
             {/* Flowing Content Layout */}
             <div className="relative">
               {/* Central Timeline Line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 transform -translate-x-0.5 hidden lg:block"></div>
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#7a7268] via-[#9a9290] to-[#7a7268] transform -translate-x-0.5 hidden lg:block"></div>
 
               {/* Content Sections */}
               <div className="space-y-16">
@@ -96,18 +96,18 @@ export function AboutSection() {
                   <div className="text-center lg:text-right lg:pr-8">
                     <div className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                       <motion.div
-                        className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg"
+                        className="w-16 h-16 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center shadow-lg"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.5 }}
                       >
                         <Code className="h-8 w-8 text-white" />
                       </motion.div>
-                      <div className="h-px flex-1 bg-gradient-to-r from-purple-500 to-transparent lg:hidden"></div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-[#7a7268] to-transparent lg:hidden"></div>
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
                       My Journey
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed">
                       I'm a passionate frontend developer with expertise in modern web technologies like React, Next.js,
                       and TypeScript. My journey expanded into blockchain development, where I specialize in smart contract
                       programming with Solidity, Web3.js, and Ethers.js. I transform complex ideas into beautiful, functional,
@@ -116,16 +116,16 @@ export function AboutSection() {
                   </div>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
+                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-[#7a7268] rounded-full transform -translate-x-2 border-4 border-white dark:border-[#2a1810] shadow-lg hidden lg:block"></div>
 
                   <div className="lg:pl-8 mt-8 lg:mt-0">
-                    <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500 text-center lg:text-left">
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Technical Expertise</h4>
+                    <div className="bg-gradient-to-br from-[#faf9f7] to-[#e8e3db] dark:from-[#1a0f0a]/20 dark:to-[#3d3530]/20 rounded-2xl p-8 border-l-4 border-[#7a7268] text-center lg:text-left">
+                      <h4 className="font-semibold text-black dark:text-white mb-3">Technical Expertise</h4>
                       <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                         {["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"].map((tech, index) => (
                           <motion.span
                             key={tech}
-                            className="px-2 sm:px-3 py-1 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 rounded-full text-xs sm:text-sm font-medium shadow-sm border border-purple-200 dark:border-purple-800"
+                            className="px-2 sm:px-3 py-1 bg-white dark:bg-[#3d251e] text-[#1a0f0a] dark:text-[#f5f1ed] rounded-full text-xs sm:text-sm font-medium shadow-sm border border-[#d4c4b0] dark:border-[#f5f1ed]"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
@@ -151,18 +151,18 @@ export function AboutSection() {
                   <div className="lg:order-2 lg:pl-8 text-center lg:text-left">
                     <div className="inline-flex items-center gap-3 mb-6 justify-center lg:flex-row-reverse lg:justify-start">
                       <motion.div
-                        className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg"
+                        className="w-16 h-16 bg-gradient-to-r from-[#5a5250] to-[#7a7268] rounded-full flex items-center justify-center shadow-lg"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.5 }}
                       >
                         <Heart className="h-8 w-8 text-white" />
                       </motion.div>
-                      <div className="h-px flex-1 bg-gradient-to-l from-blue-500 to-transparent lg:hidden"></div>
+                      <div className="h-px flex-1 bg-gradient-to-l from-[#5a5250] to-transparent lg:hidden"></div>
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
                       What Drives Me
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed">
                       I believe in the power of technology to solve real-world problems and improve people's lives.
                       Every line of code I write is driven by the desire to create meaningful, user-centered experiences
                       that not only look great but also perform exceptionally well.
@@ -170,22 +170,22 @@ export function AboutSection() {
                   </div>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
+                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-[#5a5250] rounded-full transform -translate-x-2 border-4 border-white dark:border-[#2a1810] shadow-lg hidden lg:block"></div>
 
                   <div className="lg:order-1 lg:pr-8 mt-8 lg:mt-0">
-                    <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border-r-4 border-blue-500 text-center lg:text-left">
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Core Values</h4>
+                    <div className="bg-gradient-to-br from-[#e8e6e3] to-[#f9f8f7] dark:from-[#4a4a4a]/20 dark:to-[#7a7270]/20 rounded-2xl p-8 border-r-4 border-[#5a5250] text-center lg:text-left">
+                      <h4 className="font-semibold text-black dark:text-white mb-3">Core Values</h4>
                       <ul className="space-y-2">
                         {["User-Centered Design", "Performance Optimization", "Accessibility First", "Clean Code Practices"].map((value, index) => (
                           <motion.li
                             key={value}
-                            className="flex items-center gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 justify-center lg:justify-start"
+                            className="flex items-center gap-3 text-sm sm:text-base text-[#4a4238] dark:text-[#e8e6e3] justify-center lg:justify-start"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
                           >
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div className="w-2 h-2 bg-[#5a5250] rounded-full"></div>
                             {value}
                           </motion.li>
                         ))}
@@ -205,41 +205,41 @@ export function AboutSection() {
                   <div className="text-center lg:text-right lg:pr-8">
                     <div className="inline-flex items-center gap-3 mb-6 justify-center lg:justify-start">
                       <motion.div
-                        className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg"
+                        className="w-16 h-16 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center shadow-lg"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.5 }}
                       >
                         <Users className="h-8 w-8 text-white" />
                       </motion.div>
-                      <div className="h-px flex-1 bg-gradient-to-r from-purple-500 to-transparent lg:hidden"></div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-[#7a7268] to-transparent lg:hidden"></div>
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
                       Beyond Coding
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed">
                       When I'm not coding, you'll find me exploring new technologies, writing technical articles, or mentoring aspiring developers. I'm always eager to
                       learn, share knowledge, and grow with the amazing developer community.
                     </p>
                   </div>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-2 border-4 border-white dark:border-gray-900 shadow-lg hidden lg:block"></div>
+                  <div className="absolute left-1/2 top-8 w-4 h-4 bg-[#7a7268] rounded-full transform -translate-x-2 border-4 border-white dark:border-[#2a1810] shadow-lg hidden lg:block"></div>
 
                   <div className="lg:pl-8 mt-8 lg:mt-0">
-                    <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border-l-4 border-purple-500 text-center lg:text-left">
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Community Involvement</h4>
+                    <div className="bg-gradient-to-br from-[#faf9f7] to-[#e8e3db] dark:from-[#1a0f0a]/20 dark:to-[#3d3530]/20 rounded-2xl p-8 border-l-4 border-[#7a7268] text-center lg:text-left">
+                      <h4 className="font-semibold text-black dark:text-white mb-3">Community Involvement</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <div className="font-medium text-gray-900 dark:text-gray-100">Writing</div>
-                          <div className="text-gray-600 dark:text-gray-400">Technical articles</div>
+                          <div className="font-medium text-black dark:text-white">Writing</div>
+                          <div className="text-black dark:text-white">Technical articles</div>
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900 dark:text-gray-100">Mentoring</div>
-                          <div className="text-gray-600 dark:text-gray-400">Helping developers</div>
+                          <div className="font-medium text-black dark:text-white">Mentoring</div>
+                          <div className="text-black dark:text-white">Helping developers</div>
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900 dark:text-gray-100">Learning</div>
-                          <div className="text-gray-600 dark:text-gray-400">New technologies</div>
+                          <div className="font-medium text-black dark:text-white">Learning</div>
+                          <div className="text-black dark:text-white">New technologies</div>
                         </div>
                       </div>
                     </div>
@@ -257,8 +257,8 @@ export function AboutSection() {
               viewport={{ once: true }}
             >
               <div className="max-w-4xl mx-auto">
-                <div className="bg-gradient-to-r from-purple-50 via-white to-blue-50 dark:from-purple-900/10 dark:via-gray-900 dark:to-blue-900/10 rounded-3xl p-8 border border-purple-200/50 dark:border-purple-800/50">
-                  <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+                <div className="bg-gradient-to-r from-[#faf9f7] via-white to-[#e8e3db] dark:from-[#1a0f0a]/10 dark:via-[#3d251e] dark:to-[#3d3530]/10 rounded-3xl p-8 border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
+                  <p className="text-sm sm:text-base md:text-lg text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed mb-8">
                     With over 2 years of experience in frontend development, I specialize in creating responsive,
                     user-friendly web applications that combine technical excellence with exceptional design.
                     My approach focuses on writing clean, maintainable code while ensuring optimal performance
@@ -268,16 +268,17 @@ export function AboutSection() {
                   {/* Quick Info */}
                   <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-center">
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                      <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Ibadan, Nigeria</span>
+                      <div className="w-3 h-3 bg-[#7a7268] rounded-full"></div>
+                      <span className="text-sm sm:text-base text-black dark:text-white">Ibadan, Nigeria</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Web Accessibility & Performance</span>
+                      <div className="w-3 h-3 bg-[#5a5250] rounded-full"></div>
+                      <span className="text-sm sm:text-base text-black dark:text-white">Web Accessibility & Performance</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                      <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Open to opportunities</span>
+                      <div className="w-3 h-3 bg-[#7a7268] rounded-full"></div>
+                      <div className="w-3 h-3 bg-[#7a7268] rounded-full"></div>
+                      <span className="text-sm sm:text-base text-black dark:text-white">Open to opportunities</span>
                     </div>
                   </div>
                 </div>
@@ -295,7 +296,7 @@ export function AboutSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+                className="bg-gradient-to-r from-brown-700 to-[#4a4238] hover:from-brown-800 hover:to-[#4a4a4a] text-[#3d251e] dark:text-white shadow-lg hover:shadow-brown-700/25 transition-all duration-300"
               >
                 <Link href="#contact" className="flex items-center gap-2">
                   <Mail className="h-5 w-5" />
@@ -306,7 +307,7 @@ export function AboutSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="border-purple-300 dark:border-purple-700 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                className="border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20"
               >
                 <Link href="/resume.pdf" target="_blank" className="flex items-center gap-2">
                   <Download className="h-5 w-5" />
@@ -336,18 +337,18 @@ export function AboutSection() {
                 transition={{ duration: 0.2 }}
                 className="text-center group"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                <div className="bg-white dark:bg-[#3d3530] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-[#b8b0a8] dark:border-[#4a4238]">
                   <motion.div
-                    className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
+                    className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     <stat.icon className="h-6 w-6 text-white" />
                   </motion.div>
-                  <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  <div className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                  <div className="text-sm text-black dark:text-white font-medium">
                     {stat.label}
                   </div>
                 </div>
@@ -359,3 +360,25 @@ export function AboutSection() {
     </motion.section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

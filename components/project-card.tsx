@@ -63,9 +63,9 @@ export function ProjectCard({
       className="group"
     >
       {/* Glow Effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
 
-      <Card className="relative overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-gray-900 shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl mx-auto max-w-sm sm:max-w-none">
+      <Card className="relative overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-[#7a7270] shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl mx-auto max-w-sm sm:max-w-none">
         <div className="relative h-40 sm:h-48 md:h-56 w-full overflow-hidden">
           <Image
             src={imageUrl || "/placeholder.svg"}
@@ -158,7 +158,7 @@ export function ProjectCard({
 
           {/* Floating Particles Effect */}
           <motion.div
-            className="absolute top-1/2 left-1/2 w-2 h-2 bg-purple-400 rounded-full"
+            className="absolute top-1/2 left-1/2 w-2 h-2 bg-[#7a5230] rounded-full"
             animate={{
               x: [0, 30, -20, 0],
               y: [0, -20, 30, 0],
@@ -175,12 +175,12 @@ export function ProjectCard({
         <CardContent className="flex-1 p-3 sm:p-4 md:p-6 space-y-3 sm:space-y-4 md:space-y-5">
           <div className="space-y-2 sm:space-y-3">
             <motion.h3
-              className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-all duration-300"
+              className="text-base sm:text-lg md:text-xl font-bold text-black dark:text-white group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-all duration-300"
               whileHover={{ scale: 1.02 }}
             >
               {title}
             </motion.h3>
-            <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed h-16 sm:h-20 md:h-24 overflow-hidden">
+            <p className="text-xs sm:text-sm md:text-base text-black dark:text-white leading-relaxed h-16 sm:h-20 md:h-24 overflow-hidden">
               {description}
             </p>
           </div>
@@ -188,8 +188,8 @@ export function ProjectCard({
           {/* Technology Stack with Enhanced Design */}
           <div className="space-y-2 sm:space-y-3">
             <div className="flex items-center gap-2">
-              <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Tech Stack</h4>
-              <div className="flex-1 h-px bg-gradient-to-r from-purple-200 to-transparent dark:from-purple-800"></div>
+              <h4 className="text-xs sm:text-sm font-semibold text-[#4a4238] dark:text-[#e8e6e3]">Tech Stack</h4>
+              <div className="flex-1 h-px bg-gradient-to-r from-[#f0e8e0] to-transparent dark:from-[#4a3220]"></div>
             </div>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, index) => (
@@ -203,7 +203,7 @@ export function ProjectCard({
                 >
                   <Badge
                     variant="secondary"
-                    className="bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 text-purple-700 dark:text-purple-300 hover:from-purple-200 hover:to-blue-200 dark:hover:from-purple-900/50 dark:hover:to-blue-900/50 transition-all duration-200 cursor-pointer border border-purple-200 dark:border-purple-800 shadow-sm text-xs sm:text-sm"
+                    className="bg-gradient-to-r from-[#f0ede9] to-[#e8e3db] dark:from-[#1a0f0a]/30 dark:to-[#7a7270]/30 text-[#1a0f0a] dark:text-[#1a0f0a] hover:from-[#f0e8e0] hover:to-[#e0d8d0] dark:hover:from-[#7a7270]/50 dark:hover:to-[#7a7270]/50 transition-all duration-200 cursor-pointer border border-[#d4c4b0] dark:border-[#4a3220] shadow-sm text-xs sm:text-sm"
                   >
                     <span className="mr-1 sm:mr-1.5 text-xs sm:text-sm">{techIcons[tag] || "🔧"}</span>
                     {tag}
@@ -225,11 +225,11 @@ export function ProjectCard({
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">Key Features</h4>
+                <h4 className="text-xs sm:text-sm font-semibold text-[#4a4238] dark:text-[#e8e6e3]">Key Features</h4>
                 <div className="flex-1 h-px bg-gradient-to-r from-green-200 to-transparent dark:from-green-800"></div>
               </div>
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg p-3 border border-green-200 dark:border-green-800 overflow-hidden">
-                <ul className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 space-y-2">
+                <ul className="text-xs sm:text-sm text-[#4a4238] dark:text-[#e8e6e3] space-y-2">
                   {features.slice(0, 3).map((feature, index) => (
                     <motion.li
                       key={index}
@@ -252,14 +252,14 @@ export function ProjectCard({
           )}
         </CardContent>
 
-        <CardFooter className="border-t border-gray-100 dark:border-gray-800 p-3 sm:p-4 md:p-6 bg-gradient-to-r from-gray-50/50 to-purple-50/30 dark:from-gray-800/50 dark:to-purple-900/20">
+        <CardFooter className="border-t border-[#b8b0a8] dark:border-[#3d3530] p-3 sm:p-4 md:p-6 bg-gradient-to-r from-[#faf9f7]/50 to-[#f9f8f7]/30 dark:from-[#4a4a4a]/50 dark:to-[#7a7270]/20">
           <div className="flex flex-row gap-2 sm:gap-3 w-full">
             <motion.div className="flex-1" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button
                 variant="outline"
                 size="sm"
                 asChild
-                className="w-full group hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 hover:border-purple-300 dark:hover:border-purple-600 text-gray-600 dark:text-gray-400 transition-all duration-300 border-2"
+                className="w-full group hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:border-[#c4a878] dark:hover:border-[#6b4423] text-black dark:text-white transition-all duration-300 border-2"
               >
                 <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm">
                   <SiGithub className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:rotate-12 transition-transform duration-200" />
@@ -271,7 +271,7 @@ export function ProjectCard({
               <Button
                 size="sm"
                 asChild
-                className="w-full group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 border-0"
+                className="w-full group bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268] shadow-lg hover:shadow-xl hover:shadow-[#5c3d2e]/30 transition-all duration-300 border-0"
               >
                 <Link href={liveUrl} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm">
                   <ExternalLink className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
@@ -285,3 +285,25 @@ export function ProjectCard({
     </motion.div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

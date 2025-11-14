@@ -52,7 +52,7 @@ export function MobileMenu() {
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        className="md:hidden text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+        className="md:hidden text-black dark:text-white hover:text-[#1a0f0a] dark:hover:text-gray-700"
       >
         <Menu className="h-6 w-6" />
         <span className="sr-only">Toggle menu</span>
@@ -76,12 +76,12 @@ export function MobileMenu() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white dark:bg-gray-900 shadow-xl md:hidden"
+              className="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white dark:bg-[#7a7270] shadow-xl md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <div className="flex items-center justify-between p-6 border-b border-[#b8b0a8] dark:border-[#4a4238]">
+                  <h2 className="text-lg font-semibold text-black dark:text-white">
                     Menu
                   </h2>
                   <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export function MobileMenu() {
                       variant="ghost"
                       size="icon"
                       onClick={toggleMenu}
-                      className="text-gray-600 dark:text-gray-400"
+                      className="text-black dark:text-white"
                     >
                       <X className="h-6 w-6" />
                     </Button>
@@ -112,7 +112,7 @@ export function MobileMenu() {
                         <Link
                           href={item.href}
                           onClick={toggleMenu}
-                          className="block py-3 px-4 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-all duration-200"
+                          className="block py-3 px-4 text-lg font-medium text-[#4a4238] dark:text-[#e8e6e3] hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 rounded-lg transition-all duration-200"
                         >
                           {item.name}
                         </Link>
@@ -122,11 +122,11 @@ export function MobileMenu() {
                 </nav>
 
                 {/* Footer */}
-                <div className="p-6 border-t border-gray-200 dark:border-gray-800">
+                <div className="p-6 border-t border-[#b8b0a8] dark:border-[#4a4238]">
                   <motion.div variants={itemVariants}>
                     <Button
                       asChild
-                      className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800"
+                      className="w-full bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268]"
                     >
                       <Link href="#contact" onClick={toggleMenu}>
                         Get In Touch
@@ -142,3 +142,25 @@ export function MobileMenu() {
     </>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

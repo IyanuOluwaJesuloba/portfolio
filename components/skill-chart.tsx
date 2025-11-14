@@ -53,8 +53,8 @@ export function SkillChart() {
           onClick={() => setSelectedCategory(null)}
           className={`px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 ${
             selectedCategory === null
-              ? 'bg-purple-600 text-white shadow-lg'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+              ? 'bg-[#7a7268] text-white shadow-lg'
+              : 'bg-[#b8b0a8] text-black hover:bg-[#b8b0a8] dark:bg-[#3d3530] dark:text-[#e8e6e3] dark:hover:bg-[#4a4238]'
           }`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -67,8 +67,8 @@ export function SkillChart() {
             onClick={() => setSelectedCategory(category)}
             className={`px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               selectedCategory === category
-                ? 'bg-purple-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                ? 'bg-[#7a7268] text-white shadow-lg'
+                : 'bg-[#b8b0a8] text-black hover:bg-[#b8b0a8] dark:bg-[#3d3530] dark:text-[#e8e6e3] dark:hover:bg-[#4a4238]'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -98,7 +98,7 @@ export function SkillChart() {
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <div className="flex items-center gap-2 sm:gap-3">
                 <motion.div
-                  className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-800 group-hover:scale-110 transition-transform duration-200"
+                  className="p-1.5 sm:p-2 rounded-lg bg-[#b8b0a8] dark:bg-[#3d3530] group-hover:scale-110 transition-transform duration-200"
                   style={{ backgroundColor: `${skill.color}20` }}
                 >
                   <skill.icon 
@@ -107,16 +107,16 @@ export function SkillChart() {
                   />
                 </motion.div>
                 <div>
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white">
                     {skill.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-[#f5f1ed]0 dark:text-black">
                     {skill.category}
                   </p>
                 </div>
               </div>
               <motion.span 
-                className="text-base sm:text-lg font-bold text-purple-600 dark:text-purple-400"
+                className="text-base sm:text-lg font-bold text-[#1a0f0a] dark:text-gray-100"
                 animate={{ 
                   scale: hoveredSkill === skill.name ? 1.1 : 1,
                   color: hoveredSkill === skill.name ? skill.color : undefined
@@ -127,7 +127,7 @@ export function SkillChart() {
             </div>
             
             {/* Progress Bar */}
-            <div className="relative h-2 sm:h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div className="relative h-2 sm:h-3 bg-[#b8b0a8] dark:bg-[#4a4238] rounded-full overflow-hidden">
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full"
                 style={{ 
@@ -162,41 +162,41 @@ export function SkillChart() {
 
       {/* Skill Summary */}
       <motion.div 
-        className="mt-4 sm:mt-6 md:mt-8 p-3 sm:p-4 md:p-6 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg sm:rounded-xl border border-purple-200 dark:border-purple-800"
+        className="mt-4 sm:mt-6 md:mt-8 p-3 sm:p-4 md:p-6 bg-gradient-to-r from-[#faf9f7] to-[#e8e3db] dark:from-[#1a0f0a]/20 dark:to-[#3d3530]/20 rounded-lg sm:rounded-xl border border-[#d4c4b0] dark:border-[#4a3220]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
           <div>
-            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-[#1a0f0a] dark:text-gray-100">
               {skills.length}
             </div>
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-black dark:text-white">
               Technologies
             </div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-[#1a0f0a] dark:text-gray-100">
               {Math.round(skills.reduce((acc, skill) => acc + skill.level, 0) / skills.length)}%
             </div>
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-black dark:text-white">
               Avg. Proficiency
             </div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-[#1a0f0a] dark:text-gray-100">
               {categories.length}
             </div>
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-black dark:text-white">
               Categories
             </div>
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="text-xl sm:text-2xl font-bold text-[#1a0f0a] dark:text-gray-100">
               2+
             </div>
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-black dark:text-white">
               Years Experience
             </div>
           </div>
@@ -205,3 +205,26 @@ export function SkillChart() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

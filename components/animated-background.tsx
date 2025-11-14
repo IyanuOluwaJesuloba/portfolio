@@ -68,7 +68,7 @@ export function AnimatedBackground() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Gradient Orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[#8a6239]/20 to-[#8a6239]/20 rounded-full blur-3xl"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -81,7 +81,7 @@ export function AnimatedBackground() {
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
+        className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-[#8a6239]/20 to-[#8a6239]/20 rounded-full blur-3xl"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -98,7 +98,7 @@ export function AnimatedBackground() {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute w-1 h-1 bg-purple-400 rounded-full"
+          className="absolute w-1 h-1 bg-[#8a6239] rounded-full"
           style={{
             left: particle.x,
             top: particle.y,
@@ -120,7 +120,7 @@ export function AnimatedBackground() {
 
       {/* Mouse Follower */}
       <motion.div
-        className="absolute w-6 h-6 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-sm"
+        className="absolute w-6 h-6 bg-gradient-to-r from-[#faf9f7]0/30 to-pink-500/30 rounded-full blur-sm"
         animate={{
           x: mousePosition.x - 12,
           y: mousePosition.y - 12,
@@ -137,3 +137,26 @@ export function AnimatedBackground() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,7 +28,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="relative w-9 h-9 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/20 transition-colors duration-200"
+      className="relative w-9 h-9 rounded-full hover:bg-[#d4c4b0] dark:hover:bg-[#7a7270]/20 transition-colors duration-200"
     >
       <AnimatePresence mode="wait" initial={false}>
         {theme === "light" ? (
@@ -40,7 +40,7 @@ export function ThemeToggle() {
             transition={{ duration: 0.2 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Sun className="h-4 w-4 text-purple-600" />
+            <Sun className="h-4 w-4 text-gray-700" />
           </motion.div>
         ) : (
           <motion.div
@@ -51,7 +51,7 @@ export function ThemeToggle() {
             transition={{ duration: 0.2 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <Moon className="h-4 w-4 text-purple-400" />
+            <Moon className="h-4 w-4 text-gray-700" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -59,3 +59,25 @@ export function ThemeToggle() {
     </Button>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

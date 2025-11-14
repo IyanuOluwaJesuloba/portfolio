@@ -25,7 +25,7 @@ const services = [
       "Progressive Web Apps (PWA)"
     ],
     technologies: ["React", "Next.js", "TypeScript", "JavaScript"],
-    color: "from-blue-500 to-cyan-500"
+    color: "from-[#faf9f7]0 to-cyan-500"
   },
   {
     icon: Palette,
@@ -39,7 +39,7 @@ const services = [
       "Design System Implementation"
     ],
     technologies: ["Tailwind CSS", "Styled Components", "Framer Motion", "CSS3"],
-    color: "from-purple-500 to-pink-500"
+    color: "from-[#faf9f7]0 to-pink-500"
   },
   {
     icon: Smartphone,
@@ -66,7 +66,7 @@ const services = [
       "Best Practices Implementation"
     ],
     technologies: ["Git", "GitHub", "Code Review"],
-    color: "from-teal-500 to-blue-500"
+    color: "from-teal-500 to-[#f9f8f7]0"
   }
 ]
 
@@ -96,7 +96,7 @@ export function ServicesSection() {
   return (
     <motion.section 
       id="services" 
-      className="py-12 md:py-20 bg-white dark:bg-gray-900 overflow-hidden w-full"
+      className="py-12 md:py-20 bg-gradient-to-br from-[#faf9f7] via-[#e8e3db] to-[#d4c4b0] dark:from-[#5c3d2e] dark:via-[#3d251e] dark:to-[#4a3220] overflow-hidden w-full"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -113,7 +113,7 @@ export function ServicesSection() {
             variants={cardVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -121,11 +121,11 @@ export function ServicesSection() {
               <Code2 className="h-4 w-4" />
               What I Do
             </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4">
               Services &{" "}
               <span className="gradient-text">Expertise</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-black dark:text-white max-w-2xl mx-auto">
               Comprehensive frontend development services to bring your digital vision to life with modern technologies and best practices.
             </p>
           </motion.div>
@@ -142,7 +142,7 @@ export function ServicesSection() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <Card className="h-full border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 group w-full">
+                <Card className="h-full border-0 bg-gradient-to-br from-white to-[#f9f8f7] dark:from-[#4a4a4a] dark:to-[#7a7270] shadow-lg hover:shadow-xl transition-all duration-300 group w-full">
                   <CardContent className="p-6 md:p-8">
                     {/* Icon */}
                     <motion.div
@@ -154,10 +154,10 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Title & Description */}
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-black dark:text-white mb-3 group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base text-black dark:text-white mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
@@ -173,14 +173,14 @@ export function ServicesSection() {
                           viewport={{ once: true }}
                         >
                           <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                          <span className="text-[#4a4238] dark:text-[#e8e6e3]">{feature}</span>
                         </motion.div>
                       ))}
                     </div>
 
                     {/* Technologies */}
                     <div className="space-y-3">
-                      <h4 className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <h4 className="text-xs sm:text-sm font-semibold text-[#4a4238] dark:text-[#e8e6e3]">
                         Technologies
                       </h4>
                       <div className="flex flex-wrap gap-1.5 md:gap-2">
@@ -188,7 +188,7 @@ export function ServicesSection() {
                           <Badge
                             key={tech}
                             variant="secondary"
-                            className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50"
+                            className="text-xs bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-[#1a0f0a] hover:bg-[#d4c4b0] dark:hover:bg-[#7a7270]/50"
                           >
                             {tech}
                           </Badge>
@@ -198,7 +198,7 @@ export function ServicesSection() {
 
                     {/* CTA */}
                     <motion.div
-                      className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"
+                      className="mt-6 pt-6 border-t border-[#b8b0a8] dark:border-[#4a4238]"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: 0.3 }}
@@ -217,12 +217,12 @@ export function ServicesSection() {
             className="text-center mt-16"
             variants={cardVariants}
           >
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-sm sm:text-base text-black dark:text-white mb-6">
               Ready to start your next project?
             </p>
             <motion.a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-lg text-sm sm:text-base font-medium shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#7a7268] to-[#4a3220] hover:from-[#4a3220] hover:to-[#7a7270] text-white rounded-lg text-sm sm:text-base font-medium shadow-lg hover:shadow-[#5c3d2e]/25 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -235,3 +235,27 @@ export function ServicesSection() {
     </motion.section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

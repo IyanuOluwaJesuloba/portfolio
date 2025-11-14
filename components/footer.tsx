@@ -11,7 +11,7 @@ import { staggerContainer } from "@/lib/animations";
 export function Footer() {
   return (
     <motion.footer
-      className="border-t border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-8 md:py-12 overflow-x-hidden w-full"
+      className="border-t border-[#b8b0a8] dark:border-[#3d3530] bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-sm py-8 md:py-8 overflow-x-hidden w-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -25,12 +25,12 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
-              <Code className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-              <span className="font-bold text-base sm:text-lg text-gray-900 dark:text-gray-100 font-serif">
+              <Code className="h-5 w-5 text-[#1a0f0a] dark:text-gray-100" />
+              <span className="font-bold text-base sm:text-lg text-black dark:text-white font-serif">
                 IyanuOluwa
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-black dark:text-white">
               &copy; {new Date().getFullYear()} IyanuOluwa Owoseni. All rights reserved.
             </p>
             
@@ -58,7 +58,7 @@ export function Footer() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-full"
+                    className="text-black dark:text-white hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 rounded-full"
                   >
                     <item.icon className="h-5 w-5" />
                     <span className="sr-only">{item.label}</span>
@@ -72,3 +72,25 @@ export function Footer() {
     </motion.footer>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

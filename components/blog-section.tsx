@@ -158,7 +158,7 @@ export function BlogSection() {
   return (
     <motion.section 
       id="blog" 
-      className="py-12 md:py-20 bg-white dark:bg-gray-900"
+      className="py-12 md:py-20 bg-white dark:bg-[#2a1810]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -175,7 +175,7 @@ export function BlogSection() {
             variants={cardVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a] rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -183,11 +183,11 @@ export function BlogSection() {
               <BookOpen className="h-4 w-4" />
               Technical Writing
             </motion.div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4">
               Blog &{" "}
               <span className="gradient-text">Articles</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-black dark:text-white max-w-2xl mx-auto">
               Sharing knowledge and insights about frontend development, best practices, and the latest web technologies.
             </p>
           </motion.div>
@@ -197,8 +197,8 @@ export function BlogSection() {
             className="mb-16"
             variants={cardVariants}
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-8 flex items-center gap-2">
+              <TrendingUp className="h-6 w-6 text-[#1a0f0a] dark:text-[#1a0f0a]" />
               Featured Articles
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,7 +209,7 @@ export function BlogSection() {
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="h-full border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                  <Card className="h-full border-0 bg-gradient-to-br from-white to-[#f5f1ed] dark:from-[#3d3530] dark:to-[#2a1810] shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
                     <CardContent className="p-0">
                       {/* Image */}
                       <div className="relative h-48 overflow-hidden">
@@ -220,7 +220,7 @@ export function BlogSection() {
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <Badge className="absolute top-4 left-4 bg-purple-600 text-white">
+                        <Badge className="absolute top-4 left-4 bg-[#2a1810] text-white">
                           {post.category}
                         </Badge>
                         <Badge className="absolute top-4 right-4 bg-green-600 text-white">
@@ -230,15 +230,15 @@ export function BlogSection() {
 
                       {/* Content */}
                       <div className="p-6">
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
+                        <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#1a0f0a] transition-colors line-clamp-2">
                           {post.title}
                         </h4>
-                        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                        <p className="text-black dark:text-white mb-4 text-sm leading-relaxed">
                           {post.excerpt}
                         </p>
 
                         {/* Meta */}
-                        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
+                        <div className="flex items-center justify-between text-xs text-[#f5f1ed]0 dark:text-black mb-4">
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
@@ -253,7 +253,7 @@ export function BlogSection() {
 
                         {/* Stats */}
                         <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-4 text-xs text-[#f5f1ed]0 dark:text-black">
                             <div className="flex items-center gap-1">
                               <Eye className="h-3 w-3" />
                               {post.stats.views}
@@ -275,7 +275,7 @@ export function BlogSection() {
                             <Badge
                               key={tag}
                               variant="secondary"
-                              className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                              className="text-xs bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a]"
                             >
                               {tag}
                             </Badge>
@@ -287,7 +287,7 @@ export function BlogSection() {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="w-full group-hover:bg-purple-50 dark:group-hover:bg-purple-900/20 group-hover:border-purple-300 dark:group-hover:border-purple-600"
+                          className="w-full group-hover:bg-[#f5f1ed] dark:group-hover:bg-[#2a1810]/20 group-hover:border-[#c4a878] dark:group-hover:border-[#6b4423]"
                         >
                           <a href={post.externalUrl} target="_blank" rel="noopener noreferrer">
                             Read Article
@@ -306,8 +306,8 @@ export function BlogSection() {
           <motion.div 
             variants={cardVariants}
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-8 flex items-center gap-2">
+              <BookOpen className="h-6 w-6 text-[#1a0f0a] dark:text-[#1a0f0a]" />
               Recent Articles
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -318,19 +318,19 @@ export function BlogSection() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <Card className="border-0 bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group">
                     <CardContent className="p-6">
-                      <Badge className="mb-3 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                      <Badge className="mb-3 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a]">
                         {post.category}
                       </Badge>
-                      <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                      <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#1a0f0a] transition-colors">
                         {post.title}
                       </h4>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed line-clamp-2">
+                      <p className="text-black dark:text-white mb-4 text-sm leading-relaxed line-clamp-2">
                         {post.excerpt}
                       </p>
                       
-                      <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
+                      <div className="flex items-center justify-between text-xs text-[#f5f1ed]0 dark:text-black mb-4">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
                           {new Date(post.publishDate).toLocaleDateString()}
@@ -342,7 +342,7 @@ export function BlogSection() {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center gap-3 text-xs text-[#f5f1ed]0 dark:text-black">
                           <span>{post.stats.views} views</span>
                           <span>{post.stats.likes} likes</span>
                         </div>
@@ -350,7 +350,7 @@ export function BlogSection() {
                           asChild
                           variant="ghost"
                           size="sm"
-                          className="text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 p-2"
+                          className="text-[#1a0f0a] dark:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#2a1810]/20 p-2"
                         >
                           <a href={post.externalUrl} target="_blank" rel="noopener noreferrer">
                             <ArrowRight className="h-4 w-4" />
@@ -369,14 +369,14 @@ export function BlogSection() {
             className="text-center mt-16"
             variants={cardVariants}
           >
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-black dark:text-white mb-6">
               Want to read more articles?
             </p>
             <motion.a
               href="https://medium.com/@iyanuoluwa"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-lg font-medium shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#1a0f0a] to-[#4a3220] hover:from-[#4a3220] hover:to-[#2a1810] text-white rounded-lg font-medium shadow-lg hover:shadow-[#5c3d2e]/25 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -390,3 +390,21 @@ export function BlogSection() {
     </motion.section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

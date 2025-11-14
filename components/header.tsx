@@ -15,7 +15,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-      className="fixed top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md overflow-x-hidden"
+      className="fixed top-0 z-50 w-full border-b border-[#b8b0a8]/50 dark:border-[#4a4238]/50 bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-md overflow-x-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -23,7 +23,7 @@ export function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-bold text-base sm:text-lg md:text-xl text-gray-800 dark:text-gray-200"
+            className="font-bold text-base sm:text-lg md:text-xl text-black dark:text-white"
           >
             <Link href="/" className="flex items-center gap-2 group">
               <motion.div
@@ -31,14 +31,14 @@ export function Header() {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <Code className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                <Code className="h-6 w-6 text-[#1a0f0a] dark:text-gray-100" />
                 <motion.div
-                  className="absolute inset-0 bg-purple-600/20 rounded-full blur-md"
+                  className="absolute inset-0 bg-[#7a7268]/20 rounded-full blur-md"
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.div>
-              <span className="group-hover:text-purple-600  dark:group-hover:text-purple-400 transition-colors font-serif">
+              <span className="group-hover:text-[#1a0f0a]  dark:group-hover:text-gray-700 transition-colors font-serif">
                 IyanuOluwa
               </span>
             </Link>
@@ -59,11 +59,11 @@ export function Header() {
               >
                 <Link
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm md:text-base text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors relative group font-medium"
+                  className="text-sm md:text-base text-black dark:text-[#e8e6e3] hover:text-[#1a0f0a] dark:hover:text-gray-700 transition-colors relative group font-medium"
                 >
                   {item}
                   <motion.span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-purple-400 group-hover:w-full transition-all duration-300"
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#7a7268] to-[#7a5230] group-hover:w-full transition-all duration-300"
                     initial={{ width: 0 }}
                     whileHover={{ width: "100%" }}
                   />
@@ -93,7 +93,7 @@ export function Header() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link href={item.href} target="_blank" rel="noopener noreferrer">
-                  <Button variant="ghost" size="icon" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20">
+                  <Button variant="ghost" size="icon" className="text-black dark:text-white hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20">
                     <item.icon className="h-5 w-5" />
                     <span className="sr-only">{item.label}</span>
                   </Button>
@@ -111,7 +111,7 @@ export function Header() {
               <Button
                 variant="outline"
                 size="sm"
-                className="ml-2 border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hidden sm:flex text-xs sm:text-sm"
+                className="ml-2 border-[#d4c4b0] dark:border-[#4a3220] text-[#1a0f0a] dark:text-[#000000] dark:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 hidden sm:flex text-xs sm:text-sm"
               >
                 <Download className="h-4 w-4 mr-2" />
                 Resume
@@ -125,3 +125,25 @@ export function Header() {
     </motion.header>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
