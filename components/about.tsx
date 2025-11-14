@@ -326,8 +326,8 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {[
-              { number: "5+", label: "Projects Completed", icon: Code },
-              { number: "2+", label: "Years Experience", icon: Calendar },
+              { number: "10+", label: "Projects Completed", icon: Code },
+              { number: "3+", label: "Years Experience", icon: Calendar },
               { number: "95%", label: "Satisfaction Rate", icon: TrendingUp }
             ].map((stat) => (
               <motion.div
