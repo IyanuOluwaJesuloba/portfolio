@@ -259,7 +259,7 @@ export function AboutSection() {
               <div className="max-w-4xl mx-auto">
                 <div className="bg-gradient-to-r from-[#faf9f7] via-white to-[#e8e3db] dark:from-[#1a0f0a]/10 dark:via-[#3d251e] dark:to-[#3d3530]/10 rounded-3xl p-8 border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
                   <p className="text-sm sm:text-base md:text-lg text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed mb-8">
-                    With over 2 years of experience in frontend development, I specialize in creating responsive,
+                    With over 3 years of experience in frontend development, I specialize in creating responsive,
                     user-friendly web applications that combine technical excellence with exceptional design.
                     My approach focuses on writing clean, maintainable code while ensuring optimal performance
                     and accessibility.
