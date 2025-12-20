@@ -41,8 +41,8 @@ export function ProjectCard({
   description,
   tags,
   imageUrl,
-  githubUrl,
-  liveUrl,
+  githubUrl="https://github.com/IyanuOluwaJesuloba/brain_wave",
+  liveUrl="https://brain-wave-zeta-six.vercel.app/",
   status = "Completed",
   year = "2024",
   team = "Solo",
@@ -60,12 +60,12 @@ export function ProjectCard({
       transition={{ duration: 0.4, ease: "easeOut" }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="group"
+      className="group relative"
     >
       {/* Glow Effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+      <div className="pointer-events-none absolute -inset-0.5 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200 z-0"></div>
 
-      <Card className="relative overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-[#7a7270] shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl mx-auto max-w-sm sm:max-w-none">
+      <Card className="relative z-10 overflow-hidden flex flex-col h-full border-0 bg-white dark:bg-[#7a7270] shadow-xl group-hover:shadow-2xl transition-all duration-500 rounded-2xl mx-auto max-w-sm sm:max-w-none">
         <div className="relative h-40 sm:h-48 md:h-56 w-full overflow-hidden">
           <Image
             src={imageUrl || "/placeholder.svg"}
@@ -255,29 +255,26 @@ export function ProjectCard({
         <CardFooter className="border-t border-[#b8b0a8] dark:border-[#3d3530] p-3 sm:p-4 md:p-6 bg-gradient-to-r from-[#faf9f7]/50 to-[#f9f8f7]/30 dark:from-[#4a4a4a]/50 dark:to-[#7a7270]/20">
           <div className="flex flex-row gap-2 sm:gap-3 w-full">
             <motion.div className="flex-1" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="w-full group hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:border-[#c4a878] dark:hover:border-[#6b4423] text-black dark:text-white transition-all duration-300 border-2"
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md border-2 border-[#d4c4b0] bg-transparent px-4 py-2 text-xs font-semibold text-black transition-all duration-300 hover:border-[#c4a878] hover:bg-[#f5f1ed] dark:border-[#3d3530] dark:text-white dark:hover:border-[#6b4423] dark:hover:bg-[#7a7270]/20 sm:text-sm"
               >
-                <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm">
-                  <SiGithub className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:rotate-12 transition-transform duration-200" />
-                  Source Code
-                </Link>
-              </Button>
+                <SiGithub className="h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-200 group-hover:rotate-12" />
+                Source Code
+              </a>
             </motion.div>
             <motion.div className="flex-1" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button
-                size="sm"
-                asChild
-                className="w-full group bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268] shadow-lg hover:shadow-xl hover:shadow-[#5c3d2e]/30 transition-all duration-300 border-0"
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#7a7268] to-[#9a9290] px-4 py-2 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:from-[#4a3220] hover:to-[#7a7268] hover:shadow-xl hover:shadow-[#5c3d2e]/30 sm:text-sm"
               >
-                <Link href={liveUrl} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm">
-                  <ExternalLink className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-                  Live Demo
-                </Link>
-              </Button>
+                <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                Live Demo
+              </a>
             </motion.div>
           </div>
         </CardFooter>

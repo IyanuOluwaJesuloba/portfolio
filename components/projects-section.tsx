@@ -218,10 +218,10 @@ export function ProjectsSection() {
                         size="sm"
                         className="flex-1 bg-gradient-to-r from-[#7a7268] to-[#7a7268] hover:from-[#7a7268] hover:to-[#4a3220] text-white shadow-lg hover:shadow-[#f5f1ed]0/25 transition-all duration-300 text-xs sm:text-sm"
                       >
-                        <Link href={projects[0].liveUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={projects[0].liveUrl} target="_blank" rel="noopener noreferrer">
                           <Globe className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                           Live Demo
-                        </Link>
+                        </a>
                       </Button>
                       <Button
                         asChild
@@ -229,10 +229,10 @@ export function ProjectsSection() {
                         size="sm"
                         className="flex-1 border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 text-xs sm:text-sm"
                       >
-                        <Link href={projects[0].githubUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={projects[0].githubUrl} target="_blank" rel="noopener noreferrer">
                           <SiGithub className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                           Source Code
-                        </Link>
+                        </a>
                       </Button>
                     </div>
                   </div>

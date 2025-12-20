@@ -109,12 +109,19 @@ export function Header() {
               whileTap={{ scale: 0.95 }}
             >
               <Button
+                asChild
                 variant="outline"
                 size="sm"
                 className="ml-2 border-[#d4c4b0] dark:border-[#4a3220] text-[#1a0f0a] dark:text-[#000000] dark:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 hidden sm:flex text-xs sm:text-sm"
               >
-                <Download className="h-4 w-4 mr-2" />
-                Resume
+                <a
+                  href="https://docs.google.com/document/d/1LZyMlBdzAI_4qbt-9zrRlfISha0jM3R41a8YqIqsBhA/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Resume
+                </a>
               </Button>
             </motion.div>
             </motion.div>

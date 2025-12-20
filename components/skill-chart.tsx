@@ -194,7 +194,7 @@ export function SkillChart() {
           </div>
           <div>
             <div className="text-xl sm:text-2xl font-bold text-[#1a0f0a] dark:text-gray-100">
-              2+
+              3+
             </div>
             <div className="text-xs sm:text-sm text-black dark:text-white">
               Years Experience

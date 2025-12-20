@@ -309,7 +309,11 @@ export function AboutSection() {
                 asChild
                 className="border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20"
               >
-                <Link href="/resume.pdf" target="_blank" className="flex items-center gap-2">
+                <Link
+                  href="https://docs.google.com/document/d/1LZyMlBdzAI_4qbt-9zrRlfISha0jM3R41a8YqIqsBhA/edit?usp=sharing"
+                  target="_blank"
+                  className="flex items-center gap-2"
+                >
                   <Download className="h-5 w-5" />
                   Download Resume
                 </Link>
