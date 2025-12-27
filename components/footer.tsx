@@ -26,7 +26,7 @@ export function Footer() {
           >
             <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
               <Code className="h-5 w-5 text-[#1a0f0a] dark:text-gray-100" />
-              <span className="font-bold text-base sm:text-lg text-black dark:text-white font-serif">
+              <span className="font-bold text-base sm:text-lg text-black dark:text-white font-hero">
                 IyanuOluwa
               </span>
             </div>

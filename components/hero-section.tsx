@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Mail, ArrowRight, Code, Globe } from "lucide-react";
+import { Mail, ArrowRight, Code, Globe, Sparkles, Palette, Monitor, Cpu } from "lucide-react";
 import { AnimatedBackground } from "@/components/animated-background";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -11,11 +11,32 @@ export function HeroSection() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const floatingHighlights = [
+    {
+      id: "systems",
+      icon: Sparkles,
+      title: "Interface Composer",
+      subtitle: "Story-driven visuals",
+      position: "top-20 left-10",
+      delay: 0,
+    },
+    {
+      id: "ships",
+      icon: Code,
+      title: "Product Accelerator",
+      subtitle: "Launches that stick",
+      position: "bottom-32 left-12",
+      delay: 0.4,
+    },
+   
+  ];
+
+ 
 
   return (
     <motion.section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden w-full"
+      className="relative min-h-screen flex items-center overflow-hidden w-full font-hero"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -32,11 +53,32 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#f0e8e0]/20 via-transparent to-transparent dark:from-[#2a1810]/20"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#b8b0a8]/20 via-transparent to-transparent dark:from-[#3d3530]/20"></div>
 
+      {/* Floating info cards */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
+        {floatingHighlights.map((card, index) => {
+          const Icon = card.icon;
+          return (
+            <motion.div
+              key={card.id}
+              className={`absolute ${card.position} hidden md:flex items-center gap-3 rounded-2xl px-4 py-3 bg-white/70 dark:bg-[#1a0f0a]/70 backdrop-blur-md border border-white/40 dark:border-[#4a3220]/50 shadow-lg`}
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6 + index, repeat: Infinity, ease: "easeInOut", delay: card.delay }}
+            >
+              <Icon className="h-5 w-5 text-[#1a0f0a] dark:text-[#f5f1ed]" />
+              <div className="text-left">
+                <p className="text-sm font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">{card.title}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-[#5c3d2e]/70 dark:text-[#d4c4b0]/70">{card.subtitle}</p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-1 gap-8 lg:gap-1 items-center place-items-center text-center">
           {/* Enhanced Text Content */}
           <motion.div
-            className="space-y-10 text-center lg:text-left"
+            className="space-y-10 text-center"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
@@ -131,7 +173,7 @@ export function HeroSection() {
 
             {/* Enhanced Action Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-6 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.3 }}
@@ -178,7 +220,7 @@ export function HeroSection() {
 
             {/* Social Proof */}
             <motion.div
-              className="flex items-center justify-center lg:justify-start gap-8 pt-8"
+              className="flex items-center justify-center gap-8 pt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.5 }}
@@ -194,92 +236,21 @@ export function HeroSection() {
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Enhanced Visual Section */}
-          <motion.div
-            className="relative flex items-center justify-center mt-12 lg:mt-0"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 100 }}
-          >
-            {/* Main Visual Container */}
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
-              {/* Animated Rings */}
-              <motion.div
-                className="absolute inset-0 border-2 border-[#c4a878]/30 dark:border-[#6b4423]/30 rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-8 border-2 border-[#b4aea6]/30 dark:border-[#5a5250]/30 rounded-full"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-16 border-2 border-[#c4a878]/30 dark:border-[#6b4423]/30 rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* Central Content */}
-              <motion.div
-                className="absolute inset-20 bg-gradient-to-br from-[#8a6239]/20 to-[#7a7268]/20 rounded-full backdrop-blur-sm border border-white/20 dark:border-[#3d3530]/20 shadow-2xl flex items-center justify-center"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <div className="text-center space-y-4">
-                  <motion.div
-                    className="w-20 h-20 bg-gradient-to-r from-[#1a0f0a] to-[#6b4423] rounded-full flex items-center justify-center mx-auto shadow-lg"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Code className="h-10 w-10 text-white" />
-                  </motion.div>
-                  <div>
-                    <div className="text-xl sm:text-2xl font-bold text-black dark:text-white">Frontend</div>
-                    <div className="text-base sm:text-lg text-[#1a0f0a] dark:text-[#7a5230]">Developer</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating Tech Icons */}
-              {/* {[
-                { icon: "", position: "top-0 left-1/4", delay: 0 },
-                { icon: "📱", position: "top-1/4 right-0", delay: 0.5 },
-                { icon: "🎨", position: "bottom-0 right-1/4", delay: 1 },
-                { icon: "⚡", position: "bottom-1/4 left-0", delay: 1.5 },
-                { icon: "🚀", position: "top-1/2 left-0", delay: 2 },
-                { icon: "💻", position: "top-1/2 right-0", delay: 2.5 }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className={`absolute ${item.position} w-12 h-12 bg-white dark:bg-[#3d3530] rounded-full shadow-lg flex items-center justify-center text-xl border border-[#b8b0a8] dark:border-[#4a4238]`}
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 180, 360]
-                  }}
-                  transition={{
-                    duration: 3 + index,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: item.delay
-                  }}
-                  whileHover={{ scale: 1.2 }}
-                >
-                  {item.icon}
-                </motion.div>
-              ))} */}
-            </div>
-          </motion.div>
         </div>
       </div>
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[0.6rem] tracking-[0.5em] uppercase text-[#1a0f0a]/70 dark:text-[#f5f1ed]/60"
+        animate={{ opacity: [0.4, 1, 0.4], y: [0, -6, 0] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        <span>Scroll</span>
+        <motion.div
+          className="w-px h-12 bg-gradient-to-b from-transparent via-[#1a0f0a] to-transparent dark:via-[#f5f1ed]"
+          animate={{ scaleY: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
     </motion.section>
   );
 }

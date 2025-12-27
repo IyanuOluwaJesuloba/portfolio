@@ -18,7 +18,7 @@ export function Header() {
       className="fixed top-0 z-50 w-full border-b border-[#b8b0a8]/50 dark:border-[#4a4238]/50 bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-md overflow-x-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-between font-hero">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -38,7 +38,7 @@ export function Header() {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.div>
-              <span className="group-hover:text-[#1a0f0a]  dark:group-hover:text-gray-700 transition-colors font-serif">
+              <span className="group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors">
                 IyanuOluwa
               </span>
             </Link>
