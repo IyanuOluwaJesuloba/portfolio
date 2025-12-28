@@ -161,42 +161,6 @@ export function   TechStackShowcase() {
             </p>
           </motion.div>
 
-          {/* Dual Expertise Overview */}
-          <motion.div
-            className=" max-w-xl mx-auto mb-16"
-            variants={containerVariants}
-          >
-            {/* Frontend Development */}
-            <motion.div
-              variants={cardVariants}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="group"
-            >
-              <div className="bg-gradient-to-br from-[#e8e6e3] to-[#f9f8f7] dark:from-[#4a4a4a]/20 dark:to-[#7a7270]/20 rounded-3xl p-8 border border-[#b8b0a8] dark:border-[#3d3530] shadow-lg hover:shadow-xl transition-all duration-300">
-                <motion.div
-                  className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-[#5a5250] to-[#7a7268] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Code2 className="h-8 w-8 text-white" />
-                </motion.div>
-                <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 text-center group-hover:text-black dark:group-hover:text-black transition-colors">
-                  Frontend Developer
-                </h3>
-                <p className="text-black dark:text-white text-center mb-6">
-                  Creating beautiful, responsive, and performant user interfaces with modern web technologies.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {["React", "Next.js", "TypeScript", "Tailwind CSS"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-[#b8b0a8] dark:bg-[#7a7270]/30 text-[#4a4238] dark:text-[#e8e6e3] rounded-full text-sm font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
             {/* Smart Contract Development
             <motion.div
               variants={cardVariants}
