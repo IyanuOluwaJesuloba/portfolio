@@ -1,4 +1,3 @@
-# my-v0-project
 
 To install dependencies:
 
