@@ -20,6 +20,10 @@ import {
 } from "lucide-react"
 import { SiGithub } from "@icons-pack/react-simple-icons"
 
+const MotionSection = motion.section
+const MotionDiv = motion.div
+const MotionA = motion.a
+
 const techStack = [
   {
     category: "Frontend Development",
@@ -91,10 +95,9 @@ const cardVariants = {
   }
 };
 
-export function   TechStackShowcase() {
-
+export function TechStackShowcase() {
   return (
-    <motion.section
+    <MotionSection
       id="tech-stack"
       className="py-12 md:py-20 bg-gradient-to-br from-[#e0d8d0] via-[#f0e8e0] to-[#faf9f7] dark:from-[#5c3d2e] dark:via-[#3d251e] dark:to-[#4a3220] overflow-hidden w-full relative"
       initial="hidden"
@@ -103,7 +106,7 @@ export function   TechStackShowcase() {
       variants={containerVariants}
     >
       {/* Subtle Background Elements */}
-      <motion.div
+      <MotionDiv
         className="absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-[#8a6239]/10 to-[#7a7268]/10 rounded-full blur-3xl"
         animate={{
           x: [0, 50, 0],
@@ -116,7 +119,7 @@ export function   TechStackShowcase() {
           ease: "easeInOut"
         }}
       />
-      <motion.div
+      <MotionDiv
         className="absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-[#7a7268]/10 to-[#8a6239]/10 rounded-full blur-3xl"
         animate={{
           x: [0, -40, 0],
@@ -131,16 +134,16 @@ export function   TechStackShowcase() {
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
+        <MotionDiv
           className="max-w-7xl mx-auto"
           variants={cardVariants}
         >
           {/* Professional Header */}
-          <motion.div
+          <MotionDiv
             className="text-center mb-16"
             variants={cardVariants}
           >
-            <motion.div
+            <MotionDiv
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#f0ede9] to-[#e8e3db] dark:from-[#1a0f0a]/30 dark:to-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -149,7 +152,7 @@ export function   TechStackShowcase() {
             >
               <Terminal className="h-4 w-4" />
               Technical Expertise
-            </motion.div>
+            </MotionDiv>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
               Technology{" "}
               <span className="gradient-text bg-gradient-to-r from-[#7a7268] via-[#9a9290] to-[#7a7270] bg-clip-text text-transparent">
@@ -159,54 +162,54 @@ export function   TechStackShowcase() {
             <p className="text-base sm:text-lg text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
               Specialized in frontend development, combining modern web technologies with creative ideas to create exceptional digital experiences.
             </p>
-          </motion.div>
+          </MotionDiv>
 
-            {/* Smart Contract Development
-            <motion.div
-              variants={cardVariants}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="group"
-            >
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-200 dark:border-green-800 shadow-lg hover:shadow-xl transition-all duration-300">
-                <motion.div
-                  className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Shield className="h-8 w-8 text-white" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 text-center group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                  Smart Contract Developer
-                </h3>
-                <p className="text-black dark:text-white text-center mb-6">
-                  Building secure and efficient smart contracts for decentralized applications on various blockchain networks.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {["Solidity", "Foundry", "Hardhat"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          {/* Smart Contract Development
+          <motion.div
+            variants={cardVariants}
+            whileHover={{ y: -5, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="group"
+          >
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-3xl p-8 border border-green-200 dark:border-green-800 shadow-lg hover:shadow-xl transition-all duration-300">
+              <motion.div
+                className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Shield className="h-8 w-8 text-white" />
+              </motion.div>
+              <h3 className="text-2xl font-bold text-black dark:text-white mb-4 text-center group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                Smart Contract Developer
+              </h3>
+              <p className="text-black dark:text-white text-center mb-6">
+                Building secure and efficient smart contracts for decentralized applications on various blockchain networks.
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {["Solidity", "Foundry", "Hardhat"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
+                    {tech}
+                  </span>
+                ))}
               </div>
-            </motion.div> */}
-          </motion.div>
+            </div>
+          </motion.div> 
+          */}
 
 
           {/* Enhanced Bottom CTA */}
-          <motion.div
+          <MotionDiv
             className="mt-20"
             variants={cardVariants}
           >
             <div className="bg-gradient-to-r from-[#faf9f7] to-[#e8e3db] dark:from-[#1a0f0a]/20 dark:to-[#3d3530]/20 rounded-3xl p-8 md:p-12 border border-[#d4c4b0]/50 dark:border-[#4a3220]/50 text-center">
-              <motion.div
+              <MotionDiv
                 className="w-16 h-16 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
                 <Code2 className="h-8 w-8 text-white" />
-              </motion.div>
+              </MotionDiv>
 
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
                 Frontend Development
@@ -216,7 +219,7 @@ export function   TechStackShowcase() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
+                <MotionA
                   href="#contact"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268] text-white rounded-lg font-semibold shadow-lg hover:shadow-[#5c3d2e]/25 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
@@ -224,8 +227,8 @@ export function   TechStackShowcase() {
                 >
                   <Mail className="h-5 w-5" />
                   Get in Touch
-                </motion.a>
-                <motion.a
+                </MotionA>
+                <MotionA
                   href="https://github.com/IyanuOluwaJesuloba"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -236,15 +239,15 @@ export function   TechStackShowcase() {
                   <SiGithub className="h-5 w-5" />
                   View Code
                   <ExternalLink className="h-4 w-4" />
-                </motion.a>
+                </MotionA>
               </div>
 
              
             </div>
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 
