@@ -3,9 +3,15 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Mail, Download, Code, Heart, Users, Calendar, TrendingUp } from "lucide-react";
+import { Mail, Download, Code, Heart, Users, Calendar, TrendingUp, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { sectionVariants, headingVariants, cardVariants, staggerContainer } from "@/lib/animations";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function AboutSection() {
   return (
@@ -303,21 +309,40 @@ export function AboutSection() {
                   Let's Connect
                 </Link>
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20"
-              >
-                <Link
-                  href="https://docs.google.com/document/d/1LZyMlBdzAI_4qbt-9zrRlfISha0jM3R41a8YqIqsBhA/edit?usp=sharing"
-                  target="_blank"
-                  className="flex items-center gap-2"
-                >
-                  <Download className="h-5 w-5" />
-                  Download Resume
-                </Link>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 w-full sm:w-auto"
+                  >
+                    <Download className="h-5 w-5 mr-2" />
+                    Resume
+                    <ChevronDown className="h-4 w-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-56 sm:w-48">
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-pointer"
+                    >
+                      View Resume
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      download
+                      className="cursor-pointer"
+                    >
+                      Download Resume
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </motion.div>
           </div>
 

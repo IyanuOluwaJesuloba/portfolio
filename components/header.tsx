@@ -3,11 +3,17 @@
 import React from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Mail, Code, Download, Linkedin } from "lucide-react";
+import { Mail, Code, Download, Linkedin, ChevronDown } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileMenu } from "@/components/mobile-menu";
 import { motion } from "framer-motion";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   return (
@@ -107,22 +113,82 @@ export function Header() {
               transition={{ delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="flex sm:hidden"
             >
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="ml-2 border-[#d4c4b0] dark:border-[#4a3220] text-[#1a0f0a] dark:text-[#000000] dark:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 hidden sm:flex text-xs sm:text-sm"
-              >
-                <a
-                  href="https://docs.google.com/document/d/1LZyMlBdzAI_4qbt-9zrRlfISha0jM3R41a8YqIqsBhA/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="h-4 w-4 mr-2" />
-                  Resume
-                </a>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-[#d4c4b0] dark:border-[#4a3220] text-[#1a0f0a] dark:text-[#000000] dark:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 text-xs"
+                  >
+                    <Download className="h-4 w-4 mr-1" />
+                    Resume
+                    <ChevronDown className="h-3 w-3 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Resume
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      download
+                    >
+                      Download Resume
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:flex"
+            >
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="ml-2 border-[#d4c4b0] dark:border-[#4a3220] text-[#1a0f0a] dark:text-[#000000] dark:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 text-xs sm:text-sm"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Resume
+                    <ChevronDown className="h-3 w-3 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Resume
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="/Iyanuoluwa Owoseni-- Resume.pdf"
+                      download
+                    >
+                      Download Resume
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </motion.div>
             </motion.div>
             <MobileMenu />
