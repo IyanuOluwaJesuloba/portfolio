@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -28,7 +28,7 @@ const techStack = [
   {
     category: "Frontend Development",
     icon: Code2,
-    color: "from-[#faf9f7]0 to-[#7a7268]",
+    color: "from-[#faf9f7] to-[#7a7268]",
     technologies: [
       { name: "React", level: 95, description: "Component-based UI development with hooks and context" },
       { name: "Next.js", level: 90, description: "Full-stack React framework with SSR and API routes" },
@@ -52,7 +52,7 @@ const techStack = [
   {
     category: "Development Tools",
     icon: Terminal,
-    color: "from-[#faf9f7]0 to-pink-600",
+    color: "from-[#faf9f7] to-pink-600",
     technologies: [
       { name: "Git & GitHub", level: 92, description: "Version control and collaborative development" },
       { name: "VS Code", level: 94, description: "Primary development environment with extensions" },
@@ -96,10 +96,12 @@ const cardVariants = {
 };
 
 export function TechStackShowcase() {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <MotionSection
       id="tech-stack"
-      className="py-12 md:py-20 bg-gradient-to-br from-[#e0d8d0] via-[#f0e8e0] to-[#faf9f7] dark:from-[#5c3d2e] dark:via-[#3d251e] dark:to-[#4a3220] overflow-hidden w-full relative"
+      className="py-16 md:py-24 bg-gradient-to-br from-[#e0d8d0] via-[#f0e8e0] to-[#faf9f7] dark:from-[#5c3d2e] dark:via-[#3d251e] dark:to-[#4a3220] overflow-hidden w-full relative"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -107,61 +109,114 @@ export function TechStackShowcase() {
     >
       {/* Subtle Background Elements */}
       <MotionDiv
-        className="absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-[#8a6239]/10 to-[#7a7268]/10 rounded-full blur-3xl"
-        animate={{
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        className="pointer-events-none absolute top-10 left-0 sm:left-10 w-64 h-64 bg-gradient-to-br from-[#8a6239]/10 to-[#7a7268]/10 rounded-full blur-3xl"
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : {
+                x: [0, 50, 0],
+                y: [0, -30, 0],
+                scale: [1, 1.1, 1],
+              }
+        }
+        transition={
+          shouldReduceMotion
+            ? undefined
+            : {
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+        }
       />
       <MotionDiv
-        className="absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-[#7a7268]/10 to-[#8a6239]/10 rounded-full blur-3xl"
-        animate={{
-          x: [0, -40, 0],
-          y: [0, 40, 0],
-          scale: [1, 0.9, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        className="pointer-events-none absolute bottom-10 right-0 sm:right-10 w-48 h-48 bg-gradient-to-br from-[#7a7268]/10 to-[#8a6239]/10 rounded-full blur-3xl"
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : {
+                x: [0, -40, 0],
+                y: [0, 40, 0],
+                scale: [1, 0.9, 1],
+              }
+        }
+        transition={
+          shouldReduceMotion
+            ? undefined
+            : {
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+        }
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <MotionDiv
-          className="max-w-7xl mx-auto"
+          className="max-w-5xl mx-auto"
           variants={cardVariants}
         >
           {/* Professional Header */}
           <MotionDiv
-            className="text-center mb-16"
+            className="text-center mb-12"
             variants={cardVariants}
           >
-            <MotionDiv
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#f0ede9] to-[#e8e3db] dark:from-[#1a0f0a]/30 dark:to-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-6 shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Terminal className="h-4 w-4" />
-              Technical Expertise
-            </MotionDiv>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
-              Technology{" "}
-              <span className="gradient-text bg-gradient-to-r from-[#7a7268] via-[#9a9290] to-[#7a7270] bg-clip-text text-transparent">
+            <div className="mx-auto flex w-fit items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4a4238] dark:text-[#e8e6e3]">
+              <span className="inline-flex items-center gap-2">
+                <Terminal className="h-4 w-4" />
                 Stack
               </span>
+              <span className="hidden sm:block h-px w-10 bg-[#7a7268]/40 dark:bg-[#e8e6e3]/20" />
+            </div>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-5 tracking-tight">
+              Tools I work with
             </h2>
-            <p className="text-base sm:text-lg text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
               Specialized in frontend development, combining modern web technologies with creative ideas to create exceptional digital experiences.
             </p>
+          </MotionDiv>
+
+          <MotionDiv
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            variants={containerVariants}
+          >
+            {techStack.map((group) => (
+              <MotionDiv
+                key={group.category}
+                variants={cardVariants}
+                whileHover={{ y: -3 }}
+              >
+                <Card className="h-full border border-[#d4c4b0]/45 dark:border-[#4a3220]/55 bg-white/80 dark:bg-[#3d3530]/75 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 rounded-xl">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-r ${group.color} flex items-center justify-center shadow-sm`}>
+                        <group.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-base sm:text-lg font-bold text-black dark:text-white leading-snug">
+                          {group.category}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed">
+                          Tools I use frequently in real projects.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {group.technologies.slice(0, 6).map((tech) => (
+                        <Badge
+                          key={tech.name}
+                          variant="secondary"
+                          className="text-xs bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-gray-100 border border-[#d4c4b0]/60 dark:border-[#4a3220]/60"
+                        >
+                          {tech.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionDiv>
+            ))}
           </MotionDiv>
 
           {/* Smart Contract Development
@@ -202,27 +257,27 @@ export function TechStackShowcase() {
             className="mt-20"
             variants={cardVariants}
           >
-            <div className="bg-gradient-to-r from-[#faf9f7] to-[#e8e3db] dark:from-[#1a0f0a]/20 dark:to-[#3d3530]/20 rounded-3xl p-8 md:p-12 border border-[#d4c4b0]/50 dark:border-[#4a3220]/50 text-center">
+            <div className="bg-white/70 dark:bg-[#3d3530]/60 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-[#d4c4b0]/50 dark:border-[#4a3220]/60 text-center shadow-sm">
               <MotionDiv
-                className="w-16 h-16 bg-gradient-to-r from-[#7a7268] to-[#9a9290] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                transition={{ duration: 0.5 }}
+                className="w-14 h-14 bg-[#1a0f0a] dark:bg-[#f5f1ed] rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm"
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03, rotate: 120 }}
+                transition={shouldReduceMotion ? undefined : { duration: 0.4 }}
               >
-                <Code2 className="h-8 w-8 text-white" />
+                <Code2 className="h-7 w-7 text-white dark:text-[#1a0f0a]" />
               </MotionDiv>
 
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">
                 Frontend Development
               </h3>
-              <p className="text-black dark:text-white mb-8 max-w-3xl mx-auto">
+              <p className="text-[#4a4238] dark:text-[#e8e6e3] mb-8 max-w-3xl mx-auto leading-relaxed">
                 Combining modern frontend technologies to create innovative web applications. Let's build something amazing together.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <MotionA
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268] text-white rounded-lg font-semibold shadow-lg hover:shadow-[#5c3d2e]/25 transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#1a0f0a] text-white hover:bg-[#3d251e] dark:bg-[#f5f1ed] dark:text-[#1a0f0a] dark:hover:bg-white rounded-lg font-semibold transition-colors"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Mail className="h-5 w-5" />
@@ -232,8 +287,8 @@ export function TechStackShowcase() {
                   href="https://github.com/IyanuOluwaJesuloba"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#c4a878] dark:border-[#7a7268] text-[#1a0f0a] dark:text-[#faf9f7] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 rounded-lg font-semibold transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-[#d4c4b0] dark:border-[#4a3220]/70 text-[#1a0f0a] dark:text-[#faf9f7] hover:bg-[#f5f1ed] dark:hover:bg-[#1a0f0a]/20 rounded-lg font-semibold transition-colors"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <SiGithub className="h-5 w-5" />

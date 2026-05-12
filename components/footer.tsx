@@ -11,7 +11,7 @@ import { staggerContainer } from "@/lib/animations";
 export function Footer() {
   return (
     <motion.footer
-      className="border-t border-[#b8b0a8] dark:border-[#3d3530] bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-sm py-8 md:py-4 overflow-x-hidden w-full"
+      className="border-t border-[#b8b0a8] dark:border-[#3d3530] bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm py-8 md:py-6 overflow-x-hidden w-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -51,7 +51,7 @@ export function Footer() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{ scale: 1.06, y: -1 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Link href={item.href} target="_blank" rel="noopener noreferrer">

@@ -12,7 +12,7 @@ export function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="py-12 md:py-20 bg-gradient-to-br from-[#faf9f7] via-[#d4c4b0] to-[#c4bfb8] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] overflow-hidden w-full"
+      className="py-16 md:py-24 bg-gradient-to-br from-[#faf9f7] via-[#d4c4b0] to-[#c4bfb8] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] overflow-hidden w-full"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -28,7 +28,7 @@ export function ContactSection() {
             variants={headingVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#4a3220]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-5 shadow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -36,11 +36,11 @@ export function ContactSection() {
               <Mail className="h-4 w-4" />
               Let's Connect
             </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-5 tracking-tight">
               Get In{" "}
               <span className="gradient-text bg-gradient-to-r from-[#7a7270] via-[#9a9290] to-[#7a7270] bg-clip-text text-transparent">Touch</span>
             </h2>
-            <p className="text-base sm:text-lg text-black dark:text-white max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
               I'm currently open to new opportunities and interesting projects. Let's discuss how we can work together!
             </p>
           </motion.div>
@@ -89,8 +89,8 @@ export function ContactSection() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm border border-[#b8b0a8] dark:border-[#4a4238] hover:border-[#c4a878] dark:hover:border-[#6b4423] hover:shadow-lg hover:shadow-[#5c3d2e]/10 transition-all duration-300"
-                      whileHover={{ scale: 1.02, x: 5 }}
+                      className="flex items-center gap-4 p-4 rounded-xl bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm border border-[#d4c4b0]/50 dark:border-[#4a3220]/50 hover:border-[#c4a878] dark:hover:border-[#6b4423] hover:shadow-lg hover:shadow-[#5c3d2e]/10 transition-all duration-300"
+                      whileHover={{ scale: 1.015, x: 3 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <motion.div
@@ -104,7 +104,7 @@ export function ContactSection() {
                         <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white group-hover:text-[#1a0f0a] transition-colors">
                           {item.label}
                         </h4>
-                        <p className="text-xs sm:text-sm text-[#f5f1ed]0 dark:text-[#d4c4b0] mb-1">
+                        <p className="text-xs sm:text-sm text-[#4a4238] dark:text-[#d4c4b0] mb-1">
                           {item.description}
                         </p>
                         <p className="text-xs sm:text-sm text-[#1a0f0a] dark:text-gray-100 font-medium">
@@ -119,7 +119,7 @@ export function ContactSection() {
             </motion.div>
 
             <motion.div variants={cardVariants}>
-              <div className="bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
+              <div className="bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
                 <ContactForm />
               </div>
             </motion.div>

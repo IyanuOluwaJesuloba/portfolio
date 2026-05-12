@@ -14,6 +14,7 @@ const menuItems = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Portfolio", href: "#featured-projects" },
+  { name: "Open Source", href: "#open-source" },
   { name: "Contact", href: "#contact" },
 ]
 

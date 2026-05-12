@@ -1,11 +1,12 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { Code } from "lucide-react"
 
 export function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,8 +32,12 @@ export function LoadingScreen() {
                 scale: [1, 1.2, 1],
               }}
               transition={{
-                rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-                scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
+                rotate: shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 2, repeat: Infinity, ease: "linear" },
+                scale: shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 1, repeat: Infinity, ease: "easeInOut" }
               }}
               className="mb-4"
             >
@@ -74,7 +79,7 @@ export function LoadingScreen() {
                     }}
                     transition={{
                       duration: 1,
-                      repeat: Infinity,
+                      repeat: shouldReduceMotion ? 0 : Infinity,
                       delay: i * 0.2,
                     }}
                   />

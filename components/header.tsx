@@ -7,7 +7,7 @@ import { Mail, Code, Download, Linkedin, ChevronDown } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileMenu } from "@/components/mobile-menu";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +16,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function Header() {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-      className="fixed top-0 z-50 w-full border-b border-[#b8b0a8]/50 dark:border-[#4a4238]/50 bg-white/80 dark:bg-[#7a7270]/80 backdrop-blur-md overflow-x-hidden"
+      className="fixed top-0 z-50 w-full border-b border-[#b8b0a8]/50 dark:border-[#4a4238]/50 bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-md overflow-x-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between font-hero">
@@ -33,18 +35,18 @@ export function Header() {
           >
             <Link href="/" className="flex items-center gap-2 group">
               <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
+                whileHover={shouldReduceMotion ? undefined : { rotate: 180 }}
+                transition={shouldReduceMotion ? undefined : { duration: 0.4 }}
                 className="relative"
               >
                 <Code className="h-6 w-6 text-[#1a0f0a] dark:text-gray-100" />
                 <motion.div
-                  className="absolute inset-0 bg-[#7a7268]/20 rounded-full blur-md"
+                  className="pointer-events-none absolute inset-0 bg-[#7a7268]/20 rounded-full blur-md"
                   animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  transition={shouldReduceMotion ? undefined : { duration: 2, repeat: Infinity }}
                 />
               </motion.div>
-              <span className="group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 transition-colors">
+              <span className="transition-colors">
                 IyanuOluwa
               </span>
             </Link>
@@ -56,7 +58,7 @@ export function Header() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="hidden lg:flex gap-6 xl:gap-8 absolute left-1/2 transform -translate-x-1/2"
           >
-            {["About", "Services", "Skills", "Projects", "Contact"].map((item, index) => (
+            {["About", "Services", "Skills", "Projects", "Open Source", "Contact"].map((item, index) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, y: -10 }}
@@ -64,7 +66,7 @@ export function Header() {
                 transition={{ delay: 0.1 * index }}
               >
                 <Link
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                   className="text-sm md:text-base text-black dark:text-[#e8e6e3] hover:text-[#1a0f0a] dark:hover:text-gray-700 transition-colors relative group font-medium"
                 >
                   {item}
@@ -95,7 +97,7 @@ export function Header() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.1 * index }}
-                whileHover={{ scale: 1.1 }}
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Link href={item.href} target="_blank" rel="noopener noreferrer">
@@ -111,7 +113,7 @@ export function Header() {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               className="flex sm:hidden"
             >
@@ -153,7 +155,7 @@ export function Header() {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               className="hidden sm:flex"
             >
