@@ -69,7 +69,6 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
         >
           {Icon && (
             <motion.div
-              whileHover={shouldReduceMotion ? undefined : { rotate: 120 }}
               transition={shouldReduceMotion ? undefined : { duration: 0.4 }}
             >
               <Icon

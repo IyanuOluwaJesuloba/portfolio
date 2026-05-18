@@ -2,292 +2,331 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ExternalLink, Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { ExternalLink, Github, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { portfolioProjects } from '@/lib/portfolio-data';
+import { sectionVariants } from '@/lib/animations';
 
-interface CaseStudy {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  impact: string[];
-  technologies: string[];
-  image: string;
-  liveUrl: string;
-  githubUrl: string;
-  metrics?: { label: string; value: string }[];
+const featured = portfolioProjects;
+
+// ─── Tab button ───────────────────────────────────────────────────────────────
+function Tab({
+  project,
+  index,
+  isActive,
+  onClick,
+}: {
+  project: (typeof featured)[number];
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group relative w-full text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+    >
+      {/* Active indicator line */}
+      <div
+        className={`absolute left-0 top-0 bottom-0 w-0.5 rounded-full transition-all duration-300 ${
+          isActive
+            ? 'bg-[#8a6239] dark:bg-[#d4c4b0]'
+            : 'bg-[#d4c4b0]/30 dark:bg-white/10 group-hover:bg-[#d4c4b0]/60 dark:group-hover:bg-white/20'
+        }`}
+      />
+      <div className="pl-5 py-4">
+        <div className="flex items-center gap-2 mb-1.5">
+          <span
+            className={`text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-full ${
+              project.category === 'web3'
+                ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400'
+                : 'bg-blue-500/15 text-blue-600 dark:text-blue-400'
+            }`}
+          >
+            {project.category}
+          </span>
+          <span className="text-[10px] text-[#7a7268] dark:text-white/60">{project.year}</span>
+        </div>
+        <p
+          className={`text-sm font-bold leading-snug transition-colors duration-200 ${
+            isActive
+              ? 'text-[#1a0f0a] dark:text-white'
+              : 'text-[#4a4238] dark:text-white/65 group-hover:text-[#1a0f0a] dark:group-hover:text-white/80'
+          }`}
+        >
+          {project.title.split('—')[0].trim()}
+        </p>
+        {isActive && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="text-xs text-[#8a6239] dark:text-[#d4c4b0] mt-1 leading-relaxed"
+          >
+            {project.description.split('—')[0].split('.')[0]}.
+          </motion.p>
+        )}
+      </div>
+    </button>
+  );
 }
 
-const caseStudies: CaseStudy[] = [
-  {
-    id: 'luminary',
-    title: 'Luminary Cyber Command',
-    subtitle: 'SOC Intelligence Platform',
-    description: 'Enterprise-grade dashboard for security operations teams managing cluster intelligence and telemetry.',
-    challenge: 'Complex real-time data visualization requiring intuitive navigation across multiple monitoring layers without sacrificing performance.',
-    solution: 'Built a modular component architecture with advanced state management, real-time data streaming, and progressive loading patterns. Implemented custom visualization components for cluster intelligence.',
-    impact: ['50% faster data exploration', '99.9% uptime', '10K+ concurrent users'],
-    technologies: ['Next.js 15', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'WebSocket'],
-    image: '/Luminary.png',
-    liveUrl: 'https://luminary-two.vercel.app/',
-    githubUrl: 'https://github.com/IyanuOluwaJesuloba/Iyanuoluwa-Test-Luminary-Cyber-Command-Dashboard-Clone',
-    metrics: [
-      { label: 'Performance', value: '98/100 Lighthouse' },
-      { label: 'Load Time', value: '<0.8s' },
-      { label: 'Users', value: '10K+' },
-    ],
-  },
-  {
-    id: 'collective',
-    title: 'Collective Investment Platform',
-    subtitle: 'Fintech Web3 Solution',
-    description: 'Smart contract-integrated platform enabling groups to collectively invest in Play-to-Earn gaming with automated returns distribution.',
-    challenge: 'Bridging traditional finance UX with blockchain complexity while maintaining security and clarity for non-technical users.',
-    solution: 'Created abstraction layer over smart contracts, implemented secure wallet integration, and built intuitive flows for investment management. Added comprehensive analytics dashboard.',
-    impact: ['$2M+ TVL', '500+ active users', '99.8% transaction success'],
-    technologies: ['Next.js', 'Solidity', 'Ethers.js', 'TypeScript', 'Tailwind CSS'],
-    image: '/Saving-app.jpg',
-    liveUrl: 'https://saving-app-jet.vercel.app/',
-    githubUrl: 'https://github.com/IyanuOluwaJesuloba/saving_app',
-    metrics: [
-      { label: 'TVL', value: '$2M+' },
-      { label: 'Users', value: '500+' },
-      { label: 'Success Rate', value: '99.8%' },
-    ],
-  },
-  {
-    id: 'brainwave',
-    title: 'Brain-Wave AI Platform',
-    subtitle: 'Content Creation Suite',
-    description: 'AI-powered platform revolutionizing content creation with advanced video editing, image generation, and real-time preview capabilities.',
-    challenge: 'Managing complex video processing pipelines while maintaining responsive UI and handling large file uploads efficiently.',
-    solution: 'Implemented WebWorkers for background processing, chunked file uploads, progressive rendering, and real-time preview with caching strategies.',
-    impact: ['1M+ creative assets', '95% mobile users', '4.8/5 rating'],
-    technologies: ['React', 'Node.js', 'WebWorkers', 'FFmpeg', 'AWS S3'],
-    image: '/Brainwave.png',
-    liveUrl: 'https://brain-wave-zeta-six.vercel.app/',
-    githubUrl: 'https://github.com/IyanuOluwaJesuloba/brain_wave',
-    metrics: [
-      { label: 'Assets', value: '1M+' },
-      { label: 'Mobile', value: '95%' },
-      { label: 'Rating', value: '4.8★' },
-    ],
-  },
-];
-
+// ─── Main section ─────────────────────────────────────────────────────────────
 export function CaseStudiesSection() {
-  const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(caseStudies[0]);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const active = featured[activeIdx];
 
   return (
-    <section
+    <motion.section
       id="case-studies"
-      className="py-20 md:py-28 bg-gradient-to-br from-[#e8e3db] via-[#f0e8e0] to-[#faf9f7] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] relative overflow-hidden"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#e8e3db] via-[#f0e8e0] to-[#faf9f7] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] relative overflow-hidden w-full"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          {/* Section Header */}
-          <motion.div className="text-center mb-16" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
+      {/* Decorative blobs */}
+      <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#8a6239]/6 to-transparent rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#7a7268]/5 to-transparent rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+
+          {/* ── Section label + heading ── */}
+          <motion.div
+            className="mb-14"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
+              <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
               Featured Work
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-6 leading-tight">
-              Case Studies That
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
-                Demonstrate Impact
-              </span>
-            </h2>
-            <p className="text-lg text-[#4a4238] dark:text-[#d4c4b0] max-w-2xl mx-auto">
-              Real projects solving real problems with measurable business outcomes.
-            </p>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.08] tracking-tight">
+                  Not just what I built —
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#a07848] to-[#7a7268] dark:from-[#d4c4b0] dark:to-[#c4b4a0]">
+                    why it mattered.
+                  </span>
+                </h2>
+                <p className="mt-4 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-lg leading-relaxed">
+                  {portfolioProjects.length} projects across Web2 and Web3. Select any from the list to read the full breakdown — the problem, the approach, and what I built.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Case Studies Layout */}
-          <div className="grid lg:grid-cols-12 gap-8">
-            {/* Selector */}
+          {/* ── Main showcase ── */}
+          <div className="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-12 items-start">
+
+            {/* LEFT — tab list */}
             <motion.div
-              className="lg:col-span-4 space-y-3"
-              initial={{ opacity: 0, x: -40 }}
+              className="flex lg:flex-col gap-0 overflow-x-auto lg:overflow-visible"
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              {caseStudies.map((study, idx) => (
-                <motion.button
-                  key={study.id}
-                  onClick={() => setSelectedStudy(study)}
-                  className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                    selectedStudy?.id === study.id
-                      ? 'border-[#8a6239] dark:border-[#d4c4b0] bg-white dark:bg-[#4a3220] shadow-lg'
-                      : 'border-transparent bg-white/50 dark:bg-[#3d3530]/50 hover:bg-white/80 dark:hover:bg-[#4a3220]/80'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-bold text-[#1a0f0a] dark:text-[#f5f1ed] text-sm md:text-base">
-                        {study.title}
-                      </h3>
-                      <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] mt-1">{study.subtitle}</p>
-                    </div>
-                    {selectedStudy?.id === study.id && (
-                      <ChevronRight className="w-5 h-5 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-1" />
-                    )}
-                  </div>
-                </motion.button>
-              ))}
+              {/* Mobile: horizontal scroll tabs */}
+              <div className="flex lg:hidden gap-3 pb-2 w-full">
+                {featured.map((p, i) => (
+                  <button
+                    key={p.title}
+                    onClick={() => setActiveIdx(i)}
+                    className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+                      i === activeIdx
+                        ? 'bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a]'
+                        : 'border border-[#d4c4b0]/60 dark:border-white/15 text-[#4a4238] dark:text-white/65 hover:border-[#8a6239] dark:hover:border-white/30'
+                    }`}
+                  >
+                    {p.title.split('—')[0].trim()}
+                  </button>
+                ))}
+              </div>
+
+              {/* Desktop: vertical tab list */}
+              <div className="hidden lg:flex flex-col gap-1 w-full">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#7a7268] dark:text-white/50 mb-3 pl-5">
+                  Select project
+                </p>
+                {featured.map((p, i) => (
+                  <Tab
+                    key={p.title}
+                    project={p}
+                    index={i}
+                    isActive={i === activeIdx}
+                    onClick={() => setActiveIdx(i)}
+                  />
+                ))}
+              </div>
             </motion.div>
 
-            {/* Detail View */}
+            {/* RIGHT — detail panel */}
             <motion.div
-              className="lg:col-span-8"
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               viewport={{ once: true }}
             >
               <AnimatePresence mode="wait">
-                {selectedStudy && (
+                {active && (
                   <motion.div
-                    key={selectedStudy.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={active.title}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.28 }}
                   >
-                    {/* Image */}
-                    <motion.div
-                      className="relative h-64 md:h-80 rounded-xl overflow-hidden border border-[#d4c4b0]/50 dark:border-[#4a3220]/60 shadow-xl"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <Image
-                        src={selectedStudy.image}
-                        alt={selectedStudy.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    </motion.div>
+                    {/* ── Hero image ── */}
+                    <div className="relative rounded-2xl overflow-hidden mb-7 group shadow-xl shadow-black/10 dark:shadow-black/40">
+                      <div className="relative h-52 sm:h-72 md:h-[340px]">
+                        <Image
+                          src={active.imageUrl}
+                          alt={active.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          priority
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-                    {/* Content */}
-                    <div className="space-y-6">
-                      {/* Metrics */}
-                      {selectedStudy.metrics && (
-                        <motion.div
-                          className="grid grid-cols-3 gap-4"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.2 }}
-                        >
-                          {selectedStudy.metrics.map((metric, idx) => (
-                            <div
-                              key={idx}
-                              className="p-3 rounded-lg bg-white/60 dark:bg-[#3d3530]/60 backdrop-blur-sm border border-[#d4c4b0]/40 dark:border-[#4a3220]/60"
-                            >
-                              <p className="text-2xl font-bold text-[#8a6239] dark:text-[#d4c4b0]">
-                                {metric.value}
-                              </p>
-                              <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] mt-1">{metric.label}</p>
+                        {/* Bottom-left: title + status */}
+                        <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                          <div className="flex items-end justify-between gap-4">
+                            <div>
+                              <div className="flex items-center gap-2 mb-2">
+                                <span
+                                  className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm ${
+                                    active.category === 'web3'
+                                      ? 'bg-amber-500/25 text-amber-200 border border-amber-400/30'
+                                      : 'bg-blue-500/25 text-blue-200 border border-blue-400/30'
+                                  }`}
+                                >
+                                  {active.category.toUpperCase()}
+                                </span>
+                                {active.status === 'Live' && (
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-green-500/25 border border-green-400/30 text-green-200 backdrop-blur-sm">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                    Live
+                                  </span>
+                                )}
+                              </div>
+                              <h3 className="text-lg sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">
+                                {active.title.split('—')[0].trim()}
+                              </h3>
                             </div>
-                          ))}
-                        </motion.div>
+                            {/* Quick links on image */}
+                            <div className="flex gap-2 flex-shrink-0">
+                              <a
+                                href={active.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors"
+                                aria-label="View live"
+                              >
+                                <ArrowUpRight className="h-4 w-4 text-white" />
+                              </a>
+                              <a
+                                href={active.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-colors"
+                                aria-label="View source"
+                              >
+                                <Github className="h-4 w-4 text-white" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ── Body ── */}
+                    <div className="space-y-6">
+
+                      {/* Long description */}
+                      <p className="text-sm sm:text-base text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                        {active.longDescription}
+                      </p>
+
+                      {/* Challenge / Approach — side by side */}
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="rounded-xl bg-[#1a0f0a]/5 dark:bg-white/6 border border-[#d4c4b0]/40 dark:border-white/12 p-5">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-2.5">
+                            The Challenge
+                          </p>
+                          <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                            {active.challenge}
+                          </p>
+                        </div>
+                        <div className="rounded-xl bg-[#1a0f0a]/5 dark:bg-white/6 border border-[#d4c4b0]/40 dark:border-white/12 p-5">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-2.5">
+                            My Approach
+                          </p>
+                          <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                            {active.solution}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* What I built */}
+                      {active.features && active.features.length > 0 && (
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-3">
+                            What I built
+                          </p>
+                          <ul className="grid sm:grid-cols-2 gap-2">
+                            {active.features.map((f, i) => (
+                              <motion.li
+                                key={f}
+                                className="flex items-start gap-2.5 text-sm text-[#4a4238] dark:text-[#d4c4b0]"
+                                initial={{ opacity: 0, x: -6 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.05 }}
+                              >
+                                <CheckCircle2 className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-0.5" />
+                                {f}
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
                       )}
 
-                      {/* Challenge & Solution */}
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-bold text-[#1a0f0a] dark:text-[#f5f1ed] text-sm uppercase tracking-wider mb-2">
-                            Challenge
-                          </h4>
-                          <p className="text-sm md:text-base text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-                            {selectedStudy.challenge}
-                          </p>
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[#1a0f0a] dark:text-[#f5f1ed] text-sm uppercase tracking-wider mb-2">
-                            Solution
-                          </h4>
-                          <p className="text-sm md:text-base text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-                            {selectedStudy.solution}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Impact */}
-                      <div>
-                        <h4 className="font-bold text-[#1a0f0a] dark:text-[#f5f1ed] text-sm uppercase tracking-wider mb-3">
-                          Impact
-                        </h4>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                          {selectedStudy.impact.map((item, idx) => (
-                            <motion.li
-                              key={idx}
-                              className="flex items-center gap-2 text-sm text-[#4a4238] dark:text-[#d4c4b0]"
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.3 + idx * 0.1 }}
-                            >
-                              <div className="w-2 h-2 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0]" />
-                              {item}
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Tech Stack */}
-                      <div>
-                        <h4 className="font-bold text-[#1a0f0a] dark:text-[#f5f1ed] text-sm uppercase tracking-wider mb-3">
-                          Technologies
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedStudy.technologies.map((tech, idx) => (
+                      {/* Stack + CTAs row */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-[#d4c4b0]/30 dark:border-white/12">
+                        <div className="flex flex-wrap gap-1.5">
+                          {active.tags.map((tag) => (
                             <span
-                              key={idx}
-                              className="px-3 py-1 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-[#d4c4b0] text-xs font-medium border border-[#d4c4b0]/50 dark:border-[#4a3220]/50"
+                              key={tag}
+                              className="px-2.5 py-1 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a] text-[#1a0f0a] dark:text-[#d4af37] text-[11px] font-semibold border border-[#d4c4b0]/50 dark:border-[#d4af37]/25"
                             >
-                              {tech}
+                              {tag}
                             </span>
                           ))}
                         </div>
-                      </div>
-
-                      {/* CTAs */}
-                      <div className="flex gap-4 pt-4 border-t border-[#d4c4b0]/30 dark:border-[#4a3220]/50">
-                        <Button
-                          asChild
-                          className="flex-1 bg-[#1a0f0a] text-white hover:bg-[#4a3220]"
-                        >
-                          <Link href={selectedStudy.liveUrl} target="_blank" className="flex items-center justify-center gap-2">
-                            <ExternalLink className="w-4 h-4" />
+                        <div className="flex gap-2.5 flex-shrink-0">
+                          <a
+                            href={active.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] text-sm font-bold hover:bg-[#3d251e] dark:hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <ExternalLink className="h-4 w-4" />
                             View Live
-                          </Link>
-                        </Button>
-                        <Button
-                          asChild
-                          variant="outline"
-                          className="flex-1"
-                        >
-                          <Link href={selectedStudy.githubUrl} target="_blank" className="flex items-center justify-center gap-2">
-                            <Github className="w-4 h-4" />
-                            GitHub
-                          </Link>
-                        </Button>
+                          </a>
+                          <a
+                            href={active.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#c4a878] dark:border-white/15 text-[#1a0f0a] dark:text-[#f5f1ed] text-sm font-bold hover:bg-[#f5f1ed] dark:hover:bg-white/8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -295,8 +334,8 @@ export function CaseStudiesSection() {
               </AnimatePresence>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

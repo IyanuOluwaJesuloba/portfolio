@@ -21,16 +21,16 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "React", level: 95, category: "Frontend", icon: Code2, color: "#61DAFB" },
-  { name: "TypeScript", level: 90, category: "Frontend", icon: Code2, color: "#3178C6" },
-  { name: "Next.js", level: 88, category: "Frontend", icon: Globe, color: "#000000" },
-  { name: "Tailwind CSS", level: 92, category: "Styling", icon: Palette, color: "#06B6D4" },
-  { name: "JavaScript", level: 94, category: "Frontend", icon: Code2, color: "#F7DF1E" },
-  { name: "HTML5", level: 96, category: "Frontend", icon: Code2, color: "#E34F26" },
-  { name: "CSS3", level: 93, category: "Styling", icon: Palette, color: "#1572B6" },
-  { name: "Git", level: 85, category: "Tools", icon: GitBranch, color: "#F05032" },
-  { name: "Figma", level: 80, category: "Design", icon: Layers, color: "#F24E1E" },
-  { name: "VS Code", level: 90, category: "Tools", icon: Terminal, color: "#007ACC" },
+  { name: "React", level: 88, category: "Frontend", icon: Code2, color: "#61DAFB" },
+  { name: "TypeScript", level: 84, category: "Frontend", icon: Code2, color: "#3178C6" },
+  { name: "Next.js", level: 85, category: "Frontend", icon: Globe, color: "#000000" },
+  { name: "Tailwind CSS", level: 90, category: "Styling", icon: Palette, color: "#06B6D4" },
+  { name: "JavaScript", level: 88, category: "Frontend", icon: Code2, color: "#F7DF1E" },
+  { name: "HTML5", level: 92, category: "Frontend", icon: Code2, color: "#E34F26" },
+  { name: "CSS3", level: 90, category: "Styling", icon: Palette, color: "#1572B6" },
+  { name: "Git", level: 82, category: "Tools", icon: GitBranch, color: "#F05032" },
+  { name: "Figma", level: 75, category: "Design", icon: Layers, color: "#F24E1E" },
+  { name: "VS Code", level: 88, category: "Tools", icon: Terminal, color: "#007ACC" },
 ]
 
 export function SkillChart() {

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        rect { fill: #1a0f0a; }
+        path { fill: #f5f1ed; }
+      }
+      @media (prefers-color-scheme: light) {
+        rect { fill: #f5f1ed; }
+        path { fill: #1a0f0a; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" fill="#f5f1ed" rx="6"/>
+  
+  <!-- Modern developer symbol: angle brackets with dot -->
+  <g transform="translate(8, 8)">
+    <!-- Left bracket -->
+    <path d="M 2 3 L 6 8 L 2 13" stroke="#1a0f0a" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right bracket -->
+    <path d="M 14 3 L 10 8 L 14 13" stroke="#1a0f0a" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Center dot -->
+    <circle cx="8" cy="8" r="1.2" fill="#8a6239"/>
+  </g>
+</svg>

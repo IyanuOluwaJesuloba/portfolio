@@ -124,7 +124,7 @@ export function ContactForm() {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                transition={{ delay: 0, type: "spring", stiffness: 200 }}
               >
                 <Mail className="h-12 w-12 text-gray-700 mb-4" />
               </motion.div>
@@ -132,7 +132,7 @@ export function ContactForm() {
                 className="text-2xl font-bold mb-2 text-black"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.05 }}
               >
                 Message Sent!
               </motion.h3>
@@ -140,14 +140,14 @@ export function ContactForm() {
                 className="text-black dark:text-white mb-6"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.1 }}
               >
                 Thank you for reaching out! I'll get back to you as soon as possible.
               </motion.p>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.15 }}
               >
                 <Button 
                   onClick={() => setIsSubmitted(false)}

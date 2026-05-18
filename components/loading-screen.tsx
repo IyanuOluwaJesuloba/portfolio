@@ -11,7 +11,7 @@ export function LoadingScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [])
@@ -22,7 +22,7 @@ export function LoadingScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#7a7270]"
         >
           <div className="text-center">

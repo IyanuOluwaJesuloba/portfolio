@@ -123,7 +123,7 @@ export function TechStackShowcase() {
           shouldReduceMotion
             ? undefined
             : {
-                duration: 15,
+                duration: 5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }
@@ -144,7 +144,7 @@ export function TechStackShowcase() {
           shouldReduceMotion
             ? undefined
             : {
-                duration: 12,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }
@@ -260,7 +260,7 @@ export function TechStackShowcase() {
             <div className="bg-white/70 dark:bg-[#3d3530]/60 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-[#d4c4b0]/50 dark:border-[#4a3220]/60 text-center shadow-sm">
               <MotionDiv
                 className="w-14 h-14 bg-[#1a0f0a] dark:bg-[#f5f1ed] rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm"
-                whileHover={shouldReduceMotion ? undefined : { scale: 1.03, rotate: 120 }}
+                whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
                 transition={shouldReduceMotion ? undefined : { duration: 0.4 }}
               >
                 <Code2 className="h-7 w-7 text-white dark:text-[#1a0f0a]" />

@@ -97,7 +97,7 @@ export function AnimatedBackground() {
           shouldReduceMotion
             ? undefined
             : {
-                duration: 20,
+                duration: 5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }
@@ -118,7 +118,7 @@ export function AnimatedBackground() {
           shouldReduceMotion
             ? undefined
             : {
-                duration: 15,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }

@@ -1,154 +1,181 @@
 'use client';
 
 import React from 'react';
-import Link from "next/link";
-import { Mail, ArrowRight, Linkedin } from "lucide-react";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { ContactForm } from "@/components/contact-form";
-import { motion } from "framer-motion";
-import { sectionVariants, headingVariants, cardVariants, fadeInUp, staggerContainer } from "@/lib/animations";
+import { Mail, Linkedin, Clock, MessageSquare } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
+import { ContactForm } from '@/components/contact-form';
+import { motion } from 'framer-motion';
+import { sectionVariants } from '@/lib/animations';
+
+const channels = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'jesulobaowoseni1@gmail.com',
+    href: 'mailto:jesulobaowoseni1@gmail.com',
+    note: 'Best for project enquiries and detailed briefs',
+  },
+  {
+    icon: SiGithub,
+    label: 'GitHub',
+    value: 'github.com/IyanuOluwaJesuloba',
+    href: 'https://github.com/IyanuOluwaJesuloba',
+    note: 'Browse my code and open-source contributions',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/iyanuoluwa-owoseni',
+    href: 'https://www.linkedin.com/in/iyanuoluwa-owoseni/',
+    note: 'Connect professionally or send a quick message',
+  },
+];
 
 export function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="py-16 md:py-24 bg-gradient-to-br from-[#faf9f7] via-[#d4c4b0] to-[#c4bfb8] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] overflow-hidden w-full"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#faf9f7] via-[#d4c4b0] to-[#c4bfb8] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] overflow-hidden w-full"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="max-w-6xl mx-auto"
-          variants={sectionVariants}
-        >
+        <div className="max-w-6xl mx-auto">
+
+          {/* ── Header ── */}
           <motion.div
-            className="text-center mb-12"
-            variants={headingVariants}
+            className="mb-14"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-5 shadow-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <Mail className="h-4 w-4" />
-              Let's Connect
-            </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-5 tracking-tight">
-              Get In{" "}
-              <span className="gradient-text bg-gradient-to-r from-[#7a7270] via-[#9a9290] to-[#7a7270] bg-clip-text text-transparent">Touch</span>
+            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
+              <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
+              Contact
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.1] tracking-tight mb-4">
+              Let's work on something
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
+                worth building.
+              </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
-              I'm currently open to new opportunities and interesting projects. Let's discuss how we can work together!
+            <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
+              I'm open to freelance projects, contract engagements, and full-time roles.
+              Tell me what you're working on — even if it's just an idea — and let's figure
+              out if I'm the right person to help.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          {/* ── Two-column layout ── */}
+          <div className="grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-16 items-start">
+
+            {/* LEFT — channels + context */}
             <motion.div
-              variants={fadeInUp}
-              className="space-y-8"
+              className="space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
             >
-              <motion.div
-                className="space-y-6"
-                variants={staggerContainer}
-              >
-                {[
-                  {
-                    icon: Mail,
-                    href: "mailto:jesulobaowoseni1@gmail.com",
-                    text: "jesulobaowoseni1@gmail.com",
-                    label: "Email",
-                    description: "Send me an email anytime"
-                  },
-                  {
-                    icon: SiGithub,
-                    href: "https://github.com/IyanuOluwaJesuloba",
-                    text: "github.com/IyanuOluwaJesuloba",
-                    label: "GitHub",
-                    description: "Check out my repositories"
-                  },
-                  {
-                    icon: Linkedin,
-                    href: "https://www.linkedin.com/in/iyanuoluwa-owoseni/",
-                    text: "linkedin.com/in/iyanuoluwa-owoseni",
-                    label: "LinkedIn",
-                    description: "Let's connect professionally"
-                  }
-                ].map((item, index) => (
-                  <motion.div
-                    key={item.text}
-                    className="group"
-                    initial={{ opacity: 0, x: -20 }}
+              {/* Response time */}
+              <div className="flex items-center gap-3 p-4 rounded-xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/70 dark:bg-white/5">
+                <div className="w-9 h-9 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                  <Clock className="h-4 w-4 text-green-700 dark:text-green-400" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">
+                    Typically replies within 24 hours
+                  </p>
+                  <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0]">
+                    Usually much faster on weekdays
+                  </p>
+                </div>
+              </div>
+
+              {/* What to include */}
+              <div className="p-5 rounded-xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/70 dark:bg-white/5">
+                <div className="flex items-center gap-2 mb-3">
+                  <MessageSquare className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0]" />
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0]">
+                    What to include
+                  </p>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    'What you\'re building and who it\'s for',
+                    'The problem you need solved',
+                    'Your timeline and budget range',
+                    'Whether you need frontend, Web3, or both',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-[#4a4238] dark:text-[#d4c4b0]">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0] flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact channels */}
+              <div className="space-y-3">
+                {channels.map((ch, i) => (
+                  <motion.a
+                    key={ch.label}
+                    href={ch.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/70 dark:bg-white/5 hover:border-[#d4af37]/60 dark:hover:border-[#d4af37]/40 hover:shadow-md transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] focus-visible:ring-offset-2"
+                    initial={{ opacity: 0, x: -12 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.2 }}
+                    transition={{ duration: 0.3, delay: i * 0.08 }}
                     viewport={{ once: true }}
+                    whileHover={{ x: 3 }}
                   >
-                    <motion.a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm border border-[#d4c4b0]/50 dark:border-[#4a3220]/50 hover:border-[#c4a878] dark:hover:border-[#6b4423] hover:shadow-lg hover:shadow-[#5c3d2e]/10 transition-all duration-300"
-                      whileHover={{ scale: 1.015, x: 3 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <motion.div
-                        className="p-3 rounded-lg bg-gradient-to-br from-[#f0ede9] to-[#f9f8f7] dark:from-[#1a0f0a]/30 dark:to-[#4a3220]/30"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <item.icon className="h-6 w-6 text-[#1a0f0a] dark:text-gray-100" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <h4 className="text-sm sm:text-base font-semibold text-black dark:text-white group-hover:text-[#1a0f0a] transition-colors">
-                          {item.label}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-[#4a4238] dark:text-[#d4c4b0] mb-1">
-                          {item.description}
-                        </p>
-                        <p className="text-xs sm:text-sm text-[#1a0f0a] dark:text-gray-100 font-medium">
-                          {item.text}
-                        </p>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-black group-hover:text-[#1a0f0a] dark:group-hover:text-gray-700 group-hover:translate-x-1 transition-all duration-200" />
-                    </motion.a>
-                  </motion.div>
+                    <div className="w-10 h-10 rounded-lg bg-[#f0ede9] dark:bg-[#d4af37] flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8e3db] dark:group-hover:bg-white/12 transition-colors">
+                      <ch.icon className="h-5 w-5 text-[#1a0f0a] dark:text-[#f5f1ed]" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">{ch.label}</p>
+                      <p className="text-xs text-[#8a6239] dark:text-[#d4c4b0] truncate">{ch.value}</p>
+                      <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] mt-0.5">{ch.note}</p>
+                    </div>
+                  </motion.a>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
 
-            <motion.div variants={cardVariants}>
-              <div className="bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
+            {/* RIGHT — form */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true }}
+            >
+              <div className="rounded-2xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/80 dark:bg-white/5 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-1">
+                    Send a message
+                  </h3>
+                  <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0]">
+                    Prefer email? Reach me at{' '}
+                    <a
+                      href="mailto:jesulobaowoseni1@gmail.com"
+                      className="text-[#8a6239] dark:text-[#d4c4b0] underline underline-offset-2 hover:opacity-75 transition-opacity"
+                    >
+                      jesulobaowoseni1@gmail.com
+                    </a>
+                  </p>
+                </div>
                 <ContactForm />
               </div>
             </motion.div>
+
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

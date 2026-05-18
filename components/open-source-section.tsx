@@ -1,115 +1,159 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ExternalLink, GitPullRequest, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, GitPullRequest, GitBranch, ArrowRight } from 'lucide-react';
 import { openSourceContributions } from '@/lib/portfolio-data';
-import { sectionVariants, headingVariants, cardVariants } from '@/lib/animations';
+import { sectionVariants } from '@/lib/animations';
+import Link from 'next/link';
+
+if (!openSourceContributions.length) {
+  // Handled below with early return
+}
 
 export function OpenSourceSection() {
-  const shouldReduceMotion = useReducedMotion()
-
   if (!openSourceContributions.length) return null;
 
   return (
     <motion.section
       id="open-source"
-      className="py-16 md:py-24 bg-gradient-to-br from-[#e0d8d0] via-[#f0e8e0] to-[#faf9f7] dark:from-[#4a3220] dark:via-[#3d251e] dark:to-[#5c3d2e] relative overflow-hidden w-full"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#e0d8d0] via-[#f0e8e0] to-[#faf9f7] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] relative overflow-hidden w-full"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div className="max-w-7xl mx-auto" variants={sectionVariants}>
-          <motion.div className="text-center mb-12 md:mb-16" variants={headingVariants}>
-            <motion.div
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-gray-100 rounded-full text-sm font-medium mb-5 shadow-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
-            >
-              <Github className="h-4 w-4" />
+        <div className="max-w-4xl mx-auto">
+
+          {/* ── Header ── */}
+          <motion.div
+            className="mb-14"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
+              <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
               Open Source
-            </motion.div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6 tracking-tight">
-              Contributions &{' '}
-              <span className="gradient-text bg-gradient-to-r from-[#7a7268] via-[#9a9290] to-[#4a3220] bg-clip-text text-transparent">
-                PRs
-              </span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-black dark:text-white max-w-3xl mx-auto leading-relaxed">
-              Selected open source work—pull requests and improvements shipped to real codebases.
-            </p>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.1] tracking-tight mb-4">
+                  Giving back to the
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
+                    community that taught me.
+                  </span>
+                </h2>
+                <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
+                  I've contributed to open-source Web3 projects — shipping real improvements
+                  to codebases used by other developers. Here's what I worked on and why it mattered.
+                </p>
+              </div>
+              <a
+                href="https://github.com/IyanuOluwaJesuloba"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-[#8a6239] dark:text-[#d4c4b0] hover:opacity-75 transition-opacity"
+              >
+                GitHub profile
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" variants={cardVariants}>
+          {/* ── Contributions ── */}
+          <div className="space-y-5">
             {openSourceContributions.map((item, index) => (
               <motion.div
                 key={`${item.repoUrl}-${index}`}
-                variants={cardVariants}
-                transition={{ delay: index * 0.08 }}
-                whileHover={{ y: -3 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="rounded-2xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/80 dark:bg-white/5 backdrop-blur-sm p-6 hover:shadow-md transition-shadow duration-300"
               >
-                <Card className="h-full border border-[#d4c4b0]/40 dark:border-[#4a3220]/50 bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <h3 className="text-base sm:text-lg font-bold text-black dark:text-white leading-snug">
-                        {item.title}
-                      </h3>
-                      <Badge variant="secondary" className="bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-gray-100">
-                        OSS
-                      </Badge>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  {/* Left */}
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0">
+                      <GitBranch className="h-5 w-5 text-white dark:text-[#1a0f0a]" />
                     </div>
-
-                    <p className="text-sm text-[#4a4238] dark:text-[#e8e6e3] leading-relaxed mb-5 flex-1">
-                      {item.description}
-                    </p>
-
-                    {item.tags?.length ? (
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {item.tags.slice(0, 4).map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="secondary"
-                            className="text-xs bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-gray-100 border border-[#d4c4b0]/50 dark:border-[#4a3220]/50"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <h3 className="text-base font-bold text-[#1a0f0a] dark:text-[#f5f1ed]">
+                          {item.title}
+                        </h3>
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#8a6239] dark:text-[#d4c4b0] border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
+                          Merged PR
+                        </span>
                       </div>
-                    ) : null}
-
-                    <div className="flex gap-3">
-                      <Button asChild variant="outline" className="flex-1 border-[#d4c4b0] dark:border-[#4a3220]">
-                        <Link href={item.repoUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
-                          Repo
-                          <ExternalLink className="h-3.5 w-3.5 ml-2" />
-                        </Link>
-                      </Button>
-
-                      {item.prUrl ? (
-                        <Button asChild className="flex-1 bg-gradient-to-r from-[#7a7268] to-[#4a3220] hover:from-[#4a3220] hover:to-[#7a7268] text-white">
-                          <Link href={item.prUrl} target="_blank" rel="noopener noreferrer">
-                            <GitPullRequest className="h-4 w-4 mr-2" />
-                            PR
-                            <ExternalLink className="h-3.5 w-3.5 ml-2" />
-                          </Link>
-                        </Button>
-                      ) : null}
+                      <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                      {item.tags && item.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {item.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-0.5 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a]/20 text-[#4a4238] dark:text-[#d4c4b0] text-[11px] font-medium border border-[#d4c4b0]/40 dark:border-[#4a3220]/40"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+
+                  {/* Right — links */}
+                  <div className="flex sm:flex-col gap-2 flex-shrink-0">
+                    {item.prUrl && (
+                      <a
+                        href={item.prUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] text-xs font-semibold hover:bg-[#3d251e] dark:hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                      >
+                        <GitPullRequest className="h-3.5 w-3.5" />
+                        View PR
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
+                    <a
+                      href={item.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#c4a878] dark:border-white/15 text-[#1a0f0a] dark:text-[#f5f1ed] text-xs font-semibold hover:bg-[#f5f1ed] dark:hover:bg-white/8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                    >
+                      Repository
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* ── Footer note ── */}
+          <motion.div
+            className="mt-10 p-5 rounded-xl border border-[#d4c4b0]/40 dark:border-white/10 bg-white/40 dark:bg-white/3"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+              <span className="font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">Why open source matters to me:</span>{' '}
+              Every tool I use daily was built by someone who shared their work freely.
+              Contributing back — even in small ways — is how I stay connected to the
+              broader engineering community and keep learning from codebases more complex than my own.
+            </p>
           </motion.div>
-        </motion.div>
+
+        </div>
       </div>
     </motion.section>
   );

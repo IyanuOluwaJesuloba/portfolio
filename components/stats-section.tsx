@@ -60,7 +60,7 @@ export function StatsSection() {
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#4a4238] dark:text-[#e8e6e3] mb-4">
               Impact & Achievements
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white tracking-tight">
               Measurable Results
             </h2>
           </motion.div>

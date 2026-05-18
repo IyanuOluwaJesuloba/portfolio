@@ -16,30 +16,30 @@ const masteryAreas: MasteryArea[] = [
   {
     icon: <Zap className="w-8 h-8" />,
     title: 'High-Performance Frontend',
-    description: 'Building blazing-fast interfaces optimized for speed and user experience',
+    description: 'Building fast, accessible interfaces optimized for real-world user experience',
     skills: ['React/Next.js', 'Performance Optimization', 'SEO', 'PWA', 'Web Vitals'],
-    proficiency: 98,
+    proficiency: 88,
   },
   {
     icon: <Award className="w-8 h-8" />,
     title: 'Web3 & Blockchain',
-    description: 'Smart contracts, wallet integration, and decentralized applications',
-    skills: ['Solidity', 'EVM', 'Smart Contracts', 'Web3.js/Ethers', 'DeFi'],
-    proficiency: 92,
+    description: 'Smart contracts, wallet integration, and decentralized application frontends',
+    skills: ['Solidity', 'EVM', 'Smart Contracts', 'Ethers.js', 'DeFi'],
+    proficiency: 78,
   },
   {
     icon: <CheckCircle2 className="w-8 h-8" />,
     title: 'Accessibility & UX',
-    description: 'WCAG AA+ compliant, inclusive designs that work for everyone',
-    skills: ['WCAG 2.1', 'Semantic HTML', 'ARIA', 'User Testing', 'A11y'],
-    proficiency: 96,
+    description: 'Semantic, inclusive designs that work for everyone across devices',
+    skills: ['WCAG 2.1', 'Semantic HTML', 'ARIA', 'Responsive Design', 'A11y'],
+    proficiency: 85,
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
     title: 'Architecture & Design',
-    description: 'Scalable systems, design patterns, and long-term maintainability',
-    skills: ['System Design', 'TypeScript', 'Testing', 'DevOps', 'Clean Code'],
-    proficiency: 95,
+    description: 'Scalable component systems, design patterns, and maintainable codebases',
+    skills: ['System Design', 'TypeScript', 'Testing', 'Clean Code', 'Git'],
+    proficiency: 82,
   },
 ];
 
@@ -62,14 +62,14 @@ export function ExpertiseSection() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
               Professional Mastery
             </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-6 leading-tight">
               Expertise Backed by
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
                 Real Experience
               </span>
             </h2>
-            <p className="text-lg text-[#4a4238] dark:text-[#d4c4b0] max-w-2xl mx-auto">
+            <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-2xl mx-auto">
               Deep knowledge across multiple domains, proven through production systems and measurable results.
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ export function ExpertiseSection() {
                 className="group relative p-6 md:p-8 rounded-xl border border-[#d4c4b0]/50 dark:border-[#4a3220]/60 bg-white/75 dark:bg-[#3d3530]/70 backdrop-blur-sm hover:border-[#8a6239] dark:hover:border-[#d4c4b0] transition-all hover:shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
               >
@@ -119,7 +119,7 @@ export function ExpertiseSection() {
                       className="h-full bg-gradient-to-r from-[#8a6239] to-[#7a7268]"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${area.proficiency}%` }}
-                      transition={{ duration: 1.5, delay: 0.2 }}
+                      transition={{ duration: 0.8 }}
                       viewport={{ once: true }}
                     />
                   </motion.div>
@@ -133,7 +133,7 @@ export function ExpertiseSection() {
                       className="px-2.5 py-1 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#1a0f0a] dark:text-[#d4c4b0] text-xs font-medium border border-[#d4c4b0]/50 dark:border-[#4a3220]/50"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + sidx * 0.05 }}
+                      transition={{ duration: 0.2 }}
                       viewport={{ once: true }}
                     >
                       {skill}
@@ -149,7 +149,7 @@ export function ExpertiseSection() {
             className="p-8 rounded-xl border-2 border-[#8a6239]/50 dark:border-[#d4c4b0]/30 bg-gradient-to-br from-[#f0ede9] dark:from-[#4a3220] to-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ duration: 0.2 }}
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-6 flex items-center gap-2">
@@ -159,12 +159,12 @@ export function ExpertiseSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                '500K+ lines of production code shipped',
-                'Led teams building $2M+ TVL platforms',
-                '3+ open-source contributions to blockchain projects',
-                'Mentored 15+ junior developers',
-                '99.9% system uptime in production',
-                'Multiple award-winning projects',
+                'Built and shipped 10+ production projects (Web2 & Web3)',
+                'Contributed PRs to 3 open-source blockchain repositories',
+                'Improved client site performance by 40% through optimization',
+                'Mentored junior developers and interns at Orglobal Tech',
+                'Delivered projects with 95%+ client satisfaction rate',
+                'Consistent on-time delivery across all client engagements',
               ].map((achievement, idx) => (
                 <motion.div
                   key={idx}

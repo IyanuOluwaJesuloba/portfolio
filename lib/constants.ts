@@ -21,7 +21,7 @@ export const PORTFOLIO_CONFIG = {
 
   // Contact Information
   CONTACT_EMAIL: 'jesulobaowoseni1@gmail.com',
-  RESUME_URL: '/Iyanuoluwa Owoseni-- Resume.pdf',
+  RESUME_URL: "/IYANUOLUWA OWOSENI'S RESUME.pdf",
 
   // Navigation Items
   NAVIGATION_ITEMS: [
