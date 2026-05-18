@@ -97,7 +97,7 @@ export const portfolioProjects: PortfolioProject[] = [
     githubUrl: "https://github.com/IyanuOluwaJesuloba/MRM",
     liveUrl: "https://mrm-liart.vercel.app/",
     status: "Live",
-    year: "2025",
+    year: "2026",
     team: "Solo",
     features: [
       "Real-time database integration for secure data collection",
@@ -123,7 +123,7 @@ export const portfolioProjects: PortfolioProject[] = [
     githubUrl: "https://github.com/IyanuOluwaJesuloba/brain_wave",
     liveUrl: "https://brain-wave-zeta-six.vercel.app/",
     status: "In Progress",
-    year: "2025",
+    year: "2024",
     team: "Solo",
     features: [
       "Progressive disclosure UI for multi-modal AI tools",
@@ -237,7 +237,7 @@ export const portfolioProjects: PortfolioProject[] = [
     githubUrl: "https://github.com/IyanuOluwaJesuloba/FarmChain",
     liveUrl: "https://farm-chain-tau.vercel.app/",
     status: "Live",
-    year: "2025",
+    year: "2026",
     team: "Solo",
     features: ["On-chain crop record management", "Transaction tracking with confirmation states", "Accessible form-based data entry"],
     category: "web3",
