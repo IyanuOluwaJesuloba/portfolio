@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #060C18;
+    --bg2: #0D1625;
+    --bg3: #111E30;
+    --cyan: #00D9FF;
+    --amber: #F59E0B;
+    --text: #E8EDF5;
+    --muted: #8896AA;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(0,217,255,0.2);
+    --glow: rgba(0,217,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(6,12,24,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--cyan); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: #4ADE80;
+    background: rgba(74,222,128,0.08);
+    border: 0.5px solid rgba(74,222,128,0.25);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ADE80;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* --- SECTIONS --- */
+  section { padding: 6rem 2.5rem; max-width: 1000px; margin: 0 auto; }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .hero-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+  }
+
+  .orb1 {
+    width: 600px; height: 600px;
+    background: var(--cyan);
+    top: -200px; right: -100px;
+    animation: float1 8s ease-in-out infinite;
+  }
+
+  .orb2 {
+    width: 400px; height: 400px;
+    background: var(--amber);
+    bottom: 0; left: -100px;
+    animation: float2 10s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-30px, 30px); }
+  }
+
+  @keyframes float2 {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(20px, -20px); }
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--cyan);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--cyan);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cyan);
+    color: #060C18;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 0.5px solid var(--border2);
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover { background: var(--glow); transform: translateY(-1px); }
+
+  .hero-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s forwards;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .social-link:hover { color: var(--cyan); }
+
+  .social-link svg { width: 16px; height: 16px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- SECTION HEADINGS --- */
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border2);
+    max-width: 60px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  h2 span { color: var(--cyan); }
+
+  /* --- ABOUT --- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-img {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 320px;
+    border-radius: 12px;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--border2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,217,255,0.06) 0%, transparent 60%);
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+    background: var(--bg3);
+  }
+
+  .pill.cyan {
+    border-color: var(--border2);
+    color: var(--cyan);
+    background: rgba(0,217,255,0.05);
+  }
+
+  /* --- STACK --- */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stack-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .stack-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+
+  .stack-card-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .stack-card.web3 .stack-card-label { color: var(--amber); }
+
+  .tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: var(--bg3);
+    color: var(--text);
+    border: 0.5px solid var(--border);
+  }
+
+  .stack-card.web3 .tech-tag {
+    border-color: rgba(245,158,11,0.2);
+    background: rgba(245,158,11,0.04);
+  }
+
+  /* --- PROJECTS --- */
+  .projects-list { display: flex; flex-direction: column; gap: 2rem; }
+
+  .project-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .project-card:hover { border-color: var(--border2); background: var(--bg3); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+  }
+
+  .type-web3 {
+    color: var(--amber);
+    background: rgba(245,158,11,0.08);
+    border: 0.5px solid rgba(245,158,11,0.25);
+  }
+
+  .type-web2 {
+    color: var(--cyan);
+    background: rgba(0,217,255,0.06);
+    border: 0.5px solid var(--border2);
+  }
+
+  .project-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .project-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    max-width: 480px;
+  }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .project-tag {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--muted);
+    border: 0.5px solid var(--border);
+  }
+
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 0.5px solid var(--border);
+    border-radius: 5px;
+    background: var(--bg);
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .proj-link:hover { color: var(--cyan); border-color: var(--border2); }
+
+  /* --- CONTACT --- */
+  .contact-inner {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  }
+
+  .contact-inner h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+
+  .contact-inner p {
+    color: var(--muted);
+    max-width: 420px;
+    margin: 0 auto 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 460px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 7px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--border2); }
+
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: var(--muted); }
+
+  /* --- FOOTER --- */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--muted); }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .footer-logo span { color: var(--cyan); }
+
+  /* --- DIVIDER --- */
+  .section-divider {
+    height: 0.5px;
+    background: var(--border);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* --- SCROLL REVEAL --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img { max-width: 200px; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-links { flex-direction: row; align-items: center; justify-content: flex-start; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero-bg">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">dev<span>.</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-badge">Available for work</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; z-index:1;">
+  <p class="hero-tag">Web2 Frontend &amp; Web3 Fullstack</p>
+  <h1>I build interfaces<br>for browsers<br><em>and the blockchain.</em></h1>
+  <p class="hero-sub">Crafting pixel-perfect frontend experiences and decentralized applications — where design meets on-chain innovation.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#work">
+      View my work
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="btn-secondary" href="#contact">Get in touch</a>
+  </div>
+  <div class="hero-socials">
+    <a class="social-link" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a class="social-link" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      Discord
+    </a>
+    <a class="social-link" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" style="position:relative; z-index:1;">
+  <p class="section-label reveal">About</p>
+  <div class="about-grid">
+    <div class="about-img reveal reveal-delay-1">YN</div>
+    <div class="about-text">
+      <h2 class="reveal">Building the <span>web of tomorrow</span></h2>
+      <p class="reveal reveal-delay-1">I'm a <strong>frontend developer</strong> and <strong>Web3 fullstack engineer</strong> who bridges the gap between beautiful interfaces and decentralized infrastructure.</p>
+      <p class="reveal reveal-delay-2">With a deep focus on performance, accessibility, and on-chain architecture — I build products that feel great to use and are built to last on-chain.</p>
+      <p class="reveal reveal-delay-3">Currently based in <strong>Breda, NL</strong> — open to remote work, DAOs, and Web3 startups globally.</p>
+      <div class="about-pills reveal">
+        <span class="pill cyan">Web2 Frontend</span>
+        <span class="pill cyan">Web3 Fullstack</span>
+        <span class="pill">Remote-first</span>
+        <span class="pill">Open to DAOs</span>
+        <span class="pill">Freelance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- STACK -->
+<section id="stack" style="position:relative; z-index:1;">
+  <p class="section-label reveal">Tech Stack</p>
+  <h2 class="reveal">Tools I <span>work with</span></h2>
+  <div class="stack-grid">
+    <div class="stack-card reveal">
+      <p class="stack-card-label">Frontend</p>
+      <div class="tech-items">
+        <span class="tech-tag">HTML5</span>
+        <span class="tech-tag">CSS3</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">Next.js</span>
+        <span class="tech-tag">Tailwind</span>
+        <span class="tech-tag">Framer Motion</span>
+      </div>
+    </div>
+    <div class="stack-card web3 reveal reveal-delay-1">
+      <p class="stack-card-label">Web3</p>
+      <div class="tech-items">
+        <span class="tech-tag">Solidity</span>
+        <span class="tech-tag">Ethers.js</span>
+        <span class="tech-tag">Viem</span>
+        <span class="tech-tag">Wagmi</span>
+        <span class="tech-tag">Hardhat</span>
+        <span class="tech-tag">Foundry</span>
+        <span class="tech-tag">IPFS</span>
+        <span class="tech-tag">The Graph</span>
+      </div>
+    </div>
+    <div class="stack-card reveal reveal-delay-2">
+      <p class="stack-card-label">Backend & Tools</p>
+      <div class="tech-items">
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">REST API</span>
+        <span class="tech-tag">GraphQL</span>
+        <span class="tech-tag">Git</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">Vercel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WORK -->
+<section id="work" style="position:relative; z-index:1;">
+  <p class="section-label reveal">Selected Work</p>
+  <h2 class="reveal">Projects that <span>ship</span></h2>
+  <div class="projects-list">
+
+    <div class="project-card reveal">
+      <div>
+        <span class="project-type type-web3">⬡ Web3</span>
+        <h3>DeFi Yield Aggregator</h3>
+        <p>A decentralized protocol that routes user funds across multiple lending platforms to maximize APY — with a fully custom React dashboard and real-time on-chain data.</p>
+        <div class="project-tags">
+          <span class="project-tag">Solidity</span>
+          <span class="project-tag">React</span>
+          <span class="project-tag">Ethers.js</span>
+          <span class="project-tag">The Graph</span>
+          <span class="project-tag">Hardhat</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="#">Live dApp ↗</a>
+        <a class="proj-link" href="#">GitHub ↗</a>
+        <a class="proj-link" href="#">Etherscan ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <span class="project-type type-web2">◈ Web2</span>
+        <h3>SaaS Analytics Dashboard</h3>
+        <p>A fully responsive analytics platform with complex data visualisation, role-based access control, and 95+ Lighthouse score across all metrics.</p>
+        <div class="project-tags">
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Tailwind</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Recharts</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="#">Live Demo ↗</a>
+        <a class="proj-link" href="#">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <span class="project-type type-web3">⬡ Web3</span>
+        <h3>NFT Marketplace</h3>
+        <p>A gasless NFT marketplace built on ERC-721A with lazy minting, IPFS metadata storage, and a seamless wallet-connect onboarding flow for Web3 newcomers.</p>
+        <div class="project-tags">
+          <span class="project-tag">ERC-721A</span>
+          <span class="project-tag">Wagmi</span>
+          <span class="project-tag">IPFS</span>
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">Viem</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="#">Live dApp ↗</a>
+        <a class="proj-link" href="#">Contract ↗</a>
+        <a class="proj-link" href="#">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="position:relative; z-index:1;">
+  <div class="contact-inner reveal">
+    <p class="section-label" style="justify-content:center;">Contact</p>
+    <h2>Let's build <span>together</span></h2>
+    <p>Whether you're launching a dApp, a SaaS, or need a frontend that stands out — I'd love to hear about your project.</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Your name" />
+      <input type="email" placeholder="Email address" />
+      <textarea placeholder="Tell me about your project..."></textarea>
+      <button class="btn-primary" style="justify-content:center;">Send message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="position:relative; z-index:1;">
+  <div class="footer-logo">dev<span>.</span>portfolio</div>
+  <p>Designed &amp; built with intention — 2025</p>
+  <p style="font-size:0.75rem; color:#8896AA;">Breda, NL</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -152,6 +152,7 @@ const cardVariants = {
 };
 
 export function BlogSection() {
+  const shouldReduceMotion = useReducedMotion()
   const featuredPosts = blogPosts.filter(post => post.featured);
   const recentPosts = blogPosts.filter(post => !post.featured).slice(0, 3);
 
@@ -175,7 +176,7 @@ export function BlogSection() {
             variants={cardVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a] rounded-full text-sm font-medium mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#f5f1ed] rounded-full text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -198,7 +199,7 @@ export function BlogSection() {
             variants={cardVariants}
           >
             <h3 className="text-2xl font-bold text-black dark:text-white mb-8 flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-[#1a0f0a] dark:text-[#1a0f0a]" />
+              <TrendingUp className="h-6 w-6 text-[#1a0f0a] dark:text-[#f5f1ed]" />
               Featured Articles
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -230,7 +231,7 @@ export function BlogSection() {
 
                       {/* Content */}
                       <div className="p-6">
-                        <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#1a0f0a] transition-colors line-clamp-2">
+                        <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#f5f1ed] transition-colors line-clamp-2">
                           {post.title}
                         </h4>
                         <p className="text-black dark:text-white mb-4 text-sm leading-relaxed">
@@ -238,14 +239,14 @@ export function BlogSection() {
                         </p>
 
                         {/* Meta */}
-                        <div className="flex items-center justify-between text-xs text-[#f5f1ed]0 dark:text-black mb-4">
+                        <div className="flex items-center justify-between text-xs text-[#4a4238] dark:text-[#e8e6e3] mb-4">
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1">
-                              <Calendar className="h-3 w-3" />
+                              <Calendar className="h-3 w-3 text-[#1a0f0a] dark:text-[#f5f1ed]" />
                               {new Date(post.publishDate).toLocaleDateString()}
                             </div>
                             <div className="flex items-center gap-1">
-                              <Clock className="h-3 w-3" />
+                              <Clock className="h-3 w-3 text-[#1a0f0a] dark:text-[#f5f1ed]" />
                               {post.readTime}
                             </div>
                           </div>
@@ -253,7 +254,7 @@ export function BlogSection() {
 
                         {/* Stats */}
                         <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-4 text-xs text-[#f5f1ed]0 dark:text-black">
+                          <div className="flex items-center gap-4 text-xs text-[#4a4238] dark:text-[#e8e6e3]">
                             <div className="flex items-center gap-1">
                               <Eye className="h-3 w-3" />
                               {post.stats.views}
@@ -275,7 +276,7 @@ export function BlogSection() {
                             <Badge
                               key={tag}
                               variant="secondary"
-                              className="text-xs bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a]"
+                              className="text-xs bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#f5f1ed]"
                             >
                               {tag}
                             </Badge>
@@ -307,7 +308,7 @@ export function BlogSection() {
             variants={cardVariants}
           >
             <h3 className="text-2xl font-bold text-black dark:text-white mb-8 flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-[#1a0f0a] dark:text-[#1a0f0a]" />
+              <BookOpen className="h-6 w-6 text-[#1a0f0a] dark:text-[#f5f1ed]" />
               Recent Articles
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -320,17 +321,17 @@ export function BlogSection() {
                 >
                   <Card className="border-0 bg-white/80 dark:bg-[#3d3530]/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group">
                     <CardContent className="p-6">
-                      <Badge className="mb-3 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#1a0f0a]">
+                      <Badge className="mb-3 bg-[#d4c4b0] dark:bg-[#2a1810]/30 text-[#1a0f0a] dark:text-[#f5f1ed]">
                         {post.category}
                       </Badge>
-                      <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#1a0f0a] transition-colors">
+                      <h4 className="text-lg font-bold text-black dark:text-white mb-2 group-hover:text-[#1a0f0a] dark:group-hover:text-[#f5f1ed] transition-colors">
                         {post.title}
                       </h4>
                       <p className="text-black dark:text-white mb-4 text-sm leading-relaxed line-clamp-2">
                         {post.excerpt}
                       </p>
                       
-                      <div className="flex items-center justify-between text-xs text-[#f5f1ed]0 dark:text-black mb-4">
+                      <div className="flex items-center justify-between text-xs text-[#4a4238] dark:text-[#e8e6e3] mb-4">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
                           {new Date(post.publishDate).toLocaleDateString()}
@@ -342,7 +343,7 @@ export function BlogSection() {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-[#f5f1ed]0 dark:text-black">
+                        <div className="flex items-center gap-3 text-xs text-[#4a4238] dark:text-[#e8e6e3]">
                           <span>{post.stats.views} views</span>
                           <span>{post.stats.likes} likes</span>
                         </div>
@@ -350,7 +351,7 @@ export function BlogSection() {
                           asChild
                           variant="ghost"
                           size="sm"
-                          className="text-[#1a0f0a] dark:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#2a1810]/20 p-2"
+                          className="text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#2a1810]/20 p-2"
                         >
                           <a href={post.externalUrl} target="_blank" rel="noopener noreferrer">
                             <ArrowRight className="h-4 w-4" />
@@ -377,7 +378,7 @@ export function BlogSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#1a0f0a] to-[#4a3220] hover:from-[#4a3220] hover:to-[#2a1810] text-white rounded-lg font-medium shadow-lg hover:shadow-[#5c3d2e]/25 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
             >
               <BookOpen className="h-5 w-5" />

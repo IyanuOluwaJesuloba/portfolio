@@ -9,11 +9,11 @@ import Link from "next/link"
 
 const menuItems = [
   { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
   { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#case-studies" },
+  { name: "Services", href: "#services" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Portfolio", href: "#featured-projects" },
+  { name: "Open Source", href: "#open-source" },
   { name: "Contact", href: "#contact" },
 ]
 

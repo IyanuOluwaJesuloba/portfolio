@@ -1,16 +1,17 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { Code } from "lucide-react"
 
 export function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [])
@@ -21,7 +22,7 @@ export function LoadingScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#7a7270]"
         >
           <div className="text-center">
@@ -31,8 +32,12 @@ export function LoadingScreen() {
                 scale: [1, 1.2, 1],
               }}
               transition={{
-                rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-                scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
+                rotate: shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 2, repeat: Infinity, ease: "linear" },
+                scale: shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 1, repeat: Infinity, ease: "easeInOut" }
               }}
               className="mb-4"
             >
@@ -74,7 +79,7 @@ export function LoadingScreen() {
                     }}
                     transition={{
                       duration: 1,
-                      repeat: Infinity,
+                      repeat: shouldReduceMotion ? 0 : Infinity,
                       delay: i * 0.2,
                     }}
                   />

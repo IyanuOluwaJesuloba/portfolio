@@ -1,5 +1,7 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import {
   SiReact,
   SiNextdotjs,
@@ -10,7 +12,6 @@ import {
   SiCss3,
   SiGit,
   SiGithub,
-  SiVisualstudiocode,
   SiFigma,
   SiBun
 } from "@icons-pack/react-simple-icons"
@@ -30,7 +31,6 @@ const skillIcons: { [key: string]: any } = {
   "Tailwind CSS": SiTailwindcss,
   "Git": SiGit,
   "GitHub": SiGithub,
-  "VS Code": SiVisualstudiocode,
   "Figma": SiFigma,
   "bun": SiBun
 }
@@ -51,13 +51,15 @@ const skillColors: { [key: string]: string } = {
 }
 
 export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
+  const shouldReduceMotion = useReducedMotion()
+
   const Icon = skillIcons[name]
   const color = skillColors[name]
 
   if (variant === "interactive") {
     return (
       <motion.div
-        whileHover={{ scale: 1.05, y: -2 }}
+        whileHover={shouldReduceMotion ? undefined : { scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.2 }}
       >
@@ -67,8 +69,7 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
         >
           {Icon && (
             <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
+              transition={shouldReduceMotion ? undefined : { duration: 0.4 }}
             >
               <Icon
                 className="h-4 w-4 group-hover:scale-110 transition-transform duration-200"
@@ -87,7 +88,7 @@ export function SkillBadge({ name, variant = "default" }: SkillBadgeProps) {
   return (
     <Badge
       variant="secondary"
-      className="px-3 py-1 text-sm flex items-center gap-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-[#1a0f0a] hover:bg-[#d4c4b0] dark:hover:bg-[#7a7270]/50 transition-colors duration-200"
+      className="px-3 py-1 text-sm flex items-center gap-2 bg-[#d4c4b0] dark:bg-[#7a7270]/30 text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#d4c4b0] dark:hover:bg-[#7a7270]/50 transition-colors duration-200"
     >
       {Icon && <Icon className="h-4 w-4" style={{ color: color }} />}
       <span>{name}</span>
