@@ -54,7 +54,7 @@ export function PremiumCTASection() {
 
             <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
               Whether you're a founder with a vision, a team that needs frontend firepower,
-              or a company exploring Web3 — I'm here to help you ship something you're proud of.
+              or a company exploring Web3, I'm here to help you ship something you're proud of.
             </p>
           </motion.div>
 

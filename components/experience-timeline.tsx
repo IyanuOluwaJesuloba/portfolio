@@ -17,7 +17,7 @@ const experiences = [
     type: 'Full-Time',
     current: false,
     summary:
-      'Built scalable frontend solutions for a product-focused team — from component libraries to third-party API integrations — with a strong emphasis on performance and maintainability.',
+      'Built scalable frontend solutions for a product-focused team, from component libraries to third-party API integrations, with a strong emphasis on performance and maintainability.',
     highlights: [
       'Engineered a reusable component library that reduced UI development time across the team',
       'Translated Figma designs into pixel-perfect, responsive implementations with Framer Motion animations',
@@ -34,7 +34,7 @@ const experiences = [
     type: 'Full-Time',
     current: false,
     summary:
-      'Delivered web applications for multiple clients across different industries — owning the frontend from architecture decisions to production deployment.',
+      'Delivered web applications for multiple clients across different industries, owning the frontend from architecture decisions to production deployment.',
     highlights: [
       'Built 5+ responsive web applications using React and Next.js for clients across different sectors',
       'Improved a client\'s website performance by 40% through code splitting, image optimisation, and lazy loading',
@@ -52,10 +52,10 @@ const experiences = [
     type: 'Internship',
     current: false,
     summary:
-      'First professional engineering role — contributed to real product features, participated in code reviews, and built the habits that have shaped how I work today.',
+      'First professional engineering role, contributed to real product features, participated in code reviews, and built the habits that have shaped how I work today.',
     highlights: [
       'Developed responsive UI components that shipped to the company\'s live product',
-      'Participated in daily code reviews — learning to give and receive technical feedback',
+      'Participated in daily code reviews, learning to give and receive technical feedback',
       'Improved development workflow documentation, reducing onboarding time for new team members',
       'Supported onboarding of new interns and helped them navigate the codebase',
     ],
@@ -99,7 +99,7 @@ export function ExperienceTimeline() {
             </h2>
             <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
               Three years of professional experience across agencies, product teams, and
-              internships — each one shaping how I think about building software.
+              internships, each one shaping how I think about building software.
             </p>
           </motion.div>
 

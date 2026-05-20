@@ -242,7 +242,7 @@ export function AboutSection() {
                   </p>
                 </div>
                 <p className="text-sm text-[#1a0f0a] dark:text-[#f5f1ed] leading-relaxed">
-                  Deepening my Web3 frontend skills — building more complex DeFi UIs and
+                  Deepening my Web3 frontend skills, building more complex DeFi UIs and
                   exploring cross-chain wallet patterns. Also improving my system design
                   knowledge for larger-scale frontend architectures.
                 </p>
