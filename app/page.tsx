@@ -7,7 +7,6 @@ import { CaseStudiesSection } from "@/components/case-studies-section";
 import { ServicesSection } from "@/components/services-section";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { OpenSourceSection } from "@/components/open-source-section";
-import { TestimonialsSection } from "@/components/testimonials-premium";
 import { PremiumCTASection } from "@/components/premium-cta-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -18,34 +17,31 @@ export default function Portfolio() {
       <Header />
 
       <main className="pt-16">
-        {/* Hero - First impression and value prop */}
+        {/* Hero - First impression, verified positioning, terminal */}
         <PremiumHeroSection />
 
-        {/* About - Connection, credibility, and resume */}
+        {/* About - Honest background, dual market support */}
         <AboutSection />
 
-        {/* Skills - Technical credibility */}
+        {/* Skills - Technical depth: React/Next.js, Solidity/EVM, Rust/Soroban/Stellar */}
         <SkillsSection />
 
-        {/* Case Studies - All projects with click-to-view detail */}
+        {/* Case Studies - Featured projects with measurable outcomes & architecture */}
         <CaseStudiesSection />
 
-        {/* Services - What you offer */}
+        {/* Services - Focused 2 core offerings + also available line */}
         <ServicesSection />
 
-        {/* Experience - Career timeline */}
+        {/* Experience - Honest 3-year timeline with freelance & OSS entries */}
         <ExperienceTimeline />
 
-        {/* Open Source - Community contribution */}
+        {/* Open Source - Genuine ecosystem contributions */}
         <OpenSourceSection />
 
-        {/* Testimonials - Social proof */}
-        <TestimonialsSection />
-
-        {/* CTA - Build urgency before contact */}
+        {/* CTA - Urgency, trust signals, direct contact & scheduling */}
         <PremiumCTASection />
 
-        {/* Contact - Final conversion */}
+        {/* Contact - Direct form & booking link */}
         <ContactSection />
       </main>
 

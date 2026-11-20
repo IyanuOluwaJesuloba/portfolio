@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { PORTFOLIO_CONFIG } from './constants';
 
 /**
  * Enhanced SEO configuration for portfolio
- * Provides reusable metadata for better search engine optimization
+ * Provides reusable metadata for search engine optimization and social previews
  */
 
 export interface SEOConfig {
@@ -22,13 +23,15 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
     title,
     description,
     keywords = [],
-    ogImage = 'https://iyanuoluwa-portfolio.vercel.app/hero.jpeg',
-    twitterHandle = '@iyanuoluwa_dev',
-    locale = 'en_US',
+    ogImage = '/hero.jpeg',
+    twitterHandle = PORTFOLIO_CONFIG.SEO.TWITTER_HANDLE,
+    locale = PORTFOLIO_CONFIG.SEO.LOCALE,
   } = config;
 
+  const siteUrl = PORTFOLIO_CONFIG.SITE_URL;
+
   const metadata: Metadata = {
-    metadataBase: new URL('https://iyanuoluwa-portfolio.vercel.app'),
+    metadataBase: new URL(siteUrl),
     title,
     description,
     keywords,
@@ -49,10 +52,10 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
     openGraph: {
       type: 'website',
       locale,
-      url: 'https://iyanuoluwa-portfolio.vercel.app',
+      url: siteUrl,
       title,
       description,
-      siteName: 'IyanuOluwa Owoseni Portfolio',
+      siteName: 'IyanuOluwa Owoseni: Frontend & Web3 Engineer',
       images: [
         {
           url: ogImage,
@@ -84,10 +87,23 @@ export function getStructuredData(name: string, url: string, description: string
     name,
     url,
     description,
-    jobTitle: 'Frontend Developer & Web3 Developer',
+    jobTitle: 'Frontend & Web3 Engineer',
+    knowsAbout: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Solidity',
+      'Rust',
+      'Soroban',
+      'Stellar',
+      'Web3',
+      'Blockchain Development',
+      'Frontend Engineering',
+    ],
     sameAs: [
       'https://github.com/IyanuOluwaJesuloba',
       'https://linkedin.com/in/iyanuoluwa-owoseni',
+      'https://cal.com/iyanuoluwa-owoseni',
     ],
   };
 }

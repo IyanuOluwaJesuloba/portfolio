@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
 const menuItems = [
   { name: "About", href: "#about" },
@@ -52,7 +53,7 @@ export function MobileMenu() {
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        className="md:hidden text-black dark:text-white hover:text-[#1a0f0a] dark:hover:text-gray-700"
+        className="lg:hidden text-black dark:text-white hover:text-[#1a0f0a] dark:hover:text-gray-300"
       >
         <Menu className="h-6 w-6" />
         <span className="sr-only">Toggle menu</span>
@@ -67,7 +68,7 @@ export function MobileMenu() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
             />
 
             {/* Menu Panel */}
@@ -76,21 +77,26 @@ export function MobileMenu() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white dark:bg-[#7a7270] shadow-xl md:hidden"
+              className="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-[#faf9f7] dark:bg-[#1a0f0a] border-l border-[#d4c4b0]/50 dark:border-white/10 shadow-2xl lg:hidden flex flex-col justify-between"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-[#b8b0a8] dark:border-[#4a4238]">
-                  <h2 className="text-lg font-semibold text-black dark:text-white">
-                    Menu
-                  </h2>
+                <div className="flex items-center justify-between p-6 border-b border-[#d4c4b0]/50 dark:border-white/10">
+                  <div>
+                    <h2 className="text-base font-bold text-[#1a0f0a] dark:text-[#f5f1ed]">
+                      IyanuOluwa
+                    </h2>
+                    <p className="text-xs text-[#7a7268] dark:text-white/60">
+                      Frontend & Web3 Engineer
+                    </p>
+                  </div>
                   <div className="flex items-center gap-2">
                     <ThemeToggle />
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={toggleMenu}
-                      className="text-black dark:text-white"
+                      className="text-[#1a0f0a] dark:text-[#f5f1ed]"
                     >
                       <X className="h-6 w-6" />
                     </Button>
@@ -98,21 +104,21 @@ export function MobileMenu() {
                 </div>
 
                 {/* Navigation */}
-                <nav className="flex-1 p-6">
+                <nav className="flex-1 p-6 overflow-y-auto">
                   <motion.ul
-                    className="space-y-4"
+                    className="space-y-2"
                     variants={{
                       open: {
-                        transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+                        transition: { staggerChildren: 0.05, delayChildren: 0.05 }
                       }
                     }}
                   >
-                    {menuItems.map((item, index) => (
+                    {menuItems.map((item) => (
                       <motion.li key={item.name} variants={itemVariants}>
                         <Link
                           href={item.href}
                           onClick={toggleMenu}
-                          className="block py-3 px-4 text-lg font-medium text-[#4a4238] dark:text-[#e8e6e3] hover:text-[#1a0f0a] dark:hover:text-[#1a0f0a] hover:bg-[#f5f1ed] dark:hover:bg-[#7a7270]/20 rounded-lg transition-all duration-200"
+                          className="block py-2.5 px-3.5 text-base font-medium text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-white hover:bg-[#1a0f0a]/5 dark:hover:bg-white/5 rounded-lg transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -121,18 +127,31 @@ export function MobileMenu() {
                   </motion.ul>
                 </nav>
 
-                {/* Footer */}
-                <div className="p-6 border-t border-[#b8b0a8] dark:border-[#4a4238]">
-                  <motion.div variants={itemVariants}>
-                    <Button
-                      asChild
-                      className="w-full bg-gradient-to-r from-[#7a7268] to-[#9a9290] hover:from-[#4a3220] hover:to-[#7a7268]"
+                {/* Footer CTAs */}
+                <div className="p-6 border-t border-[#d4c4b0]/50 dark:border-white/10 space-y-2.5">
+                  <Button
+                    asChild
+                    className="w-full bg-[#1a0f0a] text-white hover:bg-[#3d251e] dark:bg-[#f5f1ed] dark:text-[#1a0f0a] dark:hover:bg-white font-bold"
+                  >
+                    <Link href="#contact" onClick={toggleMenu}>
+                      Get In Touch
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-[#8a6239] dark:border-[#d4af37] text-[#8a6239] dark:text-[#d4af37] hover:bg-[#8a6239]/10 font-bold"
+                  >
+                    <a
+                      href={PORTFOLIO_CONFIG.SOCIAL_LINKS.BOOKING}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
                     >
-                      <Link href="#contact" onClick={toggleMenu}>
-                        Get In Touch
-                      </Link>
-                    </Button>
-                  </motion.div>
+                      <Calendar className="h-4 w-4" />
+                      Book a 1:1 Call
+                    </a>
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -142,25 +161,3 @@ export function MobileMenu() {
     </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

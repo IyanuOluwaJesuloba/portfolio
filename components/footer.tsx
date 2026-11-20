@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Linkedin, Code2 } from 'lucide-react';
+import { Mail, Linkedin, Code2, Calendar } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { motion } from 'framer-motion';
+import { PORTFOLIO_CONFIG } from '@/lib/constants';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -12,23 +13,29 @@ const navLinks = [
   { label: 'Projects', href: '#case-studies' },
   { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Open Source', href: '#open-source' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const socials = [
   {
     icon: SiGithub,
-    href: 'https://github.com/IyanuOluwaJesuloba',
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.GITHUB,
     label: 'GitHub',
   },
   {
     icon: Linkedin,
-    href: 'https://www.linkedin.com/in/iyanuoluwa-owoseni/',
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.LINKEDIN,
     label: 'LinkedIn',
   },
   {
+    icon: Calendar,
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.BOOKING,
+    label: 'Cal.com Booking',
+  },
+  {
     icon: Mail,
-    href: 'mailto:jesulobaowoseni1@gmail.com',
+    href: `mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}`,
     label: 'Email',
   },
 ];
@@ -45,19 +52,18 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
 
-          {/* Left — brand + tagline */}
+          {/* Left column: brand and tagline */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center">
                 <Code2 className="h-4 w-4 text-white dark:text-[#1a0f0a]" />
               </div>
-              <span className="font-bold text-base text-[#1a0f0a] dark:text-[#f5f1ed] font-hero">
+              <span className="font-bold text-base text-[#1a0f0a] dark:text-[#f5f1ed]">
                 IyanuOluwa Owoseni
               </span>
             </div>
             <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] max-w-xs leading-relaxed mb-4">
-              Frontend developer and Web3 engineer. Building clean, fast, accessible products
-              for teams that care about quality.
+              Frontend & Web3 Engineer. Building resilient web products and smart contracts across EVM and Stellar Soroban.
             </p>
             {/* Socials */}
             <div className="flex items-center gap-2">
@@ -76,7 +82,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Right — nav links */}
+          {/* Right column: navigation links */}
           <nav aria-label="Footer navigation">
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
               Navigation
@@ -97,12 +103,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-[#d4c4b0]/40 dark:border-[#3d3530] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs text-[#7a7268] dark:text-[#7a7268]">
-            &copy; {new Date().getFullYear()} IyanuOluwa Owoseni. All rights reserved.
-          </p>
-          <p className="text-xs text-[#7a7268] dark:text-[#7a7268]">
-            Built with Next.js · TypeScript · Tailwind CSS · Framer Motion
+        <div className="mt-10 pt-6 border-t border-[#d4c4b0]/40 dark:border-[#3d3530] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[#7a7268] dark:text-white/40">
+          <p>© {new Date().getFullYear()} IyanuOluwa Owoseni. Built with Next.js, TypeScript & Tailwind CSS.</p>
+          <p className="flex items-center gap-1.5">
+            <span>Based in Nigeria (GMT+1)</span>
+            <span>·</span>
+            <span>UK/EU overlap</span>
+            <span>·</span>
+            <span>Open to remote & Nigerian roles</span>
           </p>
         </div>
       </div>

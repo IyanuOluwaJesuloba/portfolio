@@ -1,36 +1,34 @@
 /**
- * Centralized export for all portfolio components
- * Improves organization and makes imports cleaner throughout the codebase
+ * Centralized export for active portfolio components
  */
 
-// Main Sections
-export { HeroSection } from './hero-section';
+// Active Page Sections
+export { Header } from './header';
+export { PremiumHeroSection } from './premium-hero-section';
 export { AboutSection } from './about';
 export { SkillsSection } from './skills-section';
-export { ProjectsSection } from './projects-section';
+export { CaseStudiesSection } from './case-studies-section';
 export { ServicesSection } from './services-section';
 export { ExperienceTimeline } from './experience-timeline';
-export { TechStackShowcase } from './code-showcase';
 export { OpenSourceSection } from './open-source-section';
+export { PremiumCTASection } from './premium-cta-section';
 export { ContactSection } from './contact-section';
-export { Header } from './header';
 export { Footer } from './footer';
-export { StatsSection } from './stats-section';
 
-// Utility Components
-export { AnimatedBackground } from './animated-background';
-export { AnimatedSection } from './animated-section';
+// Utility & Sub-components
+export { ContactForm } from './contact-form';
 export { MobileMenu } from './mobile-menu';
 export { ThemeProvider } from './theme-provider';
 export { ThemeToggle } from './theme-toggle';
-export { ContactForm } from './contact-form';
-export { ProjectCard } from './project-card';
-export { SkillChart } from './skill-chart';
-export { SkeletonLoader } from './skeleton-loader';
 
-// UI Components (re-exports)
+// Active UI Components
 export { Button } from './ui/button';
-export { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
-export { Badge } from './ui/badge';
+export { Card, CardContent } from './ui/card';
 export { Input } from './ui/input';
 export { Textarea } from './ui/textarea';
+export {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';

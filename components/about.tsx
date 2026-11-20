@@ -11,6 +11,7 @@ import {
   Briefcase,
   ArrowRight,
   CheckCircle2,
+  Calendar,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { sectionVariants } from '@/lib/animations';
@@ -20,28 +21,29 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { PORTFOLIO_CONFIG } from '@/lib/constants';
 
 const highlights = [
   {
     label: 'What I build',
-    value: 'Frontend interfaces and Web3 products — from design system to deployed app.',
+    value: 'Software that solves real human problems: accessible web applications, responsive dashboards, and transparent Web3 escrow systems.',
   },
   {
     label: 'How I work',
     value:
-      'I start with the user problem, not the tech stack. Clean code and clear communication throughout.',
+      'I start with human pain points and operational constraints, not technology hype. Clean code, comprehensive test suites, and transparent communication throughout.',
   },
   {
     label: 'What I care about',
     value:
-      'Accessibility, performance, and shipping things that actually work in production.',
+      'Human-centered UX, accessibility, Core Web Vitals performance, and software reliability in messy, real-world conditions.',
   },
 ];
 
 const facts = [
-  { icon: MapPin, text: 'Nigeria — available remotely' },
-  { icon: Briefcase, text: 'Open to full-time, contract & freelance' },
-  { icon: CheckCircle2, text: '3+ years building for the web' },
+  { icon: MapPin, text: 'Based in Nigeria (GMT+1): overlaps with UK/EU hours; open to Nigerian & remote roles' },
+  { icon: Briefcase, text: 'Open to full-time, fellowship, and contract roles' },
+  { icon: CheckCircle2, text: '3 years building Web2 & Web3 products (professional, freelance, OSS)' },
 ];
 
 export function AboutSection() {
@@ -80,7 +82,7 @@ export function AboutSection() {
           {/* ── Two-column layout ── */}
           <div className="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-20 items-start">
 
-            {/* LEFT — narrative */}
+            {/* Left column: narrative */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,32 +92,30 @@ export function AboutSection() {
             >
               <div className="space-y-5">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.1] tracking-tight">
-                  I turn complex problems
+                  Building software that solves
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
-                    into clean interfaces.
+                    real human problems.
                   </span>
                 </h2>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  I'm IyanuOluwa, a expectional frontend developer based in Nigeria. I started
-                  building for the web because I was frustrated by how many products looked
-                  great in Figma but fell apart in the browser. That gap between design and
-                  working code is where I live.
+                  I'm IyanuOluwa, a frontend and Web3 engineer based in Nigeria. I believe great software is defined
+                  by the human friction it eliminates: whether that's protecting a contractor's livelihood through trustless
+                  milestone escrow, helping security analysts triage threats without cognitive overload, or ensuring people on spotty
+                  connections can use web services without failing.
                 </p>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  Over the past 3 years I've shipped production apps across fintech, SaaS,
-                  and Web3, from a mission-driven nonprofit site to a cyber-command
-                  dashboard to wallet-connected DeFi interfaces. The common thread: I care
-                  about the user experience as much as the code quality.
+                  Over the past 3 years building Web2 and Web3 products (across professional roles, freelance engagements,
+                  and open-source contributions), I've kept human utility at the heart of engineering decisions. From fast-loading responsive interfaces
+                  to verified smart contracts, my goal is always to make complex technology feel natural, dependable, and genuinely useful.
                 </p>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  My move into Web3 wasn't a trend-chase. I got curious about what it
-                  actually takes to build trustless systems and ended up learning Solidity,
-                  contributing to open-source blockchain projects, and building DEX and NFT
-                  marketplace UIs from scratch. I understand both sides of the stack.
+                  My Web3 work spans both EVM chains (Solidity, Ethers.js) and the Stellar ecosystem (Rust, Soroban smart contracts, Freighter wallet).
+                  Rather than building tech for tech's sake, I focus on removing blockchain friction: abstracting cryptographic hurdles so
+                  real people can transact safely with zero confusion.
                 </p>
               </div>
 
@@ -163,6 +163,23 @@ export function AboutSection() {
                   </Link>
                 </Button>
 
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-[#8a6239] dark:border-[#d4c4b0] text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#f5f1ed] dark:hover:bg-[#1a0f0a]/20"
+                >
+                  <a
+                    href={PORTFOLIO_CONFIG.SOCIAL_LINKS.BOOKING}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    Book a Call
+                  </a>
+                </Button>
+
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
@@ -178,7 +195,7 @@ export function AboutSection() {
                   <DropdownMenuContent align="start" className="w-48">
                     <DropdownMenuItem asChild>
                       <a
-                        href="/IYANUOLUWA OWOSENI'S RESUME.pdf"
+                        href={PORTFOLIO_CONFIG.RESUME_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="cursor-pointer"
@@ -188,7 +205,7 @@ export function AboutSection() {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <a
-                        href="/IYANUOLUWA OWOSENI'S RESUME.pdf"
+                        href={PORTFOLIO_CONFIG.RESUME_URL}
                         download
                         className="cursor-pointer"
                       >
@@ -200,7 +217,7 @@ export function AboutSection() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT — sidebar cards */}
+            {/* Right column: sidebar cards */}
             <motion.div
               className="space-y-5"
               initial={{ opacity: 0, y: 24 }}
@@ -217,14 +234,14 @@ export function AboutSection() {
                   {facts.map((f, i) => (
                     <motion.li
                       key={f.text}
-                      className="flex items-center gap-3 text-sm text-[#1a0f0a] dark:text-[#f5f1ed]"
+                      className="flex items-start gap-3 text-sm text-[#1a0f0a] dark:text-[#f5f1ed]"
                       initial={{ opacity: 0, x: 12 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: i * 0.08 }}
                       viewport={{ once: true }}
                     >
-                      <f.icon className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0" />
-                      {f.text}
+                      <f.icon className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-0.5" />
+                      <span>{f.text}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -242,9 +259,8 @@ export function AboutSection() {
                   </p>
                 </div>
                 <p className="text-sm text-[#1a0f0a] dark:text-[#f5f1ed] leading-relaxed">
-                  Deepening my Web3 frontend skills, building more complex DeFi UIs and
-                  exploring cross-chain wallet patterns. Also improving my system design
-                  knowledge for larger-scale frontend architectures.
+                  Building Soroban smart contracts in Rust for autonomous payment gateways on Stellar (Proxima),
+                  and crafting production React / Next.js frontends that make decentralized workflows effortless for everyday users.
                 </p>
               </div>
 
@@ -255,10 +271,11 @@ export function AboutSection() {
                 </p>
                 <ul className="space-y-2">
                   {[
-                    'Teams that care about code quality',
-                    'Products with real users and real stakes',
-                    'Environments where I can keep growing',
-                    'Remote-first or hybrid setups',
+                    'Teams building software that solves genuine human problems',
+                    'Frontend & Web3 roles (junior-to-mid, fellowship, contract)',
+                    'Products bridging real-world utility with modern Web2 & Web3',
+                    'Engineering cultures that value rigorous testing & clean code',
+                    'Remote teams (overlapping with UK/EU/US-East timezones) & Nigerian companies',
                   ].map((item, i) => (
                     <motion.li
                       key={item}
@@ -281,9 +298,7 @@ export function AboutSection() {
                   Beyond the screen
                 </p>
                 <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-                  I mentor junior developers, write about frontend patterns, and occasionally
-                  contribute to open-source. Outside tech — football, music, and long
-                  conversations about how the internet should work.
+                  Active contributor in open-source developer communities. Outside engineering: music, tech podcasts, and exploring decentralized governance models.
                 </p>
               </div>
             </motion.div>

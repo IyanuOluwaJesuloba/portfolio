@@ -6,29 +6,41 @@
 export const PORTFOLIO_CONFIG = {
   // Site Information
   SITE_NAME: 'IyanuOluwa Owoseni',
-  SITE_TITLE: 'IyanuOluwa Owoseni | Senior Frontend Developer & Web3 Specialist',
-  SITE_URL: 'https://iyanuoluwa-portfolio.vercel.app',
+  SITE_TITLE: 'IyanuOluwa Owoseni | Frontend & Web3 Engineer',
+  SITE_URL:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'https://iyanuoluwa-portfolio.vercel.app'),
   SITE_DESCRIPTION:
-    'Passionate full-stack frontend engineer specializing in React, Next.js, and Web3 technologies. Building exceptional digital experiences with clean code, performance optimization, and modern design principles.',
+    'Frontend & Web3 Engineer with 3 years building Web2 and Web3 products focused on solving real human problems (professional, freelance, and open source). Specializing in React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.',
 
-  // Social Links
+  // Social & Booking Links
   SOCIAL_LINKS: {
     GITHUB: 'https://github.com/IyanuOluwaJesuloba',
     LINKEDIN: 'https://www.linkedin.com/in/iyanuoluwa-owoseni/',
     EMAIL: 'jesulobaowoseni1@gmail.com',
     TWITTER: 'https://twitter.com/iyanuoluwa_dev',
+    BOOKING: 'https://cal.com/iyanuoluwa-owoseni',
   },
 
   // Contact Information
   CONTACT_EMAIL: 'jesulobaowoseni1@gmail.com',
   RESUME_URL: "/IYANUOLUWA OWOSENI'S RESUME.pdf",
 
+  // Market & Availability
+  LOCATION: 'Nigeria (GMT+1)',
+  MARKET_NOTE: 'Based in Nigeria (GMT+1): overlaps with UK/EU hours; open to Nigerian and remote roles.',
+
   // Navigation Items
   NAVIGATION_ITEMS: [
     { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'Projects', href: '#case-studies' },
+    { label: 'Services', href: '#services' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Open Source', href: '#open-source' },
     { label: 'Contact', href: '#contact' },
   ],
@@ -39,44 +51,49 @@ export const PORTFOLIO_CONFIG = {
       'React',
       'Next.js',
       'TypeScript',
-      'JavaScript',
+      'JavaScript (ES2022+)',
       'Tailwind CSS',
-      'HTML5',
-      'CSS3',
+      'Framer Motion',
+      'HTML5 & CSS3',
       'Responsive Design',
+      'Web Accessibility (WCAG)',
     ],
     WEB3: [
+      'Rust',
+      'Soroban',
+      'Stellar SDK & Horizon',
       'Solidity',
-      'Web3.js',
       'Ethers.js',
+      'Wagmi / RainbowKit',
       'Smart Contracts',
-      'EVM',
-      'Blockchain',
-      'DeFi Protocols',
+      'EVM & Testnets',
+      'Zero-Knowledge (ZK)',
+      'Foundry & Hardhat',
     ],
     TOOLS: [
-      'Git',
+      'Git & GitHub',
       'VS Code',
-      'Docker',
-      'Webpack',
-      'Vite',
       'Figma',
+      'Node.js & npm',
+      'Vite & Webpack',
+      'Vercel',
       'Postman',
+      'Docker',
     ],
   },
 
-  // Stats
+  // Stats (Unified single true numbers)
   STATS: {
-    PROJECTS: '11+',
-    EXPERIENCE_YEARS: '3+',
-    OPEN_SOURCE_CONTRIBUTIONS: '3+',
-    TECH_STACKS: '5+',
+    PROJECTS: '7',
+    EXPERIENCE_YEARS: '3',
+    OPEN_SOURCE_CONTRIBUTIONS: '5+',
+    TECH_STACKS: '6+',
   },
 
   // SEO
   SEO: {
     LOCALE: 'en_US',
-    OG_IMAGE: 'https://iyanuoluwa-portfolio.vercel.app/hero.jpeg',
+    OG_IMAGE: '/hero.jpeg',
     TWITTER_HANDLE: '@iyanuoluwa_dev',
   },
 
@@ -96,8 +113,3 @@ export const PORTFOLIO_CONFIG = {
     '2XL': 1536,
   },
 } as const;
-
-/**
- * Type-safe keys for portfolio config
- */
-export type PortfolioConfigKey = keyof typeof PORTFOLIO_CONFIG;

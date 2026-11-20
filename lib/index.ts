@@ -1,6 +1,5 @@
 /**
  * Centralized export for all library utilities
- * Improves organization and makes imports cleaner throughout the codebase
  */
 
 export { cn } from './utils';
@@ -32,12 +31,14 @@ export {
   exitSlideOut,
   transitions,
 } from './animations';
+export { PORTFOLIO_CONFIG } from './constants';
 export { generateSEOMetadata, getStructuredData } from './seo';
 export type { SEOConfig } from './seo';
 export {
   portfolioProjects,
   openSourceContributions,
   type PortfolioProject,
+  type ProjectMetric,
   type PortfolioProjectCategory,
   type OpenSourceContribution,
 } from './portfolio-data';
