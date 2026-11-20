@@ -36,7 +36,7 @@ const groups: TechGroup[] = [
     icon: Code2,
     description: 'The stack I reach for on every project.',
     items: [
-      { name: 'React', note: 'Component architecture, hooks, context — daily driver', primary: true },
+      { name: 'React', note: 'Component architecture, hooks, context - daily driver', primary: true },
       { name: 'Next.js', note: 'App Router, SSR/SSG, API routes, image optimisation', primary: true },
       { name: 'TypeScript', note: 'Strict mode, generics, utility types across all projects', primary: true },
       { name: 'Tailwind CSS', note: 'Utility-first styling, custom design tokens, dark mode', primary: true },
@@ -57,9 +57,9 @@ const groups: TechGroup[] = [
       { name: 'Solidity', note: 'ERC-20/721 contracts, Foundry testing, deployment scripts', primary: true },
       { name: 'Wagmi / RainbowKit', note: 'Wallet UX, multi-chain support, React hooks for Web3' },
       { name: 'Hardhat', note: 'Local dev node, contract testing, deployment pipelines' },
-      { name: 'OpenZeppelin', note: 'Secure contract standards — ERC tokens, access control' },
+      { name: 'OpenZeppelin', note: 'Secure contract standards - ERC tokens, access control' },
       { name: 'IPFS', note: 'Decentralised asset storage for NFT metadata' },
-      { name: 'EVM Chains', note: 'Ethereum, Polygon, testnets — deployment and debugging' },
+      { name: 'EVM Chains', note: 'Ethereum, Polygon, testnets - deployment and debugging' },
     ],
   },
   {
@@ -189,7 +189,7 @@ export function SkillsSection() {
                   Tools I use
                 </h2>
                 <p className="mt-3 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  Click any item to see how I use it in practice. Core tools are marked — everything else I reach for when the project calls for it.
+                  Click any item to see how I use it in practice. Core tools are marked, everything else I reach for when the project calls for it.
                 </p>
               </div>
             </div>
@@ -291,7 +291,7 @@ export function SkillsSection() {
             </div>
             <span className="hidden sm:block h-4 w-px bg-[#d4c4b0]/60 dark:bg-[#4a3220]" />
             <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-              I'm always learning. If your stack isn't listed here, ask me — I pick up new tools quickly and have done it before.
+              I'm always learning. If your stack isn't listed here, ask me, I pick up new tools quickly and have done it before.
             </p>
           </motion.div>
 

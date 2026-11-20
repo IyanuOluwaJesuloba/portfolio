@@ -254,7 +254,7 @@ export function PremiumHeroSection() {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
             {/* ── LEFT ── */}
-            <div className="space-y-5 sm:space-y-6 order-2 lg:order-1">
+            <div className="space-y-5 sm:space-y-6 order-1 lg:order-1">
 
               {/* Availability + location */}
               <motion.div
@@ -401,7 +401,7 @@ export function PremiumHeroSection() {
             </div>
 
             {/* ── RIGHT — terminal ── */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
               <div className="w-full max-w-[420px] sm:max-w-[460px] lg:max-w-none">
                 <TerminalCard />
               </div>

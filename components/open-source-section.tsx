@@ -48,7 +48,7 @@ export function OpenSourceSection() {
                   </span>
                 </h2>
                 <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  I've contributed to open-source Web3 projects — shipping real improvements
+                  I've contributed to open-source Web3 projects, shipping real improvements
                   to codebases used by other developers. Here's what I worked on and why it mattered.
                 </p>
               </div>
@@ -148,7 +148,7 @@ export function OpenSourceSection() {
             <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
               <span className="font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">Why open source matters to me:</span>{' '}
               Every tool I use daily was built by someone who shared their work freely.
-              Contributing back — even in small ways — is how I stay connected to the
+              Contributing back, even in small ways, is how I stay connected to the
               broader engineering community and keep learning from codebases more complex than my own.
             </p>
           </motion.div>

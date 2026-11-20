@@ -106,7 +106,7 @@ export function CaseStudiesSection() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.08] tracking-tight">
-                  Not just what I built —
+                  Not just what I built,
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#a07848] to-[#7a7268] dark:from-[#d4c4b0] dark:to-[#c4b4a0]">
                     why it mattered.

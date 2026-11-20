@@ -10,35 +10,35 @@ import Link from 'next/link';
 
 const testimonials = [
   {
-    name: 'Alex Johnson',
-    role: 'Product Lead',
-    company: 'FinTech Startup',
-    initials: 'AJ',
+    name: 'Benjamin Abiodun',
+    role: 'Founder',
+    company: 'Missions',
+    initials: 'BJ',
     content:
-      'IyanuOluwa delivered a clean, well-structured frontend that was easy to hand off to the rest of the team. He asked the right questions upfront, flagged edge cases we hadn\'t considered, and the responsive design was exactly what we needed.',
+      'IyanuOluwa delivered a clean, well-structured frontend that was easy to hand off to the rest of the team. She asked the right questions upfront, flagged edge cases we hadn\'t considered, and the responsive design was exactly what we needed.',
     rating: 5,
     highlight: 'Asked the right questions upfront',
   },
   {
-    name: 'Maria Garcia',
+    name: 'Lyndabel Okolo',
     role: 'CTO',
     company: 'Web3 Protocol',
-    initials: 'MG',
+    initials: 'LO',
     content:
       'The wallet integration and smart contract UI were handled professionally. The code was readable, well-commented, and the UX was intuitive enough that our non-crypto users could navigate it without a tutorial. That\'s harder than it sounds.',
     rating: 5,
     highlight: 'Non-crypto users could navigate without a tutorial',
   },
-  {
-    name: 'David Chen',
-    role: 'Founder',
-    company: 'SaaS Platform',
-    initials: 'DC',
-    content:
-      'Delivered on time, communicated clearly throughout, and proactively flagged a performance issue before it became a problem in production. That kind of ownership is rare. Would work with again without hesitation.',
-    rating: 5,
-    highlight: 'Flagged a performance issue before it hit production',
-  },
+  // {
+  //   name: 'David Chen',
+  //   role: 'Founder',
+  //   company: 'SaaS Platform',
+  //   initials: 'DC',
+  //   content:
+  //     'Delivered on time, communicated clearly throughout, and proactively flagged a performance issue before it became a problem in production. That kind of ownership is rare. Would work with again without hesitation.',
+  //   rating: 5,
+  //   highlight: 'Flagged a performance issue before it hit production',
+  // },
 ];
 
 // ─── Main section ──────────────────────────────────────────────────────────────

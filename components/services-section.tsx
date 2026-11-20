@@ -20,9 +20,9 @@ const services = [
     number: '01',
     icon: Code2,
     title: 'Frontend Engineering',
-    tagline: 'From Figma to production — fast, accessible, and built to last.',
+    tagline: 'From Figma to production - fast, accessible, and built to last.',
     description:
-      "I build React and Next.js applications that perform well, look sharp, and hold up under real-world conditions. Whether you're starting from scratch or inheriting a codebase, I write code that your future self — or your next developer — will thank you for.",
+      "I build React and Next.js applications that perform well, look sharp, and hold up under real-world conditions. Whether you're starting from scratch or inheriting a codebase, I write code that your future self, or your next developer, will thank you for.",
     deliverables: [
       'React & Next.js (App Router, SSR, SSG)',
       'TypeScript with strict typing',
@@ -42,7 +42,7 @@ const services = [
     title: 'Web3 Frontend & Smart Contracts',
     tagline: 'Blockchain UX that non-crypto users can actually navigate.',
     description:
-      "Web3 products fail when the UX assumes the user already understands blockchain. I bridge that gap — building wallet-connected interfaces that feel as intuitive as any Web2 app, backed by Solidity contracts that are clean, tested, and auditable.",
+      "Web3 products fail when the UX assumes the user already understands blockchain. I bridge that gap, building wallet-connected interfaces that feel as intuitive as any Web2 app, backed by Solidity contracts that are clean, tested, and auditable.",
     deliverables: [
       'Wallet connection (MetaMask, RainbowKit)',
       'Smart contract UI via Ethers.js',
@@ -62,7 +62,7 @@ const services = [
     title: 'UI Implementation & Design Systems',
     tagline: 'Pixel-perfect implementation with the performance to match.',
     description:
-      "Great design deserves great implementation. I translate Figma files into responsive, animated interfaces that match the design intent — not just the static mockup. I also build component libraries and design systems that scale as your product grows.",
+      "Great design deserves great implementation. I translate Figma files into responsive, animated interfaces that match the design intent, not just the static mockup. I also build component libraries and design systems that scale as your product grows.",
     deliverables: [
       'Figma-to-code with pixel-perfect fidelity',
       'Responsive, mobile-first layouts',
@@ -82,7 +82,7 @@ const services = [
     title: 'Technical Consulting & Code Review',
     tagline: 'A second pair of eyes from someone who has shipped production code.',
     description:
-      "Sometimes you don't need a full build — you need someone to review your architecture, unblock a performance issue, or help your team level up. I offer focused consulting engagements for teams who want honest, actionable technical feedback.",
+      "Sometimes you don't need a full build, you need someone to review your architecture, unblock a performance issue, or help your team level up. I offer focused consulting engagements for teams who want honest, actionable technical feedback.",
     deliverables: [
       'Frontend architecture review',
       'Performance audit & roadmap',
@@ -214,7 +214,7 @@ export function ServicesSection() {
                   </span>
                 </h2>
                 <p className="mt-4 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  Four focused services — each one built around a specific type of problem.
+                  Four focused services, each one built around a specific type of problem.
                   If your need doesn't fit neatly into a category, reach out. I'm flexible.
                 </p>
               </div>
