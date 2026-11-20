@@ -39,6 +39,7 @@ const groups: TechGroup[] = [
       { name: 'React', note: 'Component architecture, custom hooks, context, state management', primary: true },
       { name: 'Next.js', note: 'App Router, SSR/SSG, API routes, image optimization, Core Web Vitals', primary: true },
       { name: 'TypeScript', note: 'Strict mode, generics, utility types across all projects', primary: true },
+      { name: 'TanStack Query', note: 'Server state management, optimistic caching, asynchronous queries', primary: true },
       { name: 'Tailwind CSS', note: 'Utility-first styling, custom design tokens, dark mode', primary: true },
       { name: 'Framer Motion', note: 'Page transitions, scroll animations, gesture interactions', primary: true },
       { name: 'JavaScript (ES2022+)', note: 'Async/await, optional chaining, modules, Web APIs' },

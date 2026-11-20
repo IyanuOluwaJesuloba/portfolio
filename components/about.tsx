@@ -25,18 +25,19 @@ import { PORTFOLIO_CONFIG } from '@/lib/constants';
 
 const highlights = [
   {
-    label: 'What I build',
-    value: 'Software that solves real human problems: accessible web applications, responsive dashboards, and transparent Web3 escrow systems.',
+    label: 'Frontend Engineering (Web2)',
+    value:
+      'Next.js 15, React, TanStack Query, and strict TypeScript. Modular design systems, accessible UX (WCAG AA), optimistic data caching, and Core Web Vitals optimization.',
   },
   {
-    label: 'How I work',
+    label: 'Smart Contracts & Web3',
     value:
-      'I start with human pain points and operational constraints, not technology hype. Clean code, comprehensive test suites, and transparent communication throughout.',
+      'Soroban smart contracts in Rust on Stellar, Solidity on EVM, and wallet integration. Turning complex on-chain states into simple, reassuring user workflows.',
   },
   {
-    label: 'What I care about',
+    label: 'Engineering Philosophy',
     value:
-      'Human-centered UX, accessibility, Core Web Vitals performance, and software reliability in messy, real-world conditions.',
+      'Starting with human pain points rather than technology hype. Clean code, automated test suites (Jest, Cargo, Foundry), and zero surprises.',
   },
 ];
 
@@ -100,22 +101,23 @@ export function AboutSection() {
                 </h2>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  I'm IyanuOluwa, a frontend and Web3 engineer based in Nigeria. I believe great software is defined
-                  by the human friction it eliminates: whether that's protecting a contractor's livelihood through trustless
-                  milestone escrow, helping security analysts triage threats without cognitive overload, or ensuring people on spotty
+                  I'm IyanuOluwa, a frontend and Web3 engineer based in Nigeria. I believe great software only creates value
+                  when it eliminates human friction: whether that's protecting a contractor's livelihood through trustless
+                  escrow, helping security analysts triage threats without cognitive overload, or ensuring people on spotty
                   connections can use web services without failing.
                 </p>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  Over the past 3 years building Web2 and Web3 products (across professional roles, freelance engagements,
-                  and open-source contributions), I've kept human utility at the heart of engineering decisions. From fast-loading responsive interfaces
-                  to verified smart contracts, my goal is always to make complex technology feel natural, dependable, and genuinely useful.
+                  On the <strong>Web2 frontend side</strong>, I specialize in React, Next.js (App Router), TanStack Query, and strict TypeScript.
+                  I focus on engineering component-driven design systems that bridge Figma fidelity with production code: implementing accessible
+                  UI architectures, resilient state management, and performance tuning that delivers sub-second load times and high Core Web Vitals.
                 </p>
 
                 <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
-                  My Web3 work spans both EVM chains (Solidity, Ethers.js) and the Stellar ecosystem (Rust, Soroban smart contracts, Freighter wallet).
-                  Rather than building tech for tech's sake, I focus on removing blockchain friction: abstracting cryptographic hurdles so
-                  real people can transact safely with zero confusion.
+                  On the <strong>Web3 side</strong>, I build across both the Stellar ecosystem (Rust, Soroban smart contracts, Freighter wallet)
+                  and EVM chains (Solidity, Ethers.js). Rather than treating blockchain as hype, I apply it where decentralization solves real trust
+                  problems: automating milestone settlements, creating autonomous payment rails, and abstracting cryptographic friction so decentralized
+                  tools feel as effortless as everyday web apps.
                 </p>
               </div>
 

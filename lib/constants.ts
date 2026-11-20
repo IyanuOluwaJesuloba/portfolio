@@ -51,6 +51,7 @@ export const PORTFOLIO_CONFIG = {
       'React',
       'Next.js',
       'TypeScript',
+      'TanStack Query',
       'JavaScript (ES2022+)',
       'Tailwind CSS',
       'Framer Motion',
