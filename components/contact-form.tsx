@@ -8,10 +8,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Send } from "lucide-react"
 import emailjs from '@emailjs/browser'
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion"
 import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
-const formVariants = {
+const formVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
@@ -23,7 +23,7 @@ const formVariants = {
   }
 }
 
-const fieldVariants = {
+const fieldVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: { 
     opacity: 1, 
@@ -34,14 +34,14 @@ const fieldVariants = {
   }
 }
 
-const successVariants = {
+const successVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { 
     opacity: 1, 
     scale: 1,
     transition: {
       duration: 0.5,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 200
     }
   }
