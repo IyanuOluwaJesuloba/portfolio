@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, type Variants } from "framer-motion"
 import { Menu, X, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -23,7 +23,7 @@ export function MobileMenu() {
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
-  const menuVariants = {
+  const menuVariants: Variants = {
     closed: {
       opacity: 0,
       x: "100%",
@@ -42,7 +42,7 @@ export function MobileMenu() {
     }
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     closed: { opacity: 0, x: 20 },
     open: { opacity: 1, x: 0 }
   }
