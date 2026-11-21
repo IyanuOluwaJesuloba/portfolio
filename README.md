@@ -1,6 +1,6 @@
 # IyanuOluwa Owoseni: Portfolio
 
-A high-performance, modern portfolio showcasing **Frontend & Web3 Engineering** focused on building software that solves real human problems across React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.
+A high-performance, modern portfolio showcasing **Frontend & Web3 Engineering** focused on building software that solves real world problems across React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.
 
 🔗 **Live**: [iyanuoluwa-portfolio.vercel.app](https://iyanuoluwa-portfolio.vercel.app)  
 📅 **Book a Call**: [cal.com/iyanuoluwa-owoseni](https://cal.com/iyanuoluwa-owoseni)

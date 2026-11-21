@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
   description:
-    "Frontend & Web3 Engineer with 3 years building Web2 and Web3 software that solves real human problems (professional, freelance, and open source). Specializing in React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.",
+    "Frontend & Web3 Engineer building software that solves real world problems",
   keywords: [
     "Frontend & Web3 Engineer",
     "Frontend Engineer",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
     description:
-      "Frontend & Web3 Engineer building software that solves real human problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     siteName: "IyanuOluwa Owoseni Portfolio",
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
     description:
-      "Frontend & Web3 Engineer building software that solves real human problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     images: ["/hero.jpeg"],
     creator: "@iyanuoluwa_dev",
   },

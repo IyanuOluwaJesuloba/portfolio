@@ -69,12 +69,12 @@ export function ContactSection() {
               Let's build software that
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
-                solves human problems.
+                solves real world problems.
               </span>
             </h2>
             <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
               Based in Nigeria (GMT+1): overlaps with UK/EU working hours; open to Nigerian and remote roles worldwide.
-              Whether you have a full-time role, a product in need of frontend leadership, or a Web3 milestone to deliver for real people, let's connect.
+              Whether you have a full-time role, a product in need of frontend leadership, or a Web3 milestone to deliver, let's connect.
             </p>
           </motion.div>
 

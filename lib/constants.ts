@@ -15,7 +15,7 @@ export const PORTFOLIO_CONFIG = {
       ? `https://${process.env.VERCEL_URL}`
       : 'https://iyanuoluwa-portfolio.vercel.app'),
   SITE_DESCRIPTION:
-    'Frontend & Web3 Engineer with 3 years building Web2 and Web3 products focused on solving real human problems (professional, freelance, and open source). Specializing in React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.',
+    'Frontend & Web3 Engineer with 3 years building Web2 and Web3 products focused on solving real world problems (professional, freelance, and open source). Specializing in React, Next.js, TypeScript, Solidity, Rust, and Soroban on Stellar.',
 
   // Social & Booking Links
   SOCIAL_LINKS: {

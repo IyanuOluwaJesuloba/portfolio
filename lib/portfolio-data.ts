@@ -20,6 +20,8 @@ export interface PortfolioProject {
   year?: string;
   team?: string;
   role?: string;
+  domain?: string;
+  isNda?: boolean;
   features?: string[];
   metrics?: ProjectMetric[];
   whatIdDoDifferently?: string;
@@ -38,6 +40,30 @@ export interface OpenSourceContribution {
   tags?: string[];
 }
 
+export interface WorkplaceNdaProject {
+  company: string;
+  period: string;
+  status: string;
+  headline: string;
+  subtext: string;
+  detailPrompt: string;
+  products: string[];
+  techStack: string[];
+  location: string;
+}
+
+export const currentWorkplaceNda: WorkplaceNdaProject = {
+  company: "Ajaeq",
+  period: "2026 - Present",
+  status: "Under NDA",
+  headline: "Engineering the frontend for an upcoming cybersecurity platform.",
+  subtext: "Contributing to the architecture of an ecosystem of security products. Details shared on request.",
+  detailPrompt: "Request Details",
+  products: ["Ajaeq Ecosystem", "Archive 256"],
+  techStack: ["Next.js 15", "TypeScript", "TanStack Query", "Tailwind CSS", "WebSockets"],
+  location: "Nigeria / Remote",
+};
+
 export const portfolioProjects: PortfolioProject[] = [
   {
     title: "Proxima: AI Agent Registry & Payment Gateway",
@@ -50,13 +76,14 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Architected Soroban smart contracts in Rust leveraging Stellar's low transaction fees and fast finality (~3.5s). Built a responsive Next.js/TypeScript frontend dashboard for telemetry and agent lifecycle management, integrated with Freighter wallet and Soroban RPC.",
     tags: ["Rust", "Soroban", "Stellar", "Next.js", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/Synergy-app.jpg",
+    imageUrl: "/proxima.png",
     githubUrl: "https://github.com/Plain-labs/Proxima",
     liveUrl: "https://proxima-beryl.vercel.app/",
     status: "Live",
     year: "2026",
     team: "Plain Labs Core",
     role: "Lead Web3 & Smart Contract Engineer",
+    domain: "AI & Rails",
     features: [
       "On-chain AI agent registration and cryptographic identity verification",
       "Autonomous payment settlement gateway powered by Soroban smart contracts",
@@ -75,38 +102,75 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
   },
   {
-    title: "Nullius: Private Contractor Invoice Escrow",
+    title: "Nullius: Private ZK Reputation on Stellar",
     description:
-      "A private contractor trust checkout and milestone-based invoice escrow protocol built on Stellar with Soroban smart contracts, protecting both clients and freelancers through cryptographic verification.",
+      "A zero-knowledge reputation and financial trustworthiness protocol on Stellar, enabling users to prove creditworthiness without revealing transactions, balances, or private financial history.",
     longDescription:
-      "Traditional freelancing platforms impose 10-20% take rates and multi-day payout delays. Nullius provides a trustless invoice escrow protocol where clients fund milestones in stablecoins and contractors unlock funds immediately upon verified milestone completion.",
+      "Financial data on public blockchains is completely exposed by default, forcing users to sacrifice privacy to establish trust. Nullius enables users to generate zero-knowledge cryptographic proofs of their financial reliability on Stellar, unlocking preferential fee tiers without sharing a single raw transaction or balance.",
     challenge:
-      "Making milestone escrow intuitive for non-crypto clients and freelancers while maintaining strict fund safety and immutable dispute resolution logic.",
+      "Generating compact zero-knowledge proofs client-side and verifying them on Stellar via Soroban smart contracts within tight execution resource and fee limits.",
     solution:
-      "Engineered Soroban escrow contracts in Rust with timelocks and multi-sig release triggers. Designed a streamlined checkout and invoice generation frontend that completely abstracts blockchain complexity behind familiar payment patterns.",
-    tags: ["Soroban", "Rust", "Stellar", "Next.js", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/Saving-app.jpg",
+      "Architected a Soroban verification engine in Rust paired with a streamlined Next.js and TypeScript client. Users connect their Freighter wallet, compute ZK validity proofs locally, and submit verifiable attestations that prove solvency and reputation tiers at zero data leakage.",
+    tags: ["Soroban", "Rust", "Stellar", "ZK Proofs", "Next.js", "TypeScript"],
+    imageUrl: "/nullius.png",
     githubUrl: "https://github.com/Plain-labs/Nullius",
     liveUrl: "https://nullius-taupe.vercel.app",
     status: "Live",
     year: "2026",
-    team: "Collaborative / Hackathon",
-    role: "Full-Stack Web3 Engineer",
+    team: "Plain Labs",
+    role: "Full-Stack Web3 & ZK Engineer",
+    domain: "Zero-Knowledge",
     features: [
-      "Milestone-based invoice escrow with automated release conditions",
-      "Instant contractor claim links with zero intermediary fees",
-      "Freighter wallet and Soroban smart contract integration",
-      "Transparent transaction logging with full on-chain auditability",
+      "Zero-knowledge credit and financial reputation proofs on Stellar",
+      "Three verifiable reputation tiers with progressive fee discounts down to 0.3%",
+      "Zero bytes of personal transaction or balance data leaked on-chain",
+      "Freighter wallet integration with fast client-side cryptographic verification",
     ],
     metrics: [
-      { label: "Platform Take Rate", value: "0%", detail: "Disintermediated vs 15% traditional" },
-      { label: "Payout Latency", value: "Instant", detail: "Immediate stablecoin release" },
-      { label: "Contract Coverage", value: "95%", detail: "Automated Rust unit & integration tests" },
+      { label: "Data Shared On-Chain", value: "0 bytes", detail: "Zero leakage of private balances" },
+      { label: "Lowest Fee Tier", value: "0.3%", detail: "Gold reputation tier discount" },
+      { label: "Verification Speed", value: "~3.5s", detail: "Soroban instant finality" },
     ],
-    architecture: "Client / Contractor Portal -> Stellar SDK -> Soroban Escrow Contract (Rust) -> Milestone Settlement",
+    architecture: "Client ZK Prover -> Freighter Wallet -> Soroban Verifier Contract (Rust) -> Stellar Horizon RPC",
     whatIdDoDifferently:
-      "Incorporate decentralized arbitration via a multi-party DAO jury to settle disputed deliverables without requiring manual key coordination.",
+      "Extend proof generation to recursive SNARKs to support multi-chain reputation aggregation from EVM chains onto Stellar.",
     category: "web3",
+    featured: true,
+  },
+  {
+    title: "Luminary: Cyber Command Dashboard",
+    description:
+      "A high-density SOC intelligence and cluster telemetry dashboard, built for security operations teams requiring rapid situation awareness without cognitive overload.",
+    longDescription:
+      "Built as a next-generation security command center. Luminary organizes cluster intelligence, telemetry feeds, and skill-chain analytics into a single, navigable mission-control interface built with enterprise tooling precision.",
+    challenge:
+      "Translating a multi-layered telemetry data model into a high-density UI that stays responsive and navigable under heavy data updates, without burying critical alerts.",
+    solution:
+      "Engineered a persistent command rail for keyboard-friendly section navigation, modular data cards, and a Consistency Chain enrollment overlay. Fine-tuned Framer Motion layout transitions for fluid 60fps responsiveness.",
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/Luminary.png",
+    githubUrl: "https://github.com/IyanuOluwaJesuloba/Luminary-Cyber-Command-Dashboard",
+    liveUrl: "https://luminary-two.vercel.app/",
+    status: "Live",
+    year: "2025",
+    team: "Solo (Public Design Brief)",
+    role: "Frontend Engineer",
+    domain: "Security Telemetry",
+    features: [
+      "Persistent command rail with instant keyboard jumps across 5 domains",
+      "Consistency Chain modal: complete enrollment workflow in a single overlay",
+      "Cluster intelligence matrix with execution metrics and node health",
+      "Career progression chart and telemetry study-time grid",
+      "Adaptive responsive layout from compact tablet to ultrawide displays",
+    ],
+    metrics: [
+      { label: "LCP", value: "1.2s", detail: "Optimized component code splitting" },
+      { label: "Frame Rate", value: "60 FPS", detail: "Hardware-accelerated animations" },
+      { label: "Accessibility", value: "98/100", detail: "Lighthouse accessibility audit" },
+    ],
+    whatIdDoDifferently:
+      "Add WebSocket integration to stream simulated real-time packet telemetry rather than polling static mock states.",
+    category: "web2",
     featured: true,
   },
   {
@@ -127,6 +191,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: "2026",
     team: "Solo",
     role: "Frontend & Web3 Developer",
+    domain: "Supply Chain",
     features: [
       "On-chain crop batch registration and provenance tracking",
       "Accessible form-based entry with offline validation",
@@ -139,10 +204,10 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: "RPC Latency", value: "<250ms", detail: "Cached Ethers.js provider reads" },
     ],
     category: "web3",
-    featured: false,
+    featured: true,
   },
   {
-    title: "Mighty Refuge Mission",
+    title: "Mighty Refuge Mission: Community Giving Platform",
     description:
       "A full-stack web platform for an international nonprofit organization, engineered for secure donor registrations, real-time community data capture, and scalable content management.",
     longDescription:
@@ -159,6 +224,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: "2026",
     team: "Solo",
     role: "Full-Stack Engineer",
+    domain: "Nonprofit SaaS",
     features: [
       "Relational database integration for secure form submissions",
       "Production-grade input sanitization and schema validation",
@@ -170,41 +236,6 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: "First Contentful Paint", value: "0.8s", detail: "Server-side rendered App Router" },
       { label: "Input Validation", value: "Type-Safe", detail: "Server actions with Zod schemas" },
     ],
-    category: "web2",
-    featured: false,
-  },
-  {
-    title: "Luminary: Cyber Command Dashboard",
-    description:
-      "A high-density SOC intelligence and cluster telemetry dashboard, built from a public design brief for security operations teams requiring rapid situation awareness without cognitive overload.",
-    longDescription:
-      "Built from a public design brief for a next-generation security command center. Luminary organizes cluster intelligence, telemetry feeds, and skill-chain analytics into a single, navigable mission-control interface built with enterprise tooling precision.",
-    challenge:
-      "Translating a multi-layered telemetry data model into a high-density UI that stays responsive and navigable under heavy data updates, without burying critical alerts.",
-    solution:
-      "Engineered a persistent command rail for keyboard-friendly section navigation, modular data cards, and a Consistency Chain enrollment overlay. Fine-tuned Framer Motion layout transitions for fluid 60fps responsiveness.",
-    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/Luminary.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/Luminary-Cyber-Command-Dashboard",
-    liveUrl: "https://luminary-two.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo (Public Design Brief)",
-    role: "Frontend Engineer",
-    features: [
-      "Persistent command rail with instant keyboard jumps across 5 domains",
-      "Consistency Chain modal: complete enrollment workflow in a single overlay",
-      "Cluster intelligence matrix with execution metrics and node health",
-      "Career progression chart and telemetry study-time grid",
-      "Adaptive responsive layout from compact tablet to ultrawide displays",
-    ],
-    metrics: [
-      { label: "LCP", value: "1.2s", detail: "Optimized component code splitting" },
-      { label: "Frame Rate", value: "60 FPS", detail: "Hardware-accelerated animations" },
-      { label: "Accessibility", value: "98/100", detail: "Lighthouse accessibility audit" },
-    ],
-    whatIdDoDifferently:
-      "Add WebSocket integration to stream simulated real-time packet telemetry rather than polling static mock states.",
     category: "web2",
     featured: true,
   },
@@ -226,6 +257,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: "2025",
     team: "Solo",
     role: "Full-Stack Web3 Engineer",
+    domain: "FinTech",
     features: [
       "One-click wallet connection with clear onboarding guidance",
       "Group investment pool creation and participant tracking",
@@ -237,11 +269,8 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: "Contract Tests", value: "100% Pass", detail: "Hardhat & Foundry unit tests" },
       { label: "Tx Confirmation UX", value: "<1s", detail: "Optimistic UI updates with rollback" },
     ],
-    architecture: "Next.js App -> Web3 Provider (Ethers.js) -> ERC-20 Staking Pool Contract (Solidity) -> EVM Testnet",
-    whatIdDoDifferently:
-      "Implement EIP-4337 Account Abstraction (social login + gas sponsorship) to remove the initial ETH gas requirement for new users.",
     category: "web3",
-    featured: true,
+    featured: false,
   },
   {
     title: "Client Portfolio: Shopify Designer",
@@ -261,6 +290,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: "2025",
     team: "Freelance Client Project",
     role: "Frontend Engineer & UI Developer",
+    domain: "E-Commerce UI",
     features: [
       "High-conversion layout with prominent contact and booking CTAs",
       "Curated Framer Motion transitions with reduced-motion fallbacks",

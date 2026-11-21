@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Linkedin, Code2, Calendar } from 'lucide-react';
+import { Mail, Linkedin, Calendar, ArrowUp } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { motion } from 'framer-motion';
 import { PORTFOLIO_CONFIG } from '@/lib/constants';
@@ -54,16 +54,25 @@ export function Footer() {
 
           {/* Left column: brand and tagline */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center">
-                <Code2 className="h-4 w-4 text-white dark:text-[#1a0f0a]" />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 mb-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] rounded-lg"
+            >
+              {/* Monogram mark */}
+              <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                <span className="text-white dark:text-[#1a0f0a] text-xs font-black tracking-tight">IO</span>
               </div>
-              <span className="font-bold text-base text-[#1a0f0a] dark:text-[#f5f1ed]">
-                IyanuOluwa Owoseni
-              </span>
-            </div>
-            <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] max-w-xs leading-relaxed mb-4">
-              Frontend & Web3 Engineer. Building resilient web products and smart contracts across EVM and Stellar Soroban.
+              <div>
+                <p className="text-sm font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-none">
+                  IyanuOluwa Owoseni
+                </p>
+                <p className="text-[10px] text-[#7a7268] dark:text-white/60 leading-none mt-1">
+                  Frontend & Web3 Engineer
+                </p>
+              </div>
+            </Link>
+            <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] max-w-sm leading-relaxed mb-5">
+              Building software that solves real human problems across Web2 and Web3
             </p>
             {/* Socials */}
             <div className="flex items-center gap-2">
@@ -82,29 +91,40 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Right column: navigation links */}
-          <nav aria-label="Footer navigation">
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
-              Navigation
-            </p>
-            <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-[#f5f1ed] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Right column: navigation links & Back to Top */}
+          <div className="flex flex-col sm:flex-row sm:items-start gap-8 md:gap-12">
+            <nav aria-label="Footer navigation">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
+                Navigation
+              </p>
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-[#f5f1ed] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#d4c4b0]/60 dark:border-white/10 text-xs font-semibold text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#1a0f0a]/5 dark:hover:bg-white/5 transition-colors self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="h-3.5 w-3.5" />
+              Top
+            </button>
+          </div>
         </div>
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-[#d4c4b0]/40 dark:border-[#3d3530] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[#7a7268] dark:text-white/40">
-          <p>© {new Date().getFullYear()} IyanuOluwa Owoseni. Built with Next.js, TypeScript & Tailwind CSS.</p>
+          <p>© {new Date().getFullYear()} IyanuOluwa Owoseni</p>
           <p className="flex items-center gap-1.5">
             <span>Based in Nigeria (GMT+1)</span>
             <span>·</span>

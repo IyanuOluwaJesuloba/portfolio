@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ArrowUpRight, CheckCircle2, TrendingUp, Lightbulb, Cpu, ShieldCheck } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, CheckCircle2, TrendingUp, Lightbulb, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 import { portfolioProjects } from '@/lib/portfolio-data';
 import { sectionVariants } from '@/lib/animations';
+import { WorkplaceNdaCard } from '@/components/workplace-nda-card';
 
 const featured = portfolioProjects;
 
@@ -36,14 +37,8 @@ function Tab({
       />
       <div className="pl-4 py-3.5">
         <div className="flex items-center gap-2 mb-1">
-          <span
-            className={`text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-full ${
-              project.category === 'web3'
-                ? 'bg-amber-500/15 text-amber-700 dark:text-amber-400'
-                : 'bg-blue-500/15 text-blue-700 dark:text-blue-400'
-            }`}
-          >
-            {project.category}
+          <span className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-md bg-[#8a6239]/10 dark:bg-white/10 text-[#8a6239] dark:text-[#d4c4b0]">
+            {project.domain || project.category}
           </span>
           <span className="text-[10px] text-[#7a7268] dark:text-white/60">{project.year}</span>
         </div>
@@ -109,16 +104,19 @@ export function CaseStudiesSection() {
                   Software engineered to solve
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#a07848] to-[#7a7268] dark:from-[#d4c4b0] dark:to-[#c4b4a0]">
-                    real human problems.
+                    real world problems.
                   </span>
                 </h2>
                 <p className="mt-4 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  {portfolioProjects.length} case studies across Web2 and Web3. Each project details the human problem addressed,
-                  my engineering role, system architecture, measurable outcomes, and lessons learned.
+                  Selected case studies from open source, freelance, and enterprise work. Each details the problem,
+                  my engineering role, measurable outcomes, and lessons learned.
                 </p>
               </div>
             </div>
           </motion.div>
+
+          {/* ── NDA Workplace Card ── */}
+          <WorkplaceNdaCard />
 
           {/* ── Main showcase ── */}
           <div className="grid lg:grid-cols-[240px_1fr] gap-8 lg:gap-10 items-start">
@@ -200,14 +198,8 @@ export function CaseStudiesSection() {
                           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                             <div>
                               <div className="flex items-center gap-2 mb-2 flex-wrap">
-                                <span
-                                  className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm ${
-                                    active.category === 'web3'
-                                      ? 'bg-amber-500/25 text-amber-200 border border-amber-400/30'
-                                      : 'bg-blue-500/25 text-blue-200 border border-blue-400/30'
-                                  }`}
-                                >
-                                  {active.category.toUpperCase()}
+                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/20 text-white border border-white/30 backdrop-blur-sm">
+                                  {active.domain || active.category.toUpperCase()}
                                 </span>
                                 {active.role && (
                                   <span className="text-[10px] font-semibold text-white/90 bg-white/15 px-2.5 py-1 rounded-full border border-white/20 backdrop-blur-sm">
@@ -220,6 +212,12 @@ export function CaseStudiesSection() {
                                     Live
                                   </span>
                                 )}
+                                {active.isNda && (
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-500/30 border border-amber-400/40 text-amber-200 backdrop-blur-sm">
+                                    <ShieldCheck className="w-3 h-3 text-amber-300" />
+                                    Enterprise NDA
+                                  </span>
+                                )}
                               </div>
                               <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">
                                 {active.title}
@@ -227,24 +225,36 @@ export function CaseStudiesSection() {
                             </div>
                             {/* Quick links on image */}
                             <div className="flex gap-2 flex-shrink-0">
-                              <a
-                                href={active.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
-                                aria-label="View live project"
-                              >
-                                <ArrowUpRight className="h-5 w-5 text-white" />
-                              </a>
-                              <a
-                                href={active.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
-                                aria-label="View source repository"
-                              >
-                                <Github className="h-5 w-5 text-white" />
-                              </a>
+                              {active.liveUrl && (
+                                <a
+                                  href={active.liveUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
+                                  aria-label="View live project"
+                                >
+                                  <ArrowUpRight className="h-5 w-5 text-white" />
+                                </a>
+                              )}
+                              {active.githubUrl ? (
+                                <a
+                                  href={active.githubUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
+                                  aria-label="View source repository"
+                                >
+                                  <Github className="h-5 w-5 text-white" />
+                                </a>
+                              ) : (
+                                <div
+                                  className="h-10 px-3 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-[10px] font-bold text-white/90 gap-1.5"
+                                  title="Proprietary / Enterprise NDA"
+                                >
+                                  <ShieldCheck className="h-3.5 w-3.5 text-amber-300" />
+                                  <span>NDA</span>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -273,21 +283,6 @@ export function CaseStudiesSection() {
                             )}
                           </div>
                         ))}
-                      </div>
-                    )}
-
-                    {/* Architecture Summary (if available) */}
-                    {active.architecture && (
-                      <div className="rounded-xl p-4 bg-[#1a0f0a]/5 dark:bg-white/6 border border-[#d4c4b0]/50 dark:border-white/12">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <Cpu className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0]" />
-                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0]">
-                            System Architecture
-                          </p>
-                        </div>
-                        <p className="text-xs sm:text-sm font-mono text-[#1a0f0a] dark:text-[#f5f1ed] bg-white/60 dark:bg-black/30 p-2.5 rounded-lg border border-[#d4c4b0]/40 dark:border-white/8">
-                          {active.architecture}
-                        </p>
                       </div>
                     )}
 
@@ -366,25 +361,34 @@ export function CaseStudiesSection() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex gap-2.5 flex-shrink-0">
-                        <a
-                          href={active.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] text-sm font-bold hover:bg-[#3d251e] dark:hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          View Live
-                        </a>
-                        <a
-                          href={active.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#c4a878] dark:border-white/15 text-[#1a0f0a] dark:text-[#f5f1ed] text-sm font-bold hover:bg-[#f5f1ed] dark:hover:bg-white/8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
-                        >
-                          <Github className="h-4 w-4" />
-                          Code
-                        </a>
+                      <div className="flex gap-2.5 flex-shrink-0 items-center">
+                        {active.liveUrl && (
+                          <a
+                            href={active.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] text-sm font-bold hover:bg-[#3d251e] dark:hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            {active.isNda ? 'Platform' : 'View Live'}
+                          </a>
+                        )}
+                        {active.githubUrl ? (
+                          <a
+                            href={active.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#c4a878] dark:border-white/15 text-[#1a0f0a] dark:text-[#f5f1ed] text-sm font-bold hover:bg-[#f5f1ed] dark:hover:bg-white/8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </a>
+                        ) : (
+                          <div className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#1a0f0a]/5 dark:bg-white/5 border border-[#d4c4b0]/50 dark:border-white/12 text-[#7a7268] dark:text-white/70 text-xs font-semibold">
+                            <ShieldCheck className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                            <span>Enterprise NDA</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>

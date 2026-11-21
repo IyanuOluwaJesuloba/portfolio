@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Send } from "lucide-react"
 import emailjs from '@emailjs/browser'
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
 const formVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -77,7 +78,7 @@ export function ContactForm() {
       from_email: email,
       subject: subject,
       message: message,
-      to_email: 'jesulobaowoseni1@gmail.com'
+      to_email: PORTFOLIO_CONFIG.CONTACT_EMAIL
     }
 
     try {
@@ -87,7 +88,7 @@ export function ContactForm() {
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
       if (!serviceId || !templateId || !publicKey) {
-        setError("Contact form is not configured yet. Please email me directly at jesulobaowoseni1@gmail.com.")
+        setError(`Contact form is not configured yet. Please email me directly at ${PORTFOLIO_CONFIG.CONTACT_EMAIL}.`)
         return
       }
 
@@ -182,10 +183,10 @@ export function ContactForm() {
                           {error}{" "}
                           {error.includes("Please email me directly") ? (
                             <a
-                              href="mailto:jesulobaowoseni1@gmail.com"
+                              href={`mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}`}
                               className="underline underline-offset-2"
                             >
-                              Email me
+                              Email me directly
                             </a>
                           ) : null}
                         </p>

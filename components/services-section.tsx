@@ -41,7 +41,7 @@ const services = [
     title: 'Web3 Frontend & Smart Contracts',
     tagline: 'Decentralized software engineered to solve real trust and economic problems.',
     description:
-      "Blockchain technology often isolates users behind cryptic hashes and confusing transaction states. I engineer Web3 software that solves real human problems: transparent contractor escrows, autonomous payment rails, and wallet interfaces as welcoming as everyday apps.",
+      "Blockchain technology often isolates users behind cryptic hashes and confusing transaction states. I engineer Web3 software that solves real problems: transparent contractor escrows, autonomous payment rails, and wallet interfaces as welcoming as everyday apps.",
     deliverables: [
       'Stellar Soroban smart contracts written in Rust',
       'Freighter wallet integration and Soroban RPC telemetry',
@@ -180,11 +180,11 @@ export function ServicesSection() {
                   Engineering software that
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
-                    solves human problems.
+                    solves real problems.
                   </span>
                 </h2>
                 <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  I focus on engineering software around human needs: eliminating user frustration, simplifying complex
+                  I focus on engineering software around people's needs: eliminating user frustration, simplifying complex
                   workflows, and building dependable tools people trust every day.
                 </p>
               </div>

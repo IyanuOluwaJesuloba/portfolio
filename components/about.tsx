@@ -96,24 +96,24 @@ export function AboutSection() {
                   Building software that solves
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
-                    real human problems.
+                    real real problems.
                   </span>
                 </h2>
 
-                <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
+                <p className="text-base sm:text-[16px] text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
                   I'm IyanuOluwa, a frontend and Web3 engineer based in Nigeria. I believe great software only creates value
                   when it eliminates human friction: whether that's protecting a contractor's livelihood through trustless
                   escrow, helping security analysts triage threats without cognitive overload, or ensuring people on spotty
                   connections can use web services without failing.
                 </p>
 
-                <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
+                <p className="text-base sm:text-[16px] text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
                   On the <strong>Web2 frontend side</strong>, I specialize in React, Next.js (App Router), TanStack Query, and strict TypeScript.
                   I focus on engineering component-driven design systems that bridge Figma fidelity with production code: implementing accessible
                   UI architectures, resilient state management, and performance tuning that delivers sub-second load times and high Core Web Vitals.
                 </p>
 
-                <p className="text-base sm:text-lg text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
+                <p className="text-base sm:text-[16px] text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed max-w-xl">
                   On the <strong>Web3 side</strong>, I build across both the Stellar ecosystem (Rust, Soroban smart contracts, Freighter wallet)
                   and EVM chains (Solidity, Ethers.js). Rather than treating blockchain as hype, I apply it where decentralization solves real trust
                   problems: automating milestone settlements, creating autonomous payment rails, and abstracting cryptographic friction so decentralized

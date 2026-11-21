@@ -10,6 +10,23 @@ import { PORTFOLIO_CONFIG } from '@/lib/constants';
 
 const experiences = [
   {
+    title: 'Frontend Engineer',
+    company: 'Ajaeq',
+    companyUrl: 'https://ajaeq.com',
+    location: 'Nigeria / Remote',
+    period: '2026 - Present',
+    type: 'Full-Time (Under NDA)',
+    current: true,
+    summary:
+      'Frontend engineer developing threat intelligence tools, practitioner dashboards, and virtual lab interfaces as part of the core engineering team.',
+    highlights: [
+      'Built interactive interfaces for hands-on offensive and defensive simulations',
+      'Engineered practical skill progression dashboards',
+      'Managed complex session states and data caching with TanStack Query for instant, responsive UI feedback',
+      'Collaborated within an agile team on component reusability, strict TypeScript typings, and peer review workflows',    ],
+    stack: ['Next.js 16', 'TypeScript', 'TanStack Query', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
     title: 'Frontend & Web3 Engineer (Independent & Open Source)',
     company: 'Plain Labs & Stellar Ecosystem',
     companyUrl: 'https://github.com/Plain-labs',
@@ -22,7 +39,7 @@ const experiences = [
     highlights: [
       'Architected Soroban smart contracts in Rust for Proxima, facilitating verifiable AI agent payment settlements with ~3.5s instant finality on Stellar testnet',
       'Engineered responsive telemetry and escrow verification interfaces in Next.js/TypeScript integrated with Freighter wallet and Soroban RPC',
-      'Built ProofPay: a private contractor milestone escrow protocol on Stellar showcased on DoraHacks with 0% platform take rates',
+      'Built Nullius: a private contractor milestone escrow protocol on Stellar showcased on DoraHacks with 0% platform take rates',
       'Contributed pull requests and frontend components to community ZK reputation tooling (Nullius) and cross-chain tracking infrastructure',
     ],
     stack: ['Rust', 'Soroban', 'Stellar', 'Next.js', 'TypeScript', 'Tailwind CSS'],
@@ -97,7 +114,6 @@ const experiences = [
   },
 ];
 
-// ─── Main section ──────────────────────────────────────────────────────────────
 
 export function ExperienceTimeline() {
   return (
@@ -132,7 +148,7 @@ export function ExperienceTimeline() {
               </span>
             </h2>
             <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-              3 years building Web2 and Web3 products focused on solving real human problems across agency environments, product teams, client work, and open-source ecosystems.
+              3 years building Web2 and Web3 products focused on solving real world problems across agency environments, product teams, client work, and open-source ecosystems.
             </p>
           </motion.div>
 

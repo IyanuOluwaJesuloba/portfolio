@@ -46,7 +46,7 @@ export function PremiumCTASection() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6">
-              Have a human problem
+              Have a problem
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#e8d5a0] to-[#d4af37]">
                 worth solving with software?

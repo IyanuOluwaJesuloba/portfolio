@@ -43,11 +43,11 @@ function useTypewriter(words: string[], speed = 75, pause = 2200) {
 // Terminal card
 
 const recentWork = [
-  { label: 'Proxima Gateway',        tag: 'Rust + Soroban',    url: 'https://proxima-beryl.vercel.app/' },
-  { label: 'ProofPay Escrow',        tag: 'Soroban + Stellar', url: 'https://dorahacks.io/buidl/20857' },
-  { label: 'FarmChain',              tag: 'Web3 + Solidity',   url: 'https://farm-chain-tau.vercel.app/' },
-  { label: 'Mighty Refuge Mission',  tag: 'Next.js',           url: 'https://mrm-liart.vercel.app/' },
-  { label: 'Collective Investment',  tag: 'Solidity + Ethers', url: 'https://saving-app-jet.vercel.app/' },
+  { label: 'Proxima Gateway',        tag: 'Rust + Soroban',       url: 'https://proxima-beryl.vercel.app/' },
+  { label: 'Nullius ZK',             tag: 'ZK + Stellar',         url: 'https://nullius-taupe.vercel.app' },
+  { label: 'Luminary Dashboard',     tag: 'Next.js 15 + Motion',  url: 'https://luminary-two.vercel.app/' },
+  { label: 'FarmChain',              tag: 'Web3 + Solidity',      url: 'https://farm-chain-tau.vercel.app/' },
+  { label: 'Mighty Refuge Mission',  tag: 'Next.js + Database',   url: 'https://mrm-liart.vercel.app/' },
 ];
 
 function TerminalCard() {
@@ -208,7 +208,7 @@ function TerminalCard() {
         <div className="bg-[#007acc] px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] text-white/90 font-mono">
             <span>⎇ main</span>
-            <span className="hidden sm:block">✓ 12 shipped projects</span>
+            <span className="hidden sm:block">✓ 7 curated projects</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] text-white/90 font-mono">
             <span>Rust · TypeScript · Soroban</span>
@@ -227,7 +227,7 @@ export function PremiumHeroSection() {
   const role = useTypewriter(
     [
       'Frontend & Web3 Engineer',
-      'Building Software for Human Problems',
+      'Building Software for Real Problems',
       'Soroban & Stellar Builder',
       'React & Next.js Specialist',
       'Solidity & EVM Developer',
@@ -292,7 +292,7 @@ export function PremiumHeroSection() {
                   <span className="text-[#1a0f0a] dark:text-[#f5f1ed]">Building software that</span>
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#d4af37] to-[#8a6239] dark:from-[#d4c4b0] dark:via-[#d4af37] dark:to-[#c4b4a0]">
-                    solves human problems.
+                    solves real world problems.
                   </span>
                 </h1>
                 {/* Typewriter */}
@@ -315,8 +315,8 @@ export function PremiumHeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35 }}
               >
-                3 years building Web2 and Web3 products (professional, freelance, and open source).
-                I engineer intuitive frontends and resilient smart contracts on EVM and Stellar that remove friction for real people.
+                Frontend and Web3 engineer focused on building software that solves genuine human challenges.
+              
               </motion.p>
 
               {/* CTAs */}
