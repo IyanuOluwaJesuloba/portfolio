@@ -8,9 +8,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Send } from "lucide-react"
 import emailjs from '@emailjs/browser'
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
-const formVariants = {
+const formVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
@@ -22,7 +23,7 @@ const formVariants = {
   }
 }
 
-const fieldVariants = {
+const fieldVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: { 
     opacity: 1, 
@@ -33,14 +34,14 @@ const fieldVariants = {
   }
 }
 
-const successVariants = {
+const successVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { 
     opacity: 1, 
     scale: 1,
     transition: {
       duration: 0.5,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 200
     }
   }
@@ -77,7 +78,7 @@ export function ContactForm() {
       from_email: email,
       subject: subject,
       message: message,
-      to_email: 'jesulobaowoseni1@gmail.com'
+      to_email: PORTFOLIO_CONFIG.CONTACT_EMAIL
     }
 
     try {
@@ -87,7 +88,7 @@ export function ContactForm() {
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
       if (!serviceId || !templateId || !publicKey) {
-        setError("Contact form is not configured yet. Please email me directly at jesulobaowoseni1@gmail.com.")
+        setError(`Contact form is not configured yet. Please email me directly at ${PORTFOLIO_CONFIG.CONTACT_EMAIL}.`)
         return
       }
 
@@ -182,10 +183,10 @@ export function ContactForm() {
                           {error}{" "}
                           {error.includes("Please email me directly") ? (
                             <a
-                              href="mailto:jesulobaowoseni1@gmail.com"
+                              href={`mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}`}
                               className="underline underline-offset-2"
                             >
-                              Email me
+                              Email me directly
                             </a>
                           ) : null}
                         </p>

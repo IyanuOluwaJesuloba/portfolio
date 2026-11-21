@@ -5,33 +5,32 @@ import { motion } from 'framer-motion';
 import { sectionVariants } from '@/lib/animations';
 import {
   Code2,
-  Palette,
   Shield,
-  Users,
   ArrowRight,
   CheckCircle2,
+  Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// ─── Focused Core Services ───────────────────────────────────────────────────
 
 const services = [
   {
     number: '01',
     icon: Code2,
     title: 'Frontend Engineering',
-    tagline: 'From Figma to production - fast, accessible, and built to last.',
+    tagline: 'Accessible, fast, and resilient web apps that eliminate user friction.',
     description:
-      "I build React and Next.js applications that perform well, look sharp, and hold up under real-world conditions. Whether you're starting from scratch or inheriting a codebase, I write code that your future self, or your next developer, will thank you for.",
+      "Software only works when people can use it without frustration. I build React and Next.js applications that load fast on real-world networks, prioritize accessibility, and turn intricate workflows into intuitive digital experiences.",
     deliverables: [
-      'React & Next.js (App Router, SSR, SSG)',
-      'TypeScript with strict typing',
-      'Component libraries & design systems',
-      'API integration & data fetching',
-      'Performance & Core Web Vitals',
-      'Accessibility (WCAG 2.1 AA)',
+      'Next.js 15 & React (App Router, SSR, SSG)',
+      'TypeScript with strict typing and robust error boundaries',
+      'Component architectures and reusable design systems',
+      'API integrations, caching (SWR/TanStack), and server actions',
+      'Performance tuning & Core Web Vitals optimization',
+      'Web accessibility (WCAG 2.1 AA compliant keyboard & screen reader UX)',
     ],
-    idealFor: 'Startups, product teams, and agencies.',
+    idealFor: 'Startups, product teams, and development studios.',
     accentLight: 'bg-[#1a0f0a]',
     accentDark: 'dark:bg-[#f5f1ed]',
     numberColor: 'text-[#1a0f0a]/10 dark:text-white/5',
@@ -40,61 +39,21 @@ const services = [
     number: '02',
     icon: Shield,
     title: 'Web3 Frontend & Smart Contracts',
-    tagline: 'Blockchain UX that non-crypto users can actually navigate.',
+    tagline: 'Decentralized software engineered to solve real trust and economic problems.',
     description:
-      "Web3 products fail when the UX assumes the user already understands blockchain. I bridge that gap, building wallet-connected interfaces that feel as intuitive as any Web2 app, backed by Solidity contracts that are clean, tested, and auditable.",
+      "Blockchain technology often isolates users behind cryptic hashes and confusing transaction states. I engineer Web3 software that solves real problems: transparent contractor escrows, autonomous payment rails, and wallet interfaces as welcoming as everyday apps.",
     deliverables: [
-      'Wallet connection (MetaMask, RainbowKit)',
-      'Smart contract UI via Ethers.js',
-      'ERC-20 / ERC-721 token interfaces',
-      'DeFi dashboards — swaps, staking',
-      'Solidity contracts & Foundry testing',
-      'On-chain state & real-time updates',
+      'Stellar Soroban smart contracts written in Rust',
+      'Freighter wallet integration and Soroban RPC telemetry',
+      'Solidity smart contracts with automated Foundry/Hardhat test suites',
+      'EVM multi-wallet authentication (RainbowKit, Wagmi, Ethers.js)',
+      'Milestone escrow, payment channels, and ERC-20/721 interfaces',
+      'Real-time on-chain event listeners and optimistic UI updates',
     ],
-    idealFor: 'Web3 protocols, DeFi platforms, and NFT projects.',
+    idealFor: 'Web3 protocols, Stellar ecosystem grants, and DeFi products.',
     accentLight: 'bg-amber-700',
     accentDark: 'dark:bg-amber-500',
     numberColor: 'text-amber-700/10 dark:text-amber-400/8',
-  },
-  {
-    number: '03',
-    icon: Palette,
-    title: 'UI Implementation & Design Systems',
-    tagline: 'Pixel-perfect implementation with the performance to match.',
-    description:
-      "Great design deserves great implementation. I translate Figma files into responsive, animated interfaces that match the design intent, not just the static mockup. I also build component libraries and design systems that scale as your product grows.",
-    deliverables: [
-      'Figma-to-code with pixel-perfect fidelity',
-      'Responsive, mobile-first layouts',
-      'Framer Motion animations',
-      'Tailwind CSS design token systems',
-      'Reusable component libraries',
-      'Dark mode & theming support',
-    ],
-    idealFor: 'Design-led teams who need a developer who respects the craft.',
-    accentLight: 'bg-rose-700',
-    accentDark: 'dark:bg-rose-500',
-    numberColor: 'text-rose-700/10 dark:text-rose-400/8',
-  },
-  {
-    number: '04',
-    icon: Users,
-    title: 'Technical Consulting & Code Review',
-    tagline: 'A second pair of eyes from someone who has shipped production code.',
-    description:
-      "Sometimes you don't need a full build, you need someone to review your architecture, unblock a performance issue, or help your team level up. I offer focused consulting engagements for teams who want honest, actionable technical feedback.",
-    deliverables: [
-      'Frontend architecture review',
-      'Performance audit & roadmap',
-      'Code review with written feedback',
-      'Developer mentoring',
-      'Tech stack evaluation',
-      'Accessibility audit & remediation',
-    ],
-    idealFor: 'CTOs, tech leads, and teams wanting an outside perspective.',
-    accentLight: 'bg-teal-700',
-    accentDark: 'dark:bg-teal-500',
-    numberColor: 'text-teal-700/10 dark:text-teal-400/8',
   },
 ];
 
@@ -113,65 +72,76 @@ function ServiceCard({
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
+      transition={{ duration: 0.45, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative rounded-2xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/80 dark:bg-white/5 p-7 hover:border-[#8a6239]/50 dark:hover:border-white/15 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 transition-all duration-300 overflow-hidden"
+      className="group relative rounded-2xl border border-[#d4c4b0]/50 dark:border-white/12 bg-white/80 dark:bg-white/5 p-7 sm:p-9 hover:border-[#8a6239]/50 dark:hover:border-white/20 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/30 transition-all duration-300 overflow-hidden flex flex-col justify-between"
     >
-      {/* Large background number — decorative */}
+      {/* Large background number: decorative */}
       <span
-        className={`pointer-events-none absolute -top-2 -right-1 text-[7rem] font-black leading-none select-none ${service.numberColor} transition-all duration-300 group-hover:scale-110 group-hover:opacity-70`}
+        aria-hidden="true"
+        className={`absolute -right-2 -bottom-4 text-[100px] sm:text-[130px] font-black leading-none select-none pointer-events-none transition-transform duration-500 group-hover:scale-105 ${service.numberColor}`}
       >
         {service.number}
       </span>
 
-      {/* Icon + number row */}
-      <div className="flex items-center gap-3 mb-5 relative z-10">
-        <div className={`w-10 h-10 rounded-xl ${service.accentLight} ${service.accentDark} flex items-center justify-center flex-shrink-0`}>
-          <Icon className="h-5 w-5 text-white dark:text-[#1a0f0a]" />
+      <div className="relative z-10 space-y-6">
+        {/* Top: icon + badge */}
+        <div className="flex items-center justify-between gap-4">
+          <div className="w-12 h-12 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+            <Icon className="h-6 w-6 text-white dark:text-[#1a0f0a]" />
+          </div>
+          <span className="text-xs font-mono font-semibold text-[#8a6239] dark:text-[#d4c4b0] tracking-wider uppercase">
+            Core Service
+          </span>
         </div>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#b4aea6] dark:text-white/45">
-          {service.number}
-        </span>
-      </div>
 
-      {/* Title + tagline */}
-      <div className="mb-4 relative z-10">
-        <h3 className="text-lg font-bold text-[#1a0f0a] dark:text-[#f5f1ed] mb-1.5 leading-snug group-hover:text-[#8a6239] dark:group-hover:text-[#d4c4b0] transition-colors duration-200">
-          {service.title}
-        </h3>
+        {/* Title + tagline */}
+        <div>
+          <h3 className="text-2xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-snug">
+            {service.title}
+          </h3>
+          <p className="text-sm font-medium text-[#8a6239] dark:text-[#d4af37] mt-1.5">
+            {service.tagline}
+          </p>
+        </div>
+
+        {/* Narrative description */}
         <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-          {service.tagline}
+          {service.description}
         </p>
+
+        {/* Deliverables checklist */}
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-3">
+            What's included
+          </p>
+          <ul className="space-y-2">
+            {service.deliverables.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#4a4238] dark:text-[#d4c4b0]"
+              >
+                <CheckCircle2 className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Description */}
-      <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed mb-5 relative z-10">
-        {service.description}
-      </p>
-
-      {/* Deliverables */}
-      <div className="mb-5 relative z-10">
-        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-3">
-          What's included
-        </p>
-        <ul className="grid grid-cols-1 gap-1.5">
-          {service.deliverables.map((d) => (
-            <li key={d} className="flex items-start gap-2 text-xs text-[#3a3530] dark:text-[#d4c4b0]">
-              <CheckCircle2 className="h-3.5 w-3.5 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-0.5" />
-              {d}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Ideal for */}
-      <div className="relative z-10 pt-4 border-t border-[#d4c4b0]/30 dark:border-white/10">
-        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mr-2">
-          Ideal for
-        </span>
-        <span className="text-xs text-[#4a4238] dark:text-[#d4c4b0]">
+      {/* Card bottom: Ideal for + link */}
+      <div className="relative z-10 pt-6 mt-6 border-t border-[#d4c4b0]/40 dark:border-white/10 flex items-center justify-between gap-3">
+        <p className="text-xs text-[#7a7268] dark:text-white/60">
+          <span className="font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">Ideal for: </span>
           {service.idealFor}
-        </span>
+        </p>
+        <Link
+          href="#contact"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#8a6239] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-white transition-colors flex-shrink-0 group-hover:translate-x-0.5"
+        >
+          Discuss
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
       </div>
     </motion.div>
   );
@@ -183,13 +153,13 @@ export function ServicesSection() {
   return (
     <motion.section
       id="services"
-      className="py-20 md:py-28 bg-gradient-to-br from-[#faf9f7] via-[#e8e3db] to-[#d4c4b0] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] overflow-hidden w-full"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#faf9f7] via-[#f0e8e0] to-[#e8e3db] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] relative overflow-hidden w-full scroll-mt-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
 
           {/* ── Header ── */}
@@ -202,70 +172,61 @@ export function ServicesSection() {
           >
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
               <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
-              Services
+              Specializations
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.08] tracking-tight">
-                  How I can help
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.1] tracking-tight mb-4">
+                  Engineering software that
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#a07848] to-[#7a7268] dark:from-[#d4c4b0] dark:to-[#a09080]">
-                    your team ship faster.
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
+                    solves real problems.
                   </span>
                 </h2>
-                <p className="mt-4 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  Four focused services, each one built around a specific type of problem.
-                  If your need doesn't fit neatly into a category, reach out. I'm flexible.
+                <p className="text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
+                  I focus on engineering software around people's needs: eliminating user frustration, simplifying complex
+                  workflows, and building dependable tools people trust every day.
                 </p>
               </div>
-              <Link
-                href="#contact"
-                className="flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[#8a6239] dark:text-[#d4c4b0] hover:opacity-70 transition-opacity group"
-              >
-                Discuss your project
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
           </motion.div>
 
-          {/* ── 2×2 grid ── */}
-          <div className="grid sm:grid-cols-2 gap-5 mb-12">
-            {services.map((service, i) => (
-              <ServiceCard key={service.id} service={service} index={i} />
+          {/* ── 2 Main Core Service Cards ── */}
+          <div className="grid md:grid-cols-2 gap-8 items-stretch mb-8">
+            {services.map((service, index) => (
+              <ServiceCard key={service.number} service={service} index={index} />
             ))}
           </div>
 
-          {/* ── Bottom CTA strip ── */}
+          {/* ── Folded "Also Available For" Line ── */}
           <motion.div
-            className="rounded-2xl overflow-hidden relative"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
+            className="rounded-2xl border border-[#d4c4b0]/60 dark:border-white/10 bg-white/60 dark:bg-white/5 p-5 sm:p-6 backdrop-blur-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1a0f0a] to-[#4a3220]" />
-            <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-                backgroundSize: '28px 28px',
-              }}
-            />
-            <div className="relative z-10 p-7 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-              <div>
-                <p className="text-sm font-bold text-white mb-1">
-                  Not sure which service fits your project?
-                </p>
-                <p className="text-sm text-white/75 max-w-md">
-                  Tell me what you're building and I'll tell you exactly how I can help.
-                </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#8a6239]/15 dark:bg-[#d4c4b0]/15 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0]" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-[#1a0f0a] dark:text-[#f5f1ed]">
+                    Also available for specialized engagements:
+                  </p>
+                  <p className="text-xs sm:text-sm text-[#7a7268] dark:text-white/60">
+                    UI design system implementations from Figma, Core Web Vitals performance audits, and smart contract test suite setups (Foundry & Rust).
+                  </p>
+                </div>
               </div>
+
               <Link
                 href="#contact"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[#d4af37] hover:bg-[#e5c158] text-[#1a0f0a] rounded-xl text-sm font-bold transition-colors shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4af37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0f0a]"
+                className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] hover:bg-[#3d251e] dark:hover:bg-white transition-colors flex-shrink-0 self-start sm:self-auto"
               >
-                Let's Talk
-                <ArrowRight className="h-4 w-4" />
+                Inquire
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </motion.div>

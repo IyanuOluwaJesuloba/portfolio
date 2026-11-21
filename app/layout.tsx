@@ -2,24 +2,31 @@ import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import type { Metadata } from "next"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
+
+const siteUrl = PORTFOLIO_CONFIG.SITE_URL;
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://iyanuoluwa-portfolio.vercel.app"),
-  title: "IyanuOluwa Owoseni | Senior Frontend Developer & Web3 Specialist",
-  description: "Passionate full-stack frontend engineer specializing in React, Next.js, and Web3 technologies. Building exceptional digital experiences with clean code, performance optimization, and modern design principles.",
+  metadataBase: new URL(siteUrl),
+  title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+  description:
+    "Frontend & Web3 Engineer building software that solves real world problems",
   keywords: [
-    "Frontend Developer",
+    "Frontend & Web3 Engineer",
+    "Frontend Engineer",
+    "Web3 Engineer",
     "React Developer",
-    "Next.js",
+    "Next.js Developer",
     "TypeScript",
+    "Rust",
+    "Soroban Developer",
+    "Stellar Blockchain",
+    "Solidity Developer",
+    "EVM",
     "Tailwind CSS",
-    "Web Development",
-    "UI/UX",
-    "JavaScript",
-    "Web3 Developer",
-    "Blockchain Developer",
-    "Full-stack Engineer",
-    "Senior Developer",
+    "Smart Contracts",
+    "UI/UX Engineering",
   ],
   authors: [{ name: "IyanuOluwa Owoseni" }],
   creator: "IyanuOluwa Owoseni",
@@ -32,23 +39,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://iyanuoluwa-portfolio.vercel.app",
-    title: "IyanuOluwa Owoseni | Senior Frontend Developer & Web3 Specialist",
-    description: "Building exceptional digital experiences with modern web technologies.",
+    url: siteUrl,
+    title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+    description:
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     siteName: "IyanuOluwa Owoseni Portfolio",
     images: [
       {
         url: "/hero.jpeg",
         width: 1200,
         height: 630,
-        alt: "IyanuOluwa Owoseni - Senior Frontend Developer",
+        alt: "IyanuOluwa Owoseni - Frontend & Web3 Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IyanuOluwa Owoseni | Senior Frontend Developer",
-    description: "Building exceptional digital experiences with modern web technologies.",
+    title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+    description:
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     images: ["/hero.jpeg"],
     creator: "@iyanuoluwa_dev",
   },
@@ -78,9 +87,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  ...(googleVerification
+    ? {
+        verification: {
+          google: googleVerification,
+        },
+      }
+    : {}),
 }
 
 export default function RootLayout({

@@ -1,11 +1,10 @@
 // Premium animation variants and constants for the portfolio website
 // Using easing functions optimized for professional UX
-// OPTIMIZED: Reduced animation durations and delays for faster content visibility
 
-import { Variants, Transition } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 // ============================================================================
-// Transition Presets - Professional timing curves (OPTIMIZED for performance)
+// Transition Presets - Professional timing curves
 // ============================================================================
 
 export const transitions = {
@@ -21,55 +20,53 @@ export const transitions = {
 
 export const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, y: 0, transition: transitions.smooth },
 };
 
 export const fadeInDown: Variants = {
   initial: { opacity: 0, y: -20 },
-  animate: { opacity: 1, y: 0 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, y: 0, transition: transitions.smooth },
 };
 
 export const fadeInLeft: Variants = {
   initial: { opacity: 0, x: -30 },
-  animate: { opacity: 1, x: 0 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, x: 0, transition: transitions.smooth },
 };
 
 export const fadeInRight: Variants = {
   initial: { opacity: 0, x: 30 },
-  animate: { opacity: 1, x: 0 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, x: 0, transition: transitions.smooth },
 };
 
 export const scaleIn: Variants = {
   initial: { opacity: 0, scale: 0.9 },
-  animate: { opacity: 1, scale: 1 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, scale: 1, transition: transitions.smooth },
 };
 
 export const rotateIn: Variants = {
   initial: { opacity: 0, rotate: -10 },
-  animate: { opacity: 1, rotate: 0 },
-  transition: transitions.smooth,
+  animate: { opacity: 1, rotate: 0, transition: transitions.smooth },
 };
 
 // ============================================================================
-// Container & Stagger Animations (OPTIMIZED: reduced delays)
+// Container & Stagger Animations
 // ============================================================================
 
 export const staggerContainer: Variants = {
-  initial: 'initial',
-  animate: 'animate',
-  exit: 'exit',
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
+    },
+  },
+  exit: {},
 };
 
 export const staggerItem: Variants = {
   initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -5 },
-  transition: { duration: 0.2 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  exit: { opacity: 0, y: -5, transition: { duration: 0.15 } },
 };
 
 export const staggerParent = {
@@ -82,7 +79,7 @@ export const staggerParent = {
 };
 
 // ============================================================================
-// Section Animations - Used for major content sections (OPTIMIZED)
+// Section Animations
 // ============================================================================
 
 export const sectionVariants: Variants = {
@@ -110,7 +107,7 @@ export const sectionWithBlur: Variants = {
 };
 
 // ============================================================================
-// Heading Animations (OPTIMIZED)
+// Heading Animations
 // ============================================================================
 
 export const headingVariants: Variants = {
@@ -139,7 +136,7 @@ export const headingWithScale: Variants = {
 };
 
 // ============================================================================
-// Card & Component Animations (OPTIMIZED)
+// Card & Component Animations
 // ============================================================================
 
 export const cardVariants: Variants = {
@@ -175,7 +172,7 @@ export const cardVariantsElevated: Variants = {
 };
 
 // ============================================================================
-// Button & Interactive Animations (OPTIMIZED)
+// Button & Interactive Animations
 // ============================================================================
 
 export const buttonHoverVariants: Variants = {
@@ -196,7 +193,7 @@ export const buttonPulse: Variants = {
 };
 
 // ============================================================================
-// Float & Hover Animations (OPTIMIZED: reduced ranges and durations)
+// Float & Hover Animations
 // ============================================================================
 
 export const floatingAnimation: Variants = {
@@ -222,7 +219,7 @@ export const floatingAnimationSlow: Variants = {
 };
 
 // ============================================================================
-// Text & Typography Animations (OPTIMIZED)
+// Text & Typography Animations
 // ============================================================================
 
 export const textVariants: Variants = {
@@ -249,7 +246,7 @@ export const lineReveal: Variants = {
 };
 
 // ============================================================================
-// Background & Gradient Animations (OPTIMIZED: reduced complexity)
+// Background & Gradient Animations
 // ============================================================================
 
 export const gradientShift: Variants = {

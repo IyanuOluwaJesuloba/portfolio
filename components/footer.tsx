@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Linkedin, Code2 } from 'lucide-react';
+import { Mail, Linkedin, Calendar, ArrowUp } from 'lucide-react';
 import { SiGithub } from '@icons-pack/react-simple-icons';
 import { motion } from 'framer-motion';
+import { PORTFOLIO_CONFIG } from '@/lib/constants';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -12,23 +13,29 @@ const navLinks = [
   { label: 'Projects', href: '#case-studies' },
   { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Open Source', href: '#open-source' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const socials = [
   {
     icon: SiGithub,
-    href: 'https://github.com/IyanuOluwaJesuloba',
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.GITHUB,
     label: 'GitHub',
   },
   {
     icon: Linkedin,
-    href: 'https://www.linkedin.com/in/iyanuoluwa-owoseni/',
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.LINKEDIN,
     label: 'LinkedIn',
   },
   {
+    icon: Calendar,
+    href: PORTFOLIO_CONFIG.SOCIAL_LINKS.BOOKING,
+    label: 'Cal.com Booking',
+  },
+  {
     icon: Mail,
-    href: 'mailto:jesulobaowoseni1@gmail.com',
+    href: `mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}`,
     label: 'Email',
   },
 ];
@@ -45,19 +52,27 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
 
-          {/* Left — brand + tagline */}
+          {/* Left column: brand and tagline */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center">
-                <Code2 className="h-4 w-4 text-white dark:text-[#1a0f0a]" />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 mb-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] rounded-lg"
+            >
+              {/* Monogram mark */}
+              <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                <span className="text-white dark:text-[#1a0f0a] text-xs font-black tracking-tight">IO</span>
               </div>
-              <span className="font-bold text-base text-[#1a0f0a] dark:text-[#f5f1ed] font-hero">
-                IyanuOluwa Owoseni
-              </span>
-            </div>
-            <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] max-w-xs leading-relaxed mb-4">
-              Frontend developer and Web3 engineer. Building clean, fast, accessible products
-              for teams that care about quality.
+              <div>
+                <p className="text-sm font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-none">
+                  IyanuOluwa Owoseni
+                </p>
+                <p className="text-[10px] text-[#7a7268] dark:text-white/60 leading-none mt-1">
+                  Frontend & Web3 Engineer
+                </p>
+              </div>
+            </Link>
+            <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] max-w-sm leading-relaxed mb-5">
+              Building software that solves real human problems across Web2 and Web3
             </p>
             {/* Socials */}
             <div className="flex items-center gap-2">
@@ -76,33 +91,46 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Right — nav links */}
-          <nav aria-label="Footer navigation">
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
-              Navigation
-            </p>
-            <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-[#f5f1ed] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Right column: navigation links & Back to Top */}
+          <div className="flex flex-col sm:flex-row sm:items-start gap-8 md:gap-12">
+            <nav aria-label="Footer navigation">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6239] dark:text-[#d4c4b0] mb-4">
+                Navigation
+              </p>
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-[#f5f1ed] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#d4c4b0]/60 dark:border-white/10 text-xs font-semibold text-[#1a0f0a] dark:text-[#f5f1ed] hover:bg-[#1a0f0a]/5 dark:hover:bg-white/5 transition-colors self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="h-3.5 w-3.5" />
+              Top
+            </button>
+          </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-[#d4c4b0]/40 dark:border-[#3d3530] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs text-[#7a7268] dark:text-[#7a7268]">
-            &copy; {new Date().getFullYear()} IyanuOluwa Owoseni. All rights reserved.
-          </p>
-          <p className="text-xs text-[#7a7268] dark:text-[#7a7268]">
-            Built with Next.js · TypeScript · Tailwind CSS · Framer Motion
+        <div className="mt-10 pt-6 border-t border-[#d4c4b0]/40 dark:border-[#3d3530] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[#7a7268] dark:text-white/40">
+          <p>© {new Date().getFullYear()} IyanuOluwa Owoseni</p>
+          <p className="flex items-center gap-1.5">
+            <span>Based in Nigeria (GMT+1)</span>
+            <span>·</span>
+            <span>UK/EU overlap</span>
+            <span>·</span>
+            <span>Open to remote & Nigerian roles</span>
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ type Category = 'all' | 'frontend' | 'web3' | 'tooling';
 
 interface TechItem {
   name: string;
-  note: string; // one-line context — what you actually use it for
+  note: string; // one-line context: what you actually use it for
   primary?: boolean; // marks core/daily-use tools
 }
 
@@ -32,49 +32,54 @@ interface TechGroup {
 const groups: TechGroup[] = [
   {
     id: 'frontend',
-    label: 'Frontend',
+    label: 'Frontend Engineering',
     icon: Code2,
-    description: 'The stack I reach for on every project.',
+    description: 'The modern web stack I reach for on every project.',
     items: [
-      { name: 'React', note: 'Component architecture, hooks, context - daily driver', primary: true },
-      { name: 'Next.js', note: 'App Router, SSR/SSG, API routes, image optimisation', primary: true },
+      { name: 'React', note: 'Component architecture, custom hooks, context, state management', primary: true },
+      { name: 'Next.js', note: 'App Router, SSR/SSG, API routes, image optimization, Core Web Vitals', primary: true },
       { name: 'TypeScript', note: 'Strict mode, generics, utility types across all projects', primary: true },
+      { name: 'TanStack Query', note: 'Server state management, optimistic caching, asynchronous queries', primary: true },
       { name: 'Tailwind CSS', note: 'Utility-first styling, custom design tokens, dark mode', primary: true },
       { name: 'Framer Motion', note: 'Page transitions, scroll animations, gesture interactions', primary: true },
-      { name: 'JavaScript ES2022+', note: 'Async/await, optional chaining, modules, Web APIs' },
-      { name: 'HTML5 & CSS3', note: 'Semantic markup, CSS Grid/Flexbox, custom properties' },
+      { name: 'JavaScript (ES2022+)', note: 'Async/await, optional chaining, modules, Web APIs' },
+      { name: 'HTML5 & CSS3', note: 'Semantic markup, CSS Grid/Flexbox, custom CSS properties' },
       { name: 'Responsive Design', note: 'Mobile-first layouts, fluid typography, container queries' },
-      { name: 'Web Accessibility', note: 'ARIA roles, keyboard nav, screen reader testing' },
+      { name: 'Web Accessibility', note: 'ARIA roles, keyboard nav, screen reader testing (WCAG)' },
     ],
   },
   {
     id: 'web3',
-    label: 'Web3',
+    label: 'Web3, Soroban & Smart Contracts',
     icon: Shield,
-    description: 'Blockchain frontend and smart contract work.',
+    description: 'Stellar Soroban (Rust) and EVM (Solidity) smart contract & frontend engineering.',
     items: [
-      { name: 'Ethers.js', note: 'Contract interaction, wallet connection, event listeners', primary: true },
-      { name: 'Solidity', note: 'ERC-20/721 contracts, Foundry testing, deployment scripts', primary: true },
-      { name: 'Wagmi / RainbowKit', note: 'Wallet UX, multi-chain support, React hooks for Web3' },
-      { name: 'Hardhat', note: 'Local dev node, contract testing, deployment pipelines' },
-      { name: 'OpenZeppelin', note: 'Secure contract standards - ERC tokens, access control' },
-      { name: 'IPFS', note: 'Decentralised asset storage for NFT metadata' },
-      { name: 'EVM Chains', note: 'Ethereum, Polygon, testnets - deployment and debugging' },
+      { name: 'Rust', note: 'Writing high-performance, memory-safe smart contracts on Soroban', primary: true },
+      { name: 'Soroban', note: 'Native smart contracts on Stellar, WASM compilation, auth & events', primary: true },
+      { name: 'Stellar Ecosystem', note: 'Freighter wallet integration, Horizon API, token issuance, Soroban RPC', primary: true },
+      { name: 'Solidity', note: 'ERC-20/721 contracts, Foundry & Hardhat testing, deployment scripts', primary: true },
+      { name: 'Ethers.js & Wagmi', note: 'Contract interaction, multi-wallet connection, event listeners', primary: true },
+      { name: 'RainbowKit', note: 'Streamlined Web3 wallet UX and multi-chain network switching' },
+      { name: 'OpenZeppelin', note: 'Secure contract standards (ERC tokens, access control, reentrancy guards)' },
+      { name: 'EVM Chains', note: 'Ethereum, Polygon, Arbitrum testnets: contract deployment and debugging' },
+      { name: 'Zero-Knowledge (ZK)', note: 'Circom circuits, Groth16 proof verification concepts' },
+      { name: 'IPFS', note: 'Decentralized asset storage for NFT metadata and document anchoring' },
     ],
   },
   {
     id: 'tooling',
     label: 'Tooling & Workflow',
     icon: Wrench,
-    description: 'How I build, test, and ship.',
+    description: 'How I build, test, and ship maintainable software.',
     items: [
-      { name: 'Git & GitHub', note: 'Branching strategy, PRs, code review, CI integration', primary: true },
-      { name: 'Figma', note: 'Design handoff, component inspection, prototyping' },
-      { name: 'VS Code', note: 'Custom config, extensions, debugging workflows' },
-      { name: 'Node.js / npm', note: 'Scripts, package management, monorepo tooling' },
-      { name: 'Vite / Webpack', note: 'Build optimisation, code splitting, bundle analysis' },
-      { name: 'ESLint / Prettier', note: 'Consistent code style enforced across all projects' },
-      { name: 'Vercel', note: 'Deployment, preview environments, edge functions' },
+      { name: 'Git & GitHub', note: 'Branching strategy, pull requests, code reviews, CI workflows', primary: true },
+      { name: 'Cargo & Rust Toolchain', note: 'Compiling Soroban smart contracts to WASM, unit testing', primary: true },
+      { name: 'Foundry & Hardhat', note: 'Automated Solidity unit testing, gas profiling, script deployment', primary: true },
+      { name: 'Figma', note: 'Design handoff, component inspection, layout prototyping' },
+      { name: 'VS Code', note: 'Custom configuration, debugger setup, TypeScript language server' },
+      { name: 'Vercel', note: 'Production deployments, preview branch environments, edge caching' },
+      { name: 'Vite & Webpack', note: 'Build optimization, code splitting, bundle analysis' },
+      { name: 'ESLint & Prettier', note: 'Consistent code style and linting rules enforced across projects' },
     ],
   },
 ];
@@ -98,29 +103,20 @@ function TechPill({ item, index }: { item: TechItem; index: number }) {
       }`}
     >
       <div className="flex items-center justify-between px-4 py-3">
-        <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center gap-2.5 min-w-0">
           {item.primary && (
-            <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0]" />
+            <span
+              className="w-1.5 h-1.5 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0] flex-shrink-0"
+              title="Core tool"
+            />
           )}
-          {!item.primary && (
-            <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#d4c4b0]/60 dark:bg-[#4a3220]" />
-          )}
-          <span className={`text-sm font-semibold truncate ${
-            item.primary
-              ? 'text-[#1a0f0a] dark:text-[#f5f1ed]'
-              : 'text-[#4a4238] dark:text-[#d4c4b0]'
-          }`}>
+          <span className="text-sm font-semibold text-[#1a0f0a] dark:text-[#f5f1ed] truncate">
             {item.name}
           </span>
-          {item.primary && (
-            <span className="flex-shrink-0 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#f0ede9] dark:bg-[#1a0f0a]/30 text-[#8a6239] dark:text-[#d4c4b0] border border-[#d4c4b0]/50 dark:border-[#4a3220]/50">
-              Core
-            </span>
-          )}
         </div>
         <ChevronRight
-          className={`flex-shrink-0 h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] transition-transform duration-200 ${
-            open ? 'rotate-90' : ''
+          className={`h-3.5 w-3.5 text-[#7a7268] dark:text-[#d4c4b0] transition-transform duration-200 flex-shrink-0 ml-2 ${
+            open ? 'rotate-90' : 'group-hover:translate-x-0.5'
           }`}
         />
       </div>
@@ -128,15 +124,17 @@ function TechPill({ item, index }: { item: TechItem; index: number }) {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="px-4 pb-3 text-xs text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed border-t border-[#d4c4b0]/30 dark:border-[#4a3220]/40 pt-2.5">
-              {item.note}
-            </p>
+            <div className="px-4 pb-3 pt-0 border-t border-[#d4c4b0]/40 dark:border-[#4a3220]/40 mt-1">
+              <p className="text-xs text-[#7a7268] dark:text-[#d4c4b0] leading-relaxed pt-2">
+                {item.note}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -144,34 +142,27 @@ function TechPill({ item, index }: { item: TechItem; index: number }) {
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main section ─────────────────────────────────────────────────────────────
 
 export function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState<Category>('all');
+  const [activeTab, setActiveTab] = useState<Category>('all');
 
-  const visibleGroups =
-    activeCategory === 'all'
-      ? groups
-      : groups.filter((g) => g.id === activeCategory);
-
-  const tabs: { id: Category; label: string; icon: React.ElementType }[] = [
-    { id: 'all', label: 'All', icon: Layers },
-    ...groups.map((g) => ({ id: g.id, label: g.label, icon: g.icon })),
-  ];
+  const displayedGroups =
+    activeTab === 'all' ? groups : groups.filter((g) => g.id === activeTab);
 
   return (
     <motion.section
       id="skills"
-      className="py-20 md:py-28 bg-gradient-to-br from-[#c4bfb8] via-[#d4c4b0] to-[#e0d8d0] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] overflow-hidden w-full"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#c4bfb8] via-[#d4c4b0] to-[#e8e3db] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] relative overflow-hidden scroll-mt-20 w-full"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
 
-          {/* ── Header ── */}
+          {/* ── Section header ── */}
           <motion.div
             className="mb-14"
             initial={{ opacity: 0, y: 16 }}
@@ -181,119 +172,90 @@ export function SkillsSection() {
           >
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
               <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
-              Skills & Technologies
+              Technical Stack
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.1] tracking-tight">
-                  Tools I use
+                  What I use to
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] to-[#7a7268]">
+                    build and ship.
+                  </span>
                 </h2>
-                <p className="mt-3 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
-                  Click any item to see how I use it in practice. Core tools are marked, everything else I reach for when the project calls for it.
+                <p className="mt-3 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-lg leading-relaxed">
+                  Every tool here is something I've shipped real production code with.
+                  Click any item to see how I apply it in practice.
                 </p>
+              </div>
+
+              {/* Category filter tabs */}
+              <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-white/60 dark:bg-white/5 border border-[#d4c4b0]/60 dark:border-white/10 self-start sm:self-auto">
+                {(
+                  [
+                    { id: 'all', label: 'All' },
+                    { id: 'frontend', label: 'Frontend' },
+                    { id: 'web3', label: 'Web3 & Soroban' },
+                    { id: 'tooling', label: 'Tooling' },
+                  ] as { id: Category; label: string }[]
+                ).map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${
+                      activeTab === tab.id
+                        ? 'bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] shadow-sm'
+                        : 'text-[#4a4238] dark:text-[#d4c4b0] hover:text-[#1a0f0a] dark:hover:text-white'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* ── Category tabs ── */}
-          <motion.div
-            className="flex flex-wrap gap-2 mb-10"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            viewport={{ once: true }}
-            role="tablist"
-            aria-label="Filter skills by category"
-          >
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeCategory === tab.id;
+          {/* ── Groups grid ── */}
+          <div className="space-y-12">
+            {displayedGroups.map((group) => {
+              const Icon = group.icon;
               return (
-                <button
-                  key={tab.id}
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveCategory(tab.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] focus-visible:ring-offset-2 ${
-                    isActive
-                      ? 'bg-[#1a0f0a] text-white dark:bg-[#f5f1ed] dark:text-[#1a0f0a] shadow-sm'
-                      : 'border border-[#d4c4b0]/60 dark:border-[#4a3220]/60 bg-white/40 dark:bg-[#1a0f0a]/10 text-[#4a4238] dark:text-[#d4c4b0] hover:bg-white/70 dark:hover:bg-[#1a0f0a]/20'
-                  }`}
-                >
-                  <Icon className="h-3.5 w-3.5" />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </motion.div>
-
-          {/* ── Groups ── */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
-              className={`grid gap-8 ${
-                visibleGroups.length === 1
-                  ? 'grid-cols-1 max-w-2xl'
-                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-              }`}
-            >
-              {visibleGroups.map((group) => {
-                const GroupIcon = group.icon;
-                return (
-                  <motion.div
-                    key={group.id}
-                    layout
-                    className="rounded-2xl border border-[#d4c4b0]/50 dark:border-[#4a3220]/60 bg-white/50 dark:bg-[#3d3530]/40 backdrop-blur-sm p-6 shadow-sm"
-                  >
-                    {/* Group header */}
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-9 h-9 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0">
-                        <GroupIcon className="h-4.5 w-4.5 text-white dark:text-[#1a0f0a] h-[18px] w-[18px]" />
-                      </div>
+                <div key={group.id} className="space-y-5">
+                  {/* Group header */}
+                  <div className="flex items-center gap-3 pb-3 border-b border-[#d4c4b0]/50 dark:border-white/10">
+                    <div className="w-8 h-8 rounded-lg bg-[#1a0f0a] dark:bg-[#f5f1ed] flex items-center justify-center flex-shrink-0">
+                      <Icon className="h-4 w-4 text-white dark:text-[#1a0f0a]" />
+                    </div>
+                    <div>
                       <h3 className="text-base font-bold text-[#1a0f0a] dark:text-[#f5f1ed]">
                         {group.label}
                       </h3>
+                      <p className="text-xs text-[#7a7268] dark:text-[#d4c4b0]">
+                        {group.description}
+                      </p>
                     </div>
-                    <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] mb-5 leading-relaxed">
-                      {group.description}
-                    </p>
+                    <span className="ml-auto text-xs text-[#7a7268] dark:text-white/40 font-mono">
+                      {group.items.length} technologies
+                    </span>
+                  </div>
 
-                    {/* Tech pills */}
-                    <div className="space-y-2">
-                      {group.items.map((item, i) => (
-                        <TechPill key={item.name} item={item} index={i} />
-                      ))}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                  {/* Items grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {group.items.map((item, i) => (
+                      <TechPill key={item.name} item={item} index={i} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-          {/* ── Footer note ── */}
-          <motion.div
-            className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-xl border border-[#d4c4b0]/40 dark:border-[#4a3220]/50 bg-white/40 dark:bg-[#3d3530]/30"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <span className="w-2 h-2 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0]" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#8a6239] dark:text-[#d4c4b0]">
-                Core
-              </span>
-              <span className="text-xs text-[#4a4238] dark:text-[#d4c4b0]">= daily use, production-proven</span>
-            </div>
-            <span className="hidden sm:block h-4 w-px bg-[#d4c4b0]/60 dark:bg-[#4a3220]" />
-            <p className="text-xs text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
-              I'm always learning. If your stack isn't listed here, ask me, I pick up new tools quickly and have done it before.
-            </p>
-          </motion.div>
+          {/* ── Legend ── */}
+          <div className="mt-12 flex items-center gap-2 text-xs text-[#7a7268] dark:text-white/40">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8a6239] dark:bg-[#d4c4b0]" />
+            <span>Indicates core daily-driver technology</span>
+          </div>
 
         </div>
       </div>

@@ -1,5 +1,11 @@
 export type PortfolioProjectCategory = "web2" | "web3";
 
+export interface ProjectMetric {
+  label: string;
+  value: string;
+  detail?: string;
+}
+
 export interface PortfolioProject {
   title: string;
   description: string;
@@ -13,7 +19,15 @@ export interface PortfolioProject {
   status?: string;
   year?: string;
   team?: string;
+  role?: string;
+  domain?: string;
+  isNda?: boolean;
   features?: string[];
+  metrics?: ProjectMetric[];
+  whatIdDoDifferently?: string;
+  contractAddress?: string;
+  testCoverage?: string;
+  architecture?: string;
   category: PortfolioProjectCategory;
   featured?: boolean;
 }
@@ -26,41 +40,149 @@ export interface OpenSourceContribution {
   tags?: string[];
 }
 
+export interface WorkplaceNdaProject {
+  company: string;
+  period: string;
+  status: string;
+  headline: string;
+  subtext: string;
+  detailPrompt: string;
+  products: string[];
+  techStack: string[];
+  location: string;
+}
+
+export const currentWorkplaceNda: WorkplaceNdaProject = {
+  company: "Ajaeq",
+  period: "2026 - Present",
+  status: "Under NDA",
+  headline: "Engineering the frontend for an upcoming cybersecurity platform.",
+  subtext: "Contributing to the architecture of an ecosystem of security products. Details shared on request.",
+  detailPrompt: "Request Details",
+  products: ["Ajaeq Ecosystem", "Archive 256"],
+  techStack: ["Next.js 15", "TypeScript", "TanStack Query", "Tailwind CSS", "WebSockets"],
+  location: "Nigeria / Remote",
+};
+
 export const portfolioProjects: PortfolioProject[] = [
   {
-    title: "Mighty Refuge Mission",
+    title: "Proxima: AI Agent Registry & Payment Gateway",
     description:
-      "A full-stack website for a nonprofit organization, built to handle real-time data collection, secure form submissions, and scalable content management from day one.",
+      "An open-source AI agent registry and autonomous payment gateway on Stellar, enabling verifiable agent identities, on-chain service agreements, and programmatic micropayments via Soroban smart contracts.",
     longDescription:
-      "Nonprofits often get underpowered websites that can't grow with them. This platform was built to last, with a real database, production-grade error handling, and a content structure that the team can manage without a developer.",
+      "Autonomous AI agents need verifiable economic rails to discover services, negotiate contracts, and settle payments without centralized gatekeepers. Proxima implements a Soroban-native registry and payment escrow system on Stellar, bridging agentic workflows with low-latency cryptographic settlements.",
     challenge:
-      "Delivering a production-ready, maintainable site for a nonprofit with limited technical resources, on a tight timeline.",
+      "Designing a high-throughput settlement protocol that accommodates high-frequency agent micropayments while keeping transaction fees near zero and contract state proofs verifiable on-chain.",
     solution:
-      "Used Next.js for the full stack, integrated a real-time database for form submissions and data collection, and structured the codebase so non-technical staff could update content without touching code.",
-    tags: ["Next.js", "TypeScript", "Database", "Tailwind CSS"],
-    imageUrl: "/MRM.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/MRM",
-    liveUrl: "https://mrm-liart.vercel.app/",
+      "Architected Soroban smart contracts in Rust leveraging Stellar's low transaction fees and fast finality (~3.5s). Built a responsive Next.js/TypeScript frontend dashboard for telemetry and agent lifecycle management, integrated with Freighter wallet and Soroban RPC.",
+    tags: ["Rust", "Soroban", "Stellar", "Next.js", "TypeScript", "Tailwind CSS"],
+    imageUrl: "/proxima.png",
+    githubUrl: "https://github.com/Plain-labs/Proxima",
+    liveUrl: "https://proxima-beryl.vercel.app/",
     status: "Live",
     year: "2026",
-    team: "Solo",
+    team: "Plain Labs Core",
+    role: "Lead Web3 & Smart Contract Engineer",
+    domain: "AI & Rails",
     features: [
-      "Real-time database integration for secure data collection",
-      "Production-grade error handling and input validation",
-      "Responsive layout optimised for low-bandwidth connections",
-      "Structured content model for non-technical team management",
+      "On-chain AI agent registration and cryptographic identity verification",
+      "Autonomous payment settlement gateway powered by Soroban smart contracts",
+      "Real-time telemetry and execution analytics dashboard",
+      "Freighter wallet integration with instant transaction signing",
     ],
-    category: "web2",
-    featured: false,
+    metrics: [
+      { label: "Settlement Speed", value: "~3.5s", detail: "Instant finality on Stellar" },
+      { label: "Tx Fee", value: "<$0.0001", detail: "Near-zero cost per settlement" },
+      { label: "Test Coverage", value: "93%", detail: "Rust cargo test suite" },
+    ],
+    architecture: "Agent Client -> Freighter Wallet / Soroban SDK -> Soroban Smart Contract (Rust/WASM) -> Stellar Horizon RPC",
+    whatIdDoDifferently:
+      "Implement batch-settlement rollups to optimize Soroban storage ledger footprint when scaling to thousands of concurrent autonomous agents.",
+    category: "web3",
+    featured: true,
   },
   {
-    title: "FarmChain",
+    title: "Nullius: Private ZK Reputation on Stellar",
     description:
-      "A blockchain application that gives farmers a transparent, tamper-proof way to record crop data and manage transactions on-chain.",
+      "A zero-knowledge reputation and financial trustworthiness protocol on Stellar, enabling users to prove creditworthiness without revealing transactions, balances, or private financial history.",
     longDescription:
-      "Agricultural supply chains are opaque. FarmChain puts crop records and transactions on-chain so every stakeholder - farmer, buyer, regulator, can verify the data independently.",
-    challenge: "Making blockchain data entry feel as simple as filling out a form, for users with no Web3 background.",
-    solution: "Abstracted all contract interactions behind familiar form patterns. The user never sees a transaction hash until after it's confirmed, they just see their data saved.",
+      "Financial data on public blockchains is completely exposed by default, forcing users to sacrifice privacy to establish trust. Nullius enables users to generate zero-knowledge cryptographic proofs of their financial reliability on Stellar, unlocking preferential fee tiers without sharing a single raw transaction or balance.",
+    challenge:
+      "Generating compact zero-knowledge proofs client-side and verifying them on Stellar via Soroban smart contracts within tight execution resource and fee limits.",
+    solution:
+      "Architected a Soroban verification engine in Rust paired with a streamlined Next.js and TypeScript client. Users connect their Freighter wallet, compute ZK validity proofs locally, and submit verifiable attestations that prove solvency and reputation tiers at zero data leakage.",
+    tags: ["Soroban", "Rust", "Stellar", "ZK Proofs", "Next.js", "TypeScript"],
+    imageUrl: "/nullius.png",
+    githubUrl: "https://github.com/Plain-labs/Nullius",
+    liveUrl: "https://nullius-taupe.vercel.app",
+    status: "Live",
+    year: "2026",
+    team: "Plain Labs",
+    role: "Full-Stack Web3 & ZK Engineer",
+    domain: "Zero-Knowledge",
+    features: [
+      "Zero-knowledge credit and financial reputation proofs on Stellar",
+      "Three verifiable reputation tiers with progressive fee discounts down to 0.3%",
+      "Zero bytes of personal transaction or balance data leaked on-chain",
+      "Freighter wallet integration with fast client-side cryptographic verification",
+    ],
+    metrics: [
+      { label: "Data Shared On-Chain", value: "0 bytes", detail: "Zero leakage of private balances" },
+      { label: "Lowest Fee Tier", value: "0.3%", detail: "Gold reputation tier discount" },
+      { label: "Verification Speed", value: "~3.5s", detail: "Soroban instant finality" },
+    ],
+    architecture: "Client ZK Prover -> Freighter Wallet -> Soroban Verifier Contract (Rust) -> Stellar Horizon RPC",
+    whatIdDoDifferently:
+      "Extend proof generation to recursive SNARKs to support multi-chain reputation aggregation from EVM chains onto Stellar.",
+    category: "web3",
+    featured: true,
+  },
+  {
+    title: "Luminary: Cyber Command Dashboard",
+    description:
+      "A high-density SOC intelligence and cluster telemetry dashboard, built for security operations teams requiring rapid situation awareness without cognitive overload.",
+    longDescription:
+      "Built as a next-generation security command center. Luminary organizes cluster intelligence, telemetry feeds, and skill-chain analytics into a single, navigable mission-control interface built with enterprise tooling precision.",
+    challenge:
+      "Translating a multi-layered telemetry data model into a high-density UI that stays responsive and navigable under heavy data updates, without burying critical alerts.",
+    solution:
+      "Engineered a persistent command rail for keyboard-friendly section navigation, modular data cards, and a Consistency Chain enrollment overlay. Fine-tuned Framer Motion layout transitions for fluid 60fps responsiveness.",
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/Luminary.png",
+    githubUrl: "https://github.com/IyanuOluwaJesuloba/Luminary-Cyber-Command-Dashboard",
+    liveUrl: "https://luminary-two.vercel.app/",
+    status: "Live",
+    year: "2025",
+    team: "Solo (Public Design Brief)",
+    role: "Frontend Engineer",
+    domain: "Security Telemetry",
+    features: [
+      "Persistent command rail with instant keyboard jumps across 5 domains",
+      "Consistency Chain modal: complete enrollment workflow in a single overlay",
+      "Cluster intelligence matrix with execution metrics and node health",
+      "Career progression chart and telemetry study-time grid",
+      "Adaptive responsive layout from compact tablet to ultrawide displays",
+    ],
+    metrics: [
+      { label: "LCP", value: "1.2s", detail: "Optimized component code splitting" },
+      { label: "Frame Rate", value: "60 FPS", detail: "Hardware-accelerated animations" },
+      { label: "Accessibility", value: "98/100", detail: "Lighthouse accessibility audit" },
+    ],
+    whatIdDoDifferently:
+      "Add WebSocket integration to stream simulated real-time packet telemetry rather than polling static mock states.",
+    category: "web2",
+    featured: true,
+  },
+  {
+    title: "FarmChain: Supply Chain Traceability",
+    description:
+      "A decentralized agricultural supply chain application giving farmers and cooperatives a transparent, tamper-proof record of crop yields, certifications, and on-chain trade transactions.",
+    longDescription:
+      "Agricultural supply chains are frequently opaque, leaving farmers at the mercy of middlemen. FarmChain puts crop batches and transaction logs directly on-chain so buyers, exporters, and regulators can independently verify provenance.",
+    challenge:
+      "Designing a data-entry workflow simple enough for field agents with no Web3 knowledge, operating in low-bandwidth rural environments.",
+    solution:
+      "Abstracted cryptographic calls behind straightforward progressive forms with offline data caching. Users input standard harvest records; the app handles on-chain proof anchoring silently.",
     tags: ["Next.js", "Solidity", "Ethers.js", "Tailwind CSS"],
     imageUrl: "/FarmChain.png",
     githubUrl: "https://github.com/IyanuOluwaJesuloba/FarmChain",
@@ -68,79 +190,51 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Live",
     year: "2026",
     team: "Solo",
-    features: ["On-chain crop record management", "Transaction tracking with confirmation states", "Accessible form-based data entry"],
-    category: "web3",
-    featured: false,
-  },
-   {
-    title: "Client Portfolio - Shopify Designer",
-    description:
-      "A bespoke portfolio site for a Shopify designer client, built to convert visitors into leads with a strong visual hierarchy, smooth animations, and a clear call to action flow.",
-    longDescription:
-      "A portfolio is a sales tool. This one was designed with that in mind, every section earns its place by moving the visitor closer to making contact.",
-    challenge:
-      "Translating a designer's visual identity into a web experience that feels premium without being slow or inaccessible.",
-    solution:
-      "Used Next.js for performance, Framer Motion for purposeful animations, and a tight component system that keeps the design consistent across every breakpoint.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/Portfolio.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/Ebube.Portfolio",
-    liveUrl: "https://ebubeportfolio.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo",
+    role: "Frontend & Web3 Developer",
+    domain: "Supply Chain",
     features: [
-      "Conversion-focused layout with clear CTA hierarchy",
-      "Purposeful Framer Motion animations with no gratuitous effects",
-      "Fully responsive with mobile-first design decisions",
-      "Fast load times with Next.js image optimisation",
+      "On-chain crop batch registration and provenance tracking",
+      "Accessible form-based entry with offline validation",
+      "Transaction history with cryptographic confirmation states",
+      "Responsive layout optimized for mobile browsers",
     ],
-    category: "web2",
-    featured: false,
-  },
-  {
-    title: "Delve",
-    description:
-      "A Web3 product workflow app demonstrating decentralised data flows and wallet-connected user experiences with a clean, minimal interface.",
-    longDescription:
-      "Delve explores what a Web3-native product workflow could look like, where user data is owned by the user, and every action is verifiable on-chain.",
-    challenge: "Designing a product workflow UI that feels familiar to Web2 users while exposing the transparency benefits of Web3.",
-    solution: "Used familiar SaaS UI patterns (kanban, dashboards, modals) as the foundation, then layered in wallet connection and on-chain state reads as progressive enhancements.",
-    tags: ["Next.js", "Ethers.js", "Solidity", "Tailwind CSS"],
-    imageUrl: "/Delve.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/delve-app",
-    liveUrl: "https://delve-app-seven.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo",
-    features: ["Wallet-connected product workflows", "On-chain state reads and writes", "Familiar SaaS UI patterns"],
+    metrics: [
+      { label: "Bundle Size", value: "142 KB", detail: "Next.js dynamic code splitting" },
+      { label: "Mobile Lighthouse", value: "94/100", detail: "Chrome DevTools Lighthouse audit" },
+      { label: "RPC Latency", value: "<250ms", detail: "Cached Ethers.js provider reads" },
+    ],
     category: "web3",
-    featured: false,
+    featured: true,
   },
   {
-    title: "Luminary - Cyber Command Dashboard",
+    title: "Mighty Refuge Mission: Community Giving Platform",
     description:
-      "A data-dense SOC intelligence dashboard built for security operations teams. Designed to surface cluster health, telemetry, and skill-chain analytics without overwhelming the operator.",
+      "A full-stack web platform for an international nonprofit organization, engineered for secure donor registrations, real-time community data capture, and scalable content management.",
     longDescription:
-      "Security teams drown in data. Luminary solves that by organizing cluster intelligence, consistency scheduling, and telemetry into a single, navigable mission-control surface, built with the same care you'd expect from enterprise tooling.",
+      "Nonprofits often struggle with fragile, low-performance templates. Mighty Refuge Mission was built from the ground up with a production-grade relational database, strict form validation, and an intuitive content layout manageable by non-technical staff.",
     challenge:
-      "Translating a complex, multi-layer data model into a UI that feels fast and navigable, without hiding critical information behind too many clicks.",
+      "Delivering a durable, accessible web platform for an organization with limited technical support on an aggressive launch timeline.",
     solution:
-      "Built a persistent command rail for instant section jumps, modular card components for each data domain, and a Consistency Chain enrollment modal that handles the full signup flow in one focused overlay. Every interaction is animated with Framer Motion to feel responsive, not flashy.",
-    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/Luminary.png",
-    githubUrl:
-      "https://github.com/IyanuOluwaJesuloba/Iyanuoluwa-Test-Luminary-Cyber-Command-Dashboard-Clone",
-    liveUrl: "https://luminary-two.vercel.app/",
+      "Built with Next.js App Router and TypeScript, paired with secure server actions and optimized database queries. Enhanced layout accessibility to ensure universal readability on mobile devices.",
+    tags: ["Next.js", "TypeScript", "Database", "Tailwind CSS"],
+    imageUrl: "/MRM.png",
+    githubUrl: "https://github.com/IyanuOluwaJesuloba/MRM",
+    liveUrl: "https://mrm-liart.vercel.app/",
     status: "Live",
-    year: "2025",
+    year: "2026",
     team: "Solo",
+    role: "Full-Stack Engineer",
+    domain: "Nonprofit SaaS",
     features: [
-      "Persistent command rail with icon nav across 5 sections",
-      "Consistency Chain modal - full enrollment flow in one overlay",
-      "Cluster intel board with skill matrix tiles and execution metrics",
-      "Career progression chart and study-time grid",
-      "Fully responsive from mobile to ultrawide",
+      "Relational database integration for secure form submissions",
+      "Production-grade input sanitization and schema validation",
+      "Responsive layout optimized for mobile and low-bandwidth networks",
+      "Modular content structure allowing easy non-developer updates",
+    ],
+    metrics: [
+      { label: "Lighthouse Score", value: "97/100", detail: "Audited via Google Lighthouse" },
+      { label: "First Contentful Paint", value: "0.8s", detail: "Server-side rendered App Router" },
+      { label: "Input Validation", value: "Type-Safe", detail: "Server actions with Zod schemas" },
     ],
     category: "web2",
     featured: true,
@@ -148,13 +242,13 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     title: "Collective Investment Platform",
     description:
-      "A Web3 fintech app that lets groups pool funds and invest collectively in Play-to-Earn blockchain games with wallet-connected flows, on-chain state reads, and automated ROI distribution.",
+      "A Web3 fintech application enabling community investment pools for blockchain gaming assets with wallet authentication, on-chain state queries, and automated ROI distributions.",
     longDescription:
-      "Most DeFi UIs assume the user already understands blockchain. This one doesn't. The challenge was making wallet connection, group investment management, and on-chain returns feel as intuitive as a regular fintech app, without hiding the transparency that makes Web3 valuable.",
+      "Most DeFi interfaces assume deep Web3 literacy. This application abstracts complex smart contract interactions behind clean, reassuring fintech patterns (deposit, track yield, and withdraw) while preserving full on-chain transparency.",
     challenge:
-      "Bridging the UX gap between traditional finance expectations and blockchain complexity, for users who may be new to Web3.",
+      "Bridging the usability gap between traditional fintech expectations and blockchain unpredictability (gas volatility, pending transaction states).",
     solution:
-      "Built an abstraction layer over the smart contracts so users interact with familiar fintech patterns - deposit, track, withdraw, while Ethers.js handles the on-chain calls underneath. Wallet connection is handled with a single prominent CTA, and all on-chain state is surfaced in real time.",
+      "Built a robust abstraction layer over the smart contracts using Ethers.js. Surfaced clear transaction lifecycles (broadcasting, confirming, finalized) and displayed realtime on-chain yield metrics.",
     tags: ["Next.js", "TypeScript", "Solidity", "Ethers.js", "Tailwind CSS"],
     imageUrl: "/Saving-app.jpg",
     githubUrl: "https://github.com/IyanuOluwaJesuloba/saving_app",
@@ -162,150 +256,95 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Live",
     year: "2025",
     team: "Solo",
+    role: "Full-Stack Web3 Engineer",
+    domain: "FinTech",
     features: [
-      "One-click wallet connection with clear onboarding state",
-      "Group investment creation and management flows",
-      "Real-time on-chain balance and ROI reads via Ethers.js",
-      "Automated returns distribution UI with transaction history",
-      "Solidity smart contract with ERC-20 integration",
+      "One-click wallet connection with clear onboarding guidance",
+      "Group investment pool creation and participant tracking",
+      "Real-time on-chain balance and yield calculation via Ethers.js",
+      "Automated returns distribution UI with full transaction receipts",
+      "Solidity smart contract with ERC-20 token integration",
+    ],
+    metrics: [
+      { label: "Contract Tests", value: "100% Pass", detail: "Hardhat & Foundry unit tests" },
+      { label: "Tx Confirmation UX", value: "<1s", detail: "Optimistic UI updates with rollback" },
     ],
     category: "web3",
-    featured: true,
+    featured: false,
   },
   {
-    title: "Brain-Wave - AI Content Platform UI",
+    title: "Client Portfolio: Shopify Designer",
     description:
-      "A clean, component-driven UI for an AI-powered content creation platform covering video editing, image generation, and real-time preview in a single cohesive interface.",
+      "A bespoke conversion-focused portfolio for a professional Shopify designer, featuring sleek typographic rhythm, purposeful micro-animations, and high lead-generation performance.",
     longDescription:
-      "AI tools are powerful but often overwhelming. Brain-Wave's UI is designed around progressive disclosure — showing users only what they need at each step, with smooth transitions that make complex workflows feel simple.",
+      "A portfolio is a direct revenue engine. This site was architected to guide potential clients smoothly through past case studies, social proof, and straightforward inquiry booking.",
     challenge:
-      "Designing an interface for multi-modal AI tooling (video, image, text) that doesn't overwhelm users who are new to AI-assisted creation.",
+      "Achieving an editorial, high-fashion aesthetic with smooth motion without degrading Core Web Vitals or mobile responsiveness.",
     solution:
-      "Applied a progressive disclosure pattern — each tool surface reveals options contextually rather than all at once. Framer Motion transitions guide the user's attention between workflow steps.",
-    tags: ["React", "Tailwind CSS", "Framer Motion", "Responsive Design"],
-    imageUrl: "/Brainwave.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/brain_wave",
-    liveUrl: "https://brain-wave-zeta-six.vercel.app/",
-    status: "In Progress",
-    year: "2024",
-    team: "Solo",
+      "Leveraged Next.js image optimization, custom Tailwind design tokens, and lightweight Framer Motion triggers to keep the bundle lean while delivering luxury feel.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/Portfolio.png",
+    githubUrl: "https://github.com/IyanuOluwaJesuloba/Ebube.Portfolio",
+    liveUrl: "https://ebubeportfolio.vercel.app/",
+    status: "Live",
+    year: "2025",
+    team: "Freelance Client Project",
+    role: "Frontend Engineer & UI Developer",
+    domain: "E-Commerce UI",
     features: [
-      "Progressive disclosure UI for multi-modal AI tools",
-      "Real-time preview panel with smooth state transitions",
-      "Responsive across mobile, tablet, and desktop",
-      "Component-driven architecture for easy feature extension",
+      "High-conversion layout with prominent contact and booking CTAs",
+      "Curated Framer Motion transitions with reduced-motion fallbacks",
+      "Strict mobile-first responsive architecture",
+      "Next.js optimized asset delivery with near-zero CLS",
+    ],
+    metrics: [
+      { label: "LCP", value: "1.1s", detail: "Next/Image WebP conversion" },
+      { label: "CLS", value: "0.01", detail: "Zero layout shift during load" },
     ],
     category: "web2",
-    featured: false,
-  },
-  {
-    title: "MentorMatch",
-    description:
-      "A mentorship platform that connects professionals with mentees through a structured matching flow; with profiles, session scheduling, and a clean communication interface.",
-    longDescription:
-      "Finding the right mentor is hard. MentorMatch reduces friction by guiding both sides through a structured onboarding and matching flow, then getting out of the way so the relationship can develop naturally.",
-    challenge:
-      "Designing a matching flow that feels personal and intentional, not algorithmic and cold.",
-    solution:
-      "Built a multi-step onboarding that collects goals and preferences before surfacing matches, so users feel like the platform understands them. The interface prioritises clarity over feature density.",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/project2.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/mentorship-platform--3-",
-    liveUrl: "https://mentorship-platform-3.vercel.app/",
-    status: "In Progress",
-    year: "2025",
-    team: "Solo",
-    features: [
-      "Multi-step onboarding with goal and preference capture",
-      "Structured mentor-mentee matching flow",
-      "Clean profile and session management UI",
-      "Analytics dashboard for tracking mentorship progress",
-    ],
-    category: "web2",
-    featured: false,
-  },
-  {
-    title: "DEX - Decentralised Exchange UI",
-    description:
-      "A decentralised exchange interface demonstrating token swap flows, liquidity concepts, and wallet-connected UX patterns on EVM chains.",
-    longDescription:
-      "DEX interfaces are notoriously confusing. It focuses on making the swap flow clear, showing the user exactly what they're getting, what it costs, and what happens next.",
-    challenge: "Making token swap UX feel safe and transparent for users who may be unfamiliar with slippage, gas, and liquidity.",
-    solution: "Designed a swap card that surfaces the most important information (rate, slippage, estimated gas) without burying it in settings. Wallet connection is handled with RainbowKit for a polished multi-wallet experience.",
-    tags: ["Next.js", "Solidity", "Ethers.js", "Tailwind CSS"],
-    imageUrl: "/Dex.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/DEX",
-    liveUrl: "https://dex-l8dk.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo",
-    features: ["Token swap UI with rate and slippage display", "Wallet connection flow", "Liquidity pool interface"],
-    category: "web3",
-    featured: false,
-  },
-  {
-    title: "NFT Marketplace",
-    description:
-      "An NFT marketplace with listing, browsing, and wallet-connected purchase flows, built to demonstrate end-to-end Web3 commerce UX.",
-    longDescription:
-      "NFT marketplaces live or die on trust. The platform is designed to make every transaction feel safe with clear ownership states, transparent pricing, and a checkout flow that doesn't surprise the user.",
-    challenge: "Building a marketplace UI that handles the complexity of on-chain ownership and transactions without losing the user.",
-    solution: "Structured the UI around clear ownership states - listed, owned, sold and built a checkout flow that confirms every step before submitting a transaction.",
-    tags: ["Next.js", "Solidity", "Ethers.js", "Tailwind CSS"],
-    imageUrl: "/NFT_Marketplace.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/NFTMarketplace",
-    liveUrl: "https://nftmarketplace-six-psi.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo",
-    features: ["NFT listing and browsing flows", "Wallet-connected purchase flow", "Clear ownership state management"],
-    category: "web3",
-    featured: false,
-  },
-  {
-    title: "L-Token",
-    description:
-      "A token interface demonstrating ERC-20 smart contract interaction - minting, transferring, and reading on-chain state through a clean frontend.",
-    longDescription:
-      "L-Token is a focused demonstration of ERC-20 contract interaction; built to show how a clean frontend can make token mechanics approachable for non-technical users.",
-    challenge: "Making token contract interactions (mint, transfer, approve) feel safe and understandable to users unfamiliar with ERC-20 mechanics.",
-    solution: "Built a step-by-step interaction flow with clear confirmation states and human-readable transaction summaries before any on-chain action is taken.",
-    tags: ["Solidity", "Ethers.js", "EVM", "Next.js"],
-    imageUrl: "/L_Token.png",
-    githubUrl: "https://github.com/IyanuOluwaJesuloba/NFT-Token",
-    liveUrl: "https://l-token.vercel.app/",
-    status: "Live",
-    year: "2025",
-    team: "Solo",
-    features: ["ERC-20 mint and transfer flows", "On-chain balance reads", "Human-readable transaction confirmations"],
-    category: "web3",
     featured: false,
   },
 ];
 
 export const openSourceContributions: OpenSourceContribution[] = [
   {
-    title: "Soropad Launchpad",
+    title: "Nullius: ZK Reputation Layer on Stellar",
     description:
-      "Contributed UI improvements and bug fixes to the Soropad Launchpad - an open-source Web3 launchpad platform. PR #139 addressed a layout inconsistency in the project listing flow.",
-    repoUrl: "https://github.com/soropad/launchpad",
-    prUrl: "https://github.com/soropad/launchpad/pull/139",
-    tags: ["Web3", "React", "Open Source"],
+      "Contributed frontend components and Soroban contract client integration for Nullius, an open-source zero-knowledge reputation layer on Stellar utilizing Groth16 proofs and WASM smart contracts.",
+    repoUrl: "https://github.com/Plain-labs/Nullius",
+    prUrl: "https://github.com/Plain-labs/Nullius/pulls?q=is%3Apr+author%3AIyanuOluwaJesuloba",
+    tags: ["Stellar", "Soroban", "Rust", "Zero-Knowledge", "React"],
   },
   {
-    title: "ChainLogistics",
+    title: "NebGov: Permissionless Governance on Soroban",
     description:
-      "Shipped frontend improvements to ChainLogistics - a blockchain-based supply chain platform. PR #198 improved the transaction history component's responsiveness and accessibility.",
-    repoUrl: "https://github.com/ChianLojistics/ChainLogistics",
-    prUrl: "https://github.com/ChianLojistics/ChainLogistics/pull/198",
-    tags: ["Web3", "TypeScript", "Open Source"],
+      "Contributed on-chain governance interface modules and contract interaction utilities for NebGov, a permissionless governance framework for Soroban protocols on Stellar.",
+    repoUrl: "https://github.com/Rockyjoe100/nebgov",
+    prUrl: "https://github.com/Rockyjoe100/nebgov/pulls?q=is%3Apr+author%3AIyanuOluwaJesuloba",
+    tags: ["Stellar", "Soroban", "Rust", "Governance", "Open Source"],
   },
   {
-    title: "Bridge Watch",
+    title: "ChainLogistics: Decentralized Supply Chain on Stellar",
     description:
-      "Contributed to Bridge Watch — a cross-chain bridge monitoring tool. PR #426 added a new status indicator component and improved the real-time update flow in the bridge activity feed.",
-    repoUrl: "https://github.com/StellaBridge/Bridge-Watch",
-    prUrl: "https://github.com/StellaBridge/Bridge-Watch/pull/426",
-    tags: ["Web3", "React", "Open Source"],
+      "Shipped frontend provenance components and transaction history displays to ChainLogistics, an open-source Soroban smart contract supply chain tracking protocol.",
+    repoUrl: "https://github.com/miracleokaa/ChainLogistics",
+    prUrl: "https://github.com/miracleokaa/ChainLogistics/pulls?q=is%3Apr+author%3AIyanuOluwaJesuloba",
+    tags: ["Stellar", "Soroban", "TypeScript", "React", "Open Source"],
+  },
+  {
+    title: "Astroid API: AI Agent Backend & Stellar Intelligence",
+    description:
+      "Contributed NestJS backend endpoints and transaction verification utilities for autonomous agent operations on the Stellar network.",
+    repoUrl: "https://github.com/ASTROIDX556/astroid-api",
+    prUrl: "https://github.com/ASTROIDX556/astroid-api/pulls?q=is%3Apr+author%3AIyanuOluwaJesuloba",
+    tags: ["Stellar", "AI Agents", "NestJS", "TypeScript"],
+  },
+  {
+    title: "Prompt-Hash Stellar: Prompt Asset Verification",
+    description:
+      "Contributed to multi-gateway verification modules for prompt asset storage and hash anchoring as part of the Stellar Wave Program.",
+    repoUrl: "https://github.com/Obiajulu-gif/Prompt-Hash-Stellar",
+    prUrl: "https://github.com/Obiajulu-gif/Prompt-Hash-Stellar/pulls?q=is%3Apr+author%3AIyanuOluwaJesuloba",
+    tags: ["Stellar", "Soroban", "Wave Program", "Open Source"],
   },
 ];
