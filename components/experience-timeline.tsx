@@ -100,7 +100,7 @@ const experiences = [
     stack: ['JavaScript', 'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Git'],
   },
   {
-    title: 'Frontend Developer (Foundations & Independent Projects)',
+    title: 'Frontend Developer (Independent Projects)',
     company: 'Self-Directed & Freelance',
     companyUrl: '#',
     location: 'Remote',
