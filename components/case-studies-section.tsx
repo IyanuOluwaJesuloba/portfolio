@@ -1,0 +1,403 @@
+'use client';
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, ArrowUpRight, CheckCircle2, TrendingUp, Lightbulb, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { portfolioProjects } from '@/lib/portfolio-data';
+import { sectionVariants } from '@/lib/animations';
+import { WorkplaceNdaCard } from '@/components/workplace-nda-card';
+
+const featured = portfolioProjects;
+
+// ─── Tab button ───────────────────────────────────────────────────────────────
+function Tab({
+  project,
+  index,
+  isActive,
+  onClick,
+}: {
+  project: (typeof featured)[number];
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group relative w-full text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+    >
+      {/* Active indicator line */}
+      <div
+        className={`absolute left-0 top-0 bottom-0 w-0.5 rounded-full transition-all duration-300 ${
+          isActive
+            ? 'bg-[#8a6239] dark:bg-[#d4c4b0]'
+            : 'bg-[#d4c4b0]/30 dark:bg-white/10 group-hover:bg-[#d4c4b0]/60 dark:group-hover:bg-white/20'
+        }`}
+      />
+      <div className="pl-4 py-3.5">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-md bg-[#8a6239]/10 dark:bg-white/10 text-[#8a6239] dark:text-[#d4c4b0]">
+            {project.domain || project.category}
+          </span>
+          <span className="text-[10px] text-[#7a7268] dark:text-white/60">{project.year}</span>
+        </div>
+        <p
+          className={`text-sm font-bold leading-snug transition-colors duration-200 ${
+            isActive
+              ? 'text-[#1a0f0a] dark:text-white'
+              : 'text-[#4a4238] dark:text-white/65 group-hover:text-[#1a0f0a] dark:group-hover:text-white/80'
+          }`}
+        >
+          {project.title.split(/[:\-]/)[0].trim()}
+        </p>
+        {isActive && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="text-xs text-[#8a6239] dark:text-[#d4c4b0] mt-1 leading-relaxed line-clamp-2"
+          >
+            {project.description.split('.')[0]}.
+          </motion.p>
+        )}
+      </div>
+    </button>
+  );
+}
+
+// ─── Main section ─────────────────────────────────────────────────────────────
+export function CaseStudiesSection() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const active = featured[activeIdx] || featured[0];
+
+  return (
+    <motion.section
+      id="case-studies"
+      className="py-20 md:py-28 bg-gradient-to-br from-[#e8e3db] via-[#f0e8e0] to-[#faf9f7] dark:from-[#1a0f0a] dark:via-[#1a0f0a] dark:to-[#2a1810] relative overflow-hidden w-full scroll-mt-20"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+    >
+      {/* Decorative blobs */}
+      <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#8a6239]/6 to-transparent rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#7a7268]/5 to-transparent rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+
+          {/* ── Section label + heading ── */}
+          <motion.div
+            className="mb-14"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8a6239] dark:text-[#d4c4b0] mb-5">
+              <span className="h-px w-8 bg-[#8a6239]/50 dark:bg-[#d4c4b0]/40" />
+              Featured Case Studies
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed] leading-[1.08] tracking-tight">
+                  Software engineered to solve
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8a6239] via-[#a07848] to-[#7a7268] dark:from-[#d4c4b0] dark:to-[#c4b4a0]">
+                    real world problems.
+                  </span>
+                </h2>
+                <p className="mt-4 text-base text-[#4a4238] dark:text-[#d4c4b0] max-w-xl leading-relaxed">
+                  Selected case studies from open source, freelance, and enterprise work. Each details the problem,
+                  my engineering role, measurable outcomes, and lessons learned.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── NDA Workplace Card ── */}
+          <WorkplaceNdaCard />
+
+          {/* ── Main showcase ── */}
+          <div className="grid lg:grid-cols-[240px_1fr] gap-8 lg:gap-10 items-start">
+
+            {/* Left column: tab list */}
+            <motion.div
+              className="flex lg:flex-col gap-0 overflow-x-auto lg:overflow-visible"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              {/* Mobile: horizontal scroll tabs */}
+              <div className="flex lg:hidden gap-2 pb-2 w-full overflow-x-auto">
+                {featured.map((p, i) => (
+                  <button
+                    key={p.title}
+                    onClick={() => setActiveIdx(i)}
+                    className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
+                      i === activeIdx
+                        ? 'bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a]'
+                        : 'border border-[#d4c4b0]/60 dark:border-white/15 text-[#4a4238] dark:text-white/65 hover:border-[#8a6239] dark:hover:border-white/30'
+                    }`}
+                  >
+                    {p.title.split(/[:\-]/)[0].trim()}
+                  </button>
+                ))}
+              </div>
+
+              {/* Desktop: vertical tab list */}
+              <div className="hidden lg:flex flex-col gap-1 w-full max-h-[700px] overflow-y-auto pr-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#7a7268] dark:text-white/50 mb-2 pl-4">
+                  Select Project ({featured.length})
+                </p>
+                {featured.map((p, i) => (
+                  <Tab
+                    key={p.title}
+                    project={p}
+                    index={i}
+                    isActive={i === activeIdx}
+                    onClick={() => setActiveIdx(i)}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right column: detail panel */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true }}
+            >
+              <AnimatePresence mode="wait">
+                {active && (
+                  <motion.div
+                    key={active.title}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.28 }}
+                    className="space-y-6"
+                  >
+                    {/* Hero image */}
+                    <div className="relative rounded-2xl overflow-hidden group shadow-xl shadow-black/10 dark:shadow-black/40">
+                      <div className="relative h-56 sm:h-72 md:h-[320px]">
+                        <Image
+                          src={active.imageUrl}
+                          alt={active.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          priority
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                        {/* Bottom: title + role + status */}
+                        <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                            <div>
+                              <div className="flex items-center gap-2 mb-2 flex-wrap">
+                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/20 text-white border border-white/30 backdrop-blur-sm">
+                                  {active.domain || active.category.toUpperCase()}
+                                </span>
+                                {active.role && (
+                                  <span className="text-[10px] font-semibold text-white/90 bg-white/15 px-2.5 py-1 rounded-full border border-white/20 backdrop-blur-sm">
+                                    {active.role}
+                                  </span>
+                                )}
+                                {active.status === 'Live' && (
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-green-500/25 border border-green-400/30 text-green-200 backdrop-blur-sm">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                    Live
+                                  </span>
+                                )}
+                                {active.isNda && (
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-500/30 border border-amber-400/40 text-amber-200 backdrop-blur-sm">
+                                    <ShieldCheck className="w-3 h-3 text-amber-300" />
+                                    Enterprise NDA
+                                  </span>
+                                )}
+                              </div>
+                              <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">
+                                {active.title}
+                              </h3>
+                            </div>
+                            {/* Quick links on image */}
+                            <div className="flex gap-2 flex-shrink-0">
+                              {active.liveUrl && (
+                                <a
+                                  href={active.liveUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
+                                  aria-label="View live project"
+                                >
+                                  <ArrowUpRight className="h-5 w-5 text-white" />
+                                </a>
+                              )}
+                              {active.githubUrl ? (
+                                <a
+                                  href={active.githubUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-colors"
+                                  aria-label="View source repository"
+                                >
+                                  <Github className="h-5 w-5 text-white" />
+                                </a>
+                              ) : (
+                                <div
+                                  className="h-10 px-3 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-[10px] font-bold text-white/90 gap-1.5"
+                                  title="Proprietary / Enterprise NDA"
+                                >
+                                  <ShieldCheck className="h-3.5 w-3.5 text-amber-300" />
+                                  <span>NDA</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Measurable Metrics / Outcomes */}
+                    {active.metrics && active.metrics.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {active.metrics.map((m) => (
+                          <div
+                            key={m.label}
+                            className="rounded-xl p-4 bg-white/80 dark:bg-white/5 border border-[#d4c4b0]/50 dark:border-white/10 shadow-sm"
+                          >
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#8a6239] dark:text-[#d4c4b0] mb-1">
+                              <TrendingUp className="h-3 w-3 text-green-600 dark:text-green-400" />
+                              {m.label}
+                            </div>
+                            <div className="text-xl font-bold text-[#1a0f0a] dark:text-[#f5f1ed]">
+                              {m.value}
+                            </div>
+                            {m.detail && (
+                              <div className="text-[11px] text-[#7a7268] dark:text-white/60 mt-0.5">
+                                {m.detail}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Long description */}
+                    <p className="text-sm sm:text-base text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                      {active.longDescription}
+                    </p>
+
+                    {/* Challenge and Approach side by side */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="rounded-xl bg-[#1a0f0a]/5 dark:bg-white/6 border border-[#d4c4b0]/40 dark:border-white/12 p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-2.5">
+                          The Challenge
+                        </p>
+                        <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                          {active.challenge}
+                        </p>
+                      </div>
+                      <div className="rounded-xl bg-[#1a0f0a]/5 dark:bg-white/6 border border-[#d4c4b0]/40 dark:border-white/12 p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-2.5">
+                          My Approach
+                        </p>
+                        <p className="text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                          {active.solution}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* ── What I built ── */}
+                    {active.features && active.features.length > 0 && (
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a6239] dark:text-[#d4c4b0] mb-3">
+                          Key Deliverables
+                        </p>
+                        <ul className="grid sm:grid-cols-2 gap-2">
+                          {active.features.map((f, i) => (
+                            <motion.li
+                              key={f}
+                              className="flex items-start gap-2.5 text-sm text-[#4a4238] dark:text-[#d4c4b0]"
+                              initial={{ opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.05 }}
+                            >
+                              <CheckCircle2 className="h-4 w-4 text-[#8a6239] dark:text-[#d4c4b0] flex-shrink-0 mt-0.5" />
+                              <span>{f}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* ── What I'd do differently ── */}
+                    {active.whatIdDoDifferently && (
+                      <div className="rounded-xl p-4 bg-amber-500/10 dark:bg-amber-400/5 border border-amber-500/20 dark:border-amber-400/15">
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <Lightbulb className="h-4 w-4 text-amber-700 dark:text-amber-400" />
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-800 dark:text-amber-300">
+                            What I'd Do Differently
+                          </p>
+                        </div>
+                        <p className="text-xs sm:text-sm text-[#4a4238] dark:text-[#d4c4b0] leading-relaxed">
+                          {active.whatIdDoDifferently}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* ── Stack + CTAs row ── */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-[#d4c4b0]/30 dark:border-white/12">
+                      <div className="flex flex-wrap gap-1.5">
+                        {active.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-full bg-[#f0ede9] dark:bg-[#1a0f0a] text-[#1a0f0a] dark:text-[#d4af37] text-[11px] font-semibold border border-[#d4c4b0]/50 dark:border-[#d4af37]/25"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2.5 flex-shrink-0 items-center">
+                        {active.liveUrl && (
+                          <a
+                            href={active.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a0f0a] dark:bg-[#f5f1ed] text-white dark:text-[#1a0f0a] text-sm font-bold hover:bg-[#3d251e] dark:hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            {active.isNda ? 'Platform' : 'View Live'}
+                          </a>
+                        )}
+                        {active.githubUrl ? (
+                          <a
+                            href={active.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#c4a878] dark:border-white/15 text-[#1a0f0a] dark:text-[#f5f1ed] text-sm font-bold hover:bg-[#f5f1ed] dark:hover:bg-white/8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a6239]"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </a>
+                        ) : (
+                          <div className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#1a0f0a]/5 dark:bg-white/5 border border-[#d4c4b0]/50 dark:border-white/12 text-[#7a7268] dark:text-white/70 text-xs font-semibold">
+                            <ShieldCheck className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                            <span>Enterprise NDA</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </motion.section>
+  );
+}

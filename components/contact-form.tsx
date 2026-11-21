@@ -8,9 +8,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Send } from "lucide-react"
 import emailjs from '@emailjs/browser'
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
-const formVariants = {
+const formVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
@@ -22,7 +23,7 @@ const formVariants = {
   }
 }
 
-const fieldVariants = {
+const fieldVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: { 
     opacity: 1, 
@@ -33,14 +34,14 @@ const fieldVariants = {
   }
 }
 
-const successVariants = {
+const successVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { 
     opacity: 1, 
     scale: 1,
     transition: {
       duration: 0.5,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 200
     }
   }
@@ -50,6 +51,7 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const shouldReduceMotion = useReducedMotion()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -76,7 +78,7 @@ export function ContactForm() {
       from_email: email,
       subject: subject,
       message: message,
-      to_email: 'jesulobaowoseni1@gmail.com'
+      to_email: PORTFOLIO_CONFIG.CONTACT_EMAIL
     }
 
     try {
@@ -86,11 +88,7 @@ export function ContactForm() {
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
       if (!serviceId || !templateId || !publicKey) {
-        // Fallback: simulate successful submission for demo purposes
-        console.log('EmailJS not configured. Form data:', templateParams)
-        await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate network delay
-        setIsSubmitted(true)
-        form.reset()
+        setError(`Contact form is not configured yet. Please email me directly at ${PORTFOLIO_CONFIG.CONTACT_EMAIL}.`)
         return
       }
 
@@ -127,7 +125,7 @@ export function ContactForm() {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                transition={{ delay: 0, type: "spring", stiffness: 200 }}
               >
                 <Mail className="h-12 w-12 text-gray-700 mb-4" />
               </motion.div>
@@ -135,7 +133,7 @@ export function ContactForm() {
                 className="text-2xl font-bold mb-2 text-black"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.05 }}
               >
                 Message Sent!
               </motion.h3>
@@ -143,14 +141,14 @@ export function ContactForm() {
                 className="text-black dark:text-white mb-6"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.1 }}
               >
                 Thank you for reaching out! I'll get back to you as soon as possible.
               </motion.p>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.15 }}
               >
                 <Button 
                   onClick={() => setIsSubmitted(false)}
@@ -181,7 +179,17 @@ export function ContactForm() {
                       <div className="flex-shrink-0 w-4 h-4 rounded-full bg-red-500 mt-0.5"></div>
                       <div>
                         <p className="font-medium">Message could not be sent</p>
-                        <p className="mt-1 text-xs opacity-80">{error}</p>
+                        <p className="mt-1 text-xs opacity-80">
+                          {error}{" "}
+                          {error.includes("Please email me directly") ? (
+                            <a
+                              href={`mailto:${PORTFOLIO_CONFIG.CONTACT_EMAIL}`}
+                              className="underline underline-offset-2"
+                            >
+                              Email me directly
+                            </a>
+                          ) : null}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
@@ -223,7 +231,7 @@ export function ContactForm() {
                   name="subject"
                   placeholder="Subject of your message" 
                   required 
-                  className="border-[#f5f1ed]0 focus:border-[#f5f1ed]0 focus:ring-[#f5f1ed]0 text-black transition-all duration-200"
+                  className="border-[#d4c4b0] focus:border-[#7a7268] focus:ring-[#7a7268] text-black transition-all duration-200"
                 />
               </motion.div>
               <motion.div variants={fieldVariants} className="space-y-2">
@@ -236,7 +244,7 @@ export function ContactForm() {
                   placeholder="Your message" 
                   rows={5} 
                   required 
-                  className="border-[#f5f1ed]0 focus:border-[#f5f1ed]0 focus:ring-[#f5f1ed]0 text-black dark:text-[#d4c4b0] transition-all duration-200"
+                  className="border-[#d4c4b0] focus:border-[#7a7268] focus:ring-[#7a7268] text-black dark:text-[#d4c4b0] transition-all duration-200"
                 />
               </motion.div>
               <motion.div variants={fieldVariants}>
@@ -253,7 +261,7 @@ export function ContactForm() {
                     >
                       <motion.div
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        transition={shouldReduceMotion ? undefined : { duration: 1, repeat: Infinity, ease: "linear" }}
                         className="h-4 w-4 border-2 border-white border-t-transparent rounded-full"
                       />
                       Sending...

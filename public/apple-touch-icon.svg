@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        rect { fill: #1a0f0a; }
+        g { opacity: 1; }
+      }
+      @media (prefers-color-scheme: light) {
+        rect { fill: #f5f1ed; }
+        g { opacity: 1; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="180" height="180" fill="#f5f1ed" rx="40"/>
+  
+  <!-- Professional developer symbol with refined styling -->
+  <g transform="translate(45, 45)" opacity="1">
+    <!-- Left bracket - refined lines -->
+    <path d="M 12 15 L 35 45 L 12 75" stroke="#1a0f0a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right bracket -->
+    <path d="M 78 15 L 55 45 L 78 75" stroke="#1a0f0a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Center accent dot -->
+    <circle cx="45" cy="45" r="5.5" fill="#8a6239"/>
+  </g>
+</svg>

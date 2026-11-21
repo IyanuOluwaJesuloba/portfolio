@@ -1,35 +1,65 @@
 import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next"
+import { PORTFOLIO_CONFIG } from "@/lib/constants"
 
-export const metadata = {
-  title: "IyanuOluwa Owoseni | Frontend Developer & UI/UX Enthusiast",
-  description: "Passionate frontend developer specializing in React, Next.js, and modern web technologies. Creating exceptional digital experiences with clean code and innovative design.",
-  keywords: ["Frontend Developer", "React Developer", "Next.js", "TypeScript", "Tailwind CSS", "Web Development", "UI/UX", "JavaScript"],
+const siteUrl = PORTFOLIO_CONFIG.SITE_URL;
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+  description:
+    "Frontend & Web3 Engineer building software that solves real world problems",
+  keywords: [
+    "Frontend & Web3 Engineer",
+    "Frontend Engineer",
+    "Web3 Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Rust",
+    "Soroban Developer",
+    "Stellar Blockchain",
+    "Solidity Developer",
+    "EVM",
+    "Tailwind CSS",
+    "Smart Contracts",
+    "UI/UX Engineering",
+  ],
   authors: [{ name: "IyanuOluwa Owoseni" }],
   creator: "IyanuOluwa Owoseni",
   publisher: "IyanuOluwa Owoseni",
+  formatDetection: {
+    email: true,
+    telephone: true,
+    address: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://iyanuoluwa-portfolio.vercel.app",
-    title: "IyanuOluwa Owoseni | Frontend Developer",
-    description: "Passionate frontend developer creating exceptional digital experiences with modern web technologies.",
+    url: siteUrl,
+    title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+    description:
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     siteName: "IyanuOluwa Owoseni Portfolio",
     images: [
       {
         url: "/hero.jpeg",
         width: 1200,
         height: 630,
-        alt: "IyanuOluwa Owoseni - Frontend Developer",
+        alt: "IyanuOluwa Owoseni - Frontend & Web3 Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IyanuOluwa Owoseni | Frontend Developer",
-    description: "Passionate frontend developer creating exceptional digital experiences with modern web technologies.",
+    title: "IyanuOluwa Owoseni | Frontend & Web3 Engineer",
+    description:
+      "Frontend & Web3 Engineer building software that solves real world problems across Web2 and Web3 with React, Next.js, TypeScript, Rust, and Soroban on Stellar.",
     images: ["/hero.jpeg"],
+    creator: "@iyanuoluwa_dev",
   },
   robots: {
     index: true,
@@ -45,26 +75,25 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.svg',
+        url: '/favicon-new.svg',
         type: 'image/svg+xml',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-        sizes: '180x180',
       },
     ],
     apple: [
       {
-        url: '/icon.svg',
+        url: '/apple-touch-icon.svg',
         type: 'image/svg+xml',
         sizes: '180x180',
       },
     ],
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  ...(googleVerification
+    ? {
+        verification: {
+          google: googleVerification,
+        },
+      }
+    : {}),
 }
 
 export default function RootLayout({
@@ -75,7 +104,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="overflow-x-hidden">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
